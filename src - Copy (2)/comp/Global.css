@@ -1,0 +1,98 @@
+﻿
+.col1_search_class{
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    
+    /*align-content: center;*/
+    position: relative;
+    height: calc(70px);
+    
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: center;
+
+    /*height: calc(30px - 1px);*/
+    /*position: absolute;*/
+    /*margin-left: 10%;*/
+    /*margin-right: 10%;*/
+    /*width: 20%;*/
+    /*height: 20%;*/
+    background-color: peachpuff;
+} 
+
+.row1_search_class{
+
+    background-color: peru;
+    display: flex;
+    flex-direction: row;
+    /*flex:1;*/
+    
+    height: calc(50px);
+        
+    margin-left: 10px;
+    margin-right: 10px;
+    
+       
+    /*padding: 10px;*/
+
+    
+}
+
+.col2_search_icons_left_class{
+    /*flex-grow:1;*/
+    flex:1;
+    height: 100%;
+    background-color: cadetblue;
+    margin-left: 3px;
+    margin-right: 3px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+        
+}
+
+.col3_search_input_class{
+/*.row1_search_input_class{*/
+    /*flex-grow:8;*/
+    flex:8;
+    /*height: 60%;*/
+    background-color: darkmagenta;
+    margin-left: 3px;
+    margin-right: 3px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+
+}
+
+.col4_search_icons_right_class{
+/*.row1_search_icons_right_class{*/
+    /*flex-grow:1;*/
+    flex:1;
+    /*height: 60%;*/
+    background-color: aquamarine;
+    margin-left: 3px;
+    margin-right: 3px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.col234_item_class{
+    
+    /*flex:1;*/
+    height: 25px;
+    background-color: deepskyblue;
+    /*color:black;*/
+    /*text-align: left;*/
+    
+}

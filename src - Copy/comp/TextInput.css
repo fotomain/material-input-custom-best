@@ -1,0 +1,82 @@
+﻿
+
+/*111 BEFORE*/
+.container label {
+    color: #939293;
+    font-size: 1em;
+    left: 1em;
+    position: absolute;
+    top: 0.8em;
+    transition: all 0.1s linear;
+    /* ++   */
+    /*margin-left:2em;*/
+}
+
+.container input {
+    background-color: transparent;
+    border: 1px solid #939293;
+    border-radius: 5px;
+    color: black;
+    font-size: 1em;
+    padding: 1em;
+
+    width: 100%;
+    padding-left:4em;
+}
+
+/*222 AFTER*/
+.container input:focus + label,
+.container input + label.show {
+    color: #661be6;
+    font-size: 0.8em;
+    left: 8px;
+    padding: 0 0.5em;
+    top: -.9em;
+    background: white;
+}
+.container input:focus {
+    outline: none;
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 2px #661be6;
+}
+
+
+.container .left-icon {
+    left:1em;
+    top: 0.9rem;
+    position: absolute;
+}
+
+
+.container .right-icon {
+    right:1em;
+    top: 0.9rem;
+    position: absolute;
+}
+
+.container .helper-text {
+    font-size: 0.8em;
+    color: #939293;
+    padding-left: 1.2em;
+    padding-top: 0.1em;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.75;
+}
+
+body, input {
+    font-family: "Roboto", sans-serif;
+}
+
+form {
+    width: 325px;
+    position: absolute;
+}
