@@ -58,7 +58,6 @@ function TextInputOutlineStandart  (props) {
 
     return(
 
-
         <form action="">
             <div className="container">
 
