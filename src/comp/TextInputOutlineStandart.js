@@ -69,6 +69,8 @@ function TextInputOutlineStandart  (props) {
 
     })
 
+    const helper_text_style = (props.helper_text_style)?props.helper_text_style:{}
+
     return(
 
         <div className={'container_form'} >
@@ -122,6 +124,7 @@ function TextInputOutlineStandart  (props) {
                         <div className="helper-text"
                              ref={ref_helper}
                              id={this_helper1_id}
+                             style={helper_text_style}
                         >
                             Helper text
                         </div>
