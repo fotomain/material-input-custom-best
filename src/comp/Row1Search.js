@@ -10,36 +10,49 @@ const Com_row1_search = React.FC = () =>{
 
 
 return(
-    <div>
+    <div className={'grid'}>
     <div className={'col1_search_class'}>
         <Row1SearchPosts />
 
     </div>
-        {/*<div>*/}
-        {/*<TextInputOutlineStandart*/}
-        {/*    label_text={'input email please...'}*/}
-        {/*    color_main = 'teal'*/}
-        {/*    required='true'*/}
-        {/*    // label_text={'input email please...'}*/}
-        {/*    value={'xxxx@yyyyy.zz'}*/}
-        {/*    placeholder={'like aa@bb.cc'}*/}
-        {/*    type="text"*/}
-        {/*    // type="date"*/}
-        {/*/>*/}
-        {/*</div>  */}
+        {/*<div className={'col1_search_class'}>*/}
+            <TextInputOutlineStandart
+                // id={'id1'}
+                label_text={'input email please...'}
+                color_main = 'teal'
+                is_required='true'
+                // label_text={'input email please...'}
+                value={'xxxx@yyyyy.zz'}
+                placeholder={'like aa@bb.cc'}
+                type="email"
+                // type="date"
+            />
+        {/*</div>*/}
 
-        <div>
+
         <TextInputOutlineStandart
+            // id={'id2'}
             label_text={'input email please...'}
             color_main = 'teal'
             is_required='true'
             // label_text={'input email please...'}
             // value={'xxxx@yyyyy.zz'}
             // placeholder={'like aa@bb.cc'}
-            type="text"
+            type="email"
             // type="date"
         />
-        </div>
+
+        <TextInputOutlineStandart
+            // id={'id2'}
+            label_text={'input email please...'}
+            color_main = 'teal'
+            // is_required='true'
+            // label_text={'input email please...'}
+            // value={'xxxx@yyyyy.zz'}
+            // placeholder={'like aa@bb.cc'}
+            type="email"
+            // type="email"
+        />
 
 
     </div>

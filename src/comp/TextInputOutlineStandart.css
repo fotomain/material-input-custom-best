@@ -89,12 +89,11 @@ body, input {
     font-family: "Roboto", sans-serif;
 }
 
-form {
-    width: 100%;
+.container_form {
 
+    width: 100%;
     padding-left: var(--padding_all);
     padding-right: var(--padding_all);
-
-    position: absolute;
+    position: relative;
 
 }

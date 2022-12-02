@@ -1,4 +1,4 @@
-﻿import React, {useEffect, useState} from 'react';
+﻿import React, {useEffect, useRef, useState} from 'react';
 
 // import './TextInput.css'
 
@@ -11,6 +11,19 @@ const setProperty = (a,b) => {
 function TextInputOutlineStandart  (props) {
     // {color_main, color_text, text_label, text_helper }
     console.log(props)
+
+    const ref_input = useRef(null);
+    const ref_label = useRef(null);
+    const ref_helper = useRef(null);
+
+
+    const id_local = (Math.random()*1000000).toString()
+    const this_input1_id = (props.id)?props.id:"this_input1" + id_local
+    const this_label1_id = "this_label1_" + id_local
+    const this_helper1_id = "this_helper1_" + id_local
+
+    console.log("=== id_local ",id_local)
+    console.log("=== ref ",ref_label,ref_input)
 
     const [input_props, set_input_props] = useState(props)
         // Object.entries(props).map(([key, val])=>{
@@ -35,7 +48,7 @@ function TextInputOutlineStandart  (props) {
 
 
         const label_font_size = '.8rem'
-        var this_label1 = document.getElementById("this_label1");
+        var this_label1 = document.getElementById(this_label1_id);
         var test = document.getElementById("test_text");
         test.innerText = this_label1.textContent;
         test.style.fontSize = label_font_size;
@@ -58,13 +71,14 @@ function TextInputOutlineStandart  (props) {
 
     return(
 
-        <form action="">
+        <div className={'container_form'} >
             <div className="container">
 
                         <input {...input_props}
 
+                               ref ={ref_input}
                                value={input_value}
-                               id="input_id1"
+                               id={this_input1_id}
                                placeholder={input_placeholder}
 
                                onFocus={(e)=>{
@@ -90,15 +104,25 @@ function TextInputOutlineStandart  (props) {
 
                             {/*{( (!input_focused) )?'':<label htmlFor="input_id1">input email please...</label>}*/}
 
-                            <label id={'this_label1'}
+                            <label
+
+                                id={this_label1_id}
+
                                 className={(input_is_full || props.placeholder)?'show':''} htmlFor="input_id1"
+                                   onClick={(e)=>{
+                                       console.log("=== label onClick ")
+                                       ref_input.current.focus()
+                                   }}
                             ><span>{label_text}
                                 {(!props.is_required)?'':<a style={{color: 'red'}}> *</a>}
                             </span>
 
                             </label>
 
-                        <div className="helper-text">
+                        <div className="helper-text"
+                             ref={ref_helper}
+                             id={this_helper1_id}
+                        >
                             Helper text
                         </div>
 
@@ -106,10 +130,10 @@ function TextInputOutlineStandart  (props) {
 
             {/*style={{ 'position': 'absolute', 'float': 'left', 'white-space': 'nowrap', 'visibility': 'hidden', 'font': f }}*/}
             {/*'visibility': 'hidden'*/}
-            <div id={'test_text'} style={{ 'position': 'absolute', 'float': 'left', 'white-space': 'nowrap' }}></div>
+            <div id={'test_text'} style={{ 'position': 'absolute', 'float': 'left', 'white-space': 'nowrap', 'visibility': 'hidden' }}></div>
 
 
-        </form>
+        </div>
     )
 
 }
