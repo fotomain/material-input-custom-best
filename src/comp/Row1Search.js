@@ -13,7 +13,7 @@ return(
     <div>
     <div className={'col1_search_class'}>
         <Row1SearchPosts />
-        
+
     </div>
         {/*<div>*/}
         {/*<TextInputOutlineStandart*/}
@@ -32,7 +32,7 @@ return(
         <TextInputOutlineStandart
             label_text={'input email please...'}
             color_main = 'teal'
-            required='true'
+            is_required='true'
             // label_text={'input email please...'}
             // value={'xxxx@yyyyy.zz'}
             // placeholder={'like aa@bb.cc'}
@@ -43,8 +43,8 @@ return(
 
 
     </div>
-        
-    
+
+
 )
 
 }
