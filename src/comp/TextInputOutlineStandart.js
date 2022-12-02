@@ -17,7 +17,7 @@ function TextInputOutlineStandart  (props) {
     const ref_helper = useRef(null);
 
 
-    const id_local = (Math.random()*1000000).toString()
+    const id_local = (parseInt(Math.random()*100000000)).toString()
     const this_input1_id = (props.id)?props.id:"this_input1" + id_local
     const this_label1_id = "this_label1_" + id_local
     const this_helper1_id = "this_helper1_" + id_local
@@ -42,10 +42,9 @@ function TextInputOutlineStandart  (props) {
     const color_main_local = props.color_main
     setProperty("--color_main",color_main_local)
     setProperty("--color_main_focused",color_main_local)
-    // setProperty("--label_focused_left_space",'calc(100% - 225px)')
 
-    useEffect(()=>{
 
+    useEffect(()=> {
 
         const label_font_size = '.8rem'
         var this_label1 = document.getElementById(this_label1_id);
@@ -54,19 +53,18 @@ function TextInputOutlineStandart  (props) {
         test.style.fontSize = label_font_size;
         var height = (test.clientHeight + 1) + "px";
         var width = (test.clientWidth + 1) + "px"
-        console.log("=== test",test)
+        console.log("=== test", test)
 
-        console.log("=== test.getBoundingClientRect",test.getBoundingClientRect())
-        console.log("=== test.clientWidth",test.clientWidth)
-        console.log("=== width",width)
+        console.log("=== test.getBoundingClientRect", test.getBoundingClientRect())
+        console.log("=== test.clientWidth", test.clientWidth)
+        console.log("=== width", width)
 
-            set_label_width(width)
+        set_label_width(width)
 
-            console.log("=== label_width",label_width)
+        console.log("=== label_width", label_width)
+        console.log("=== props.label_position", props.label_position)
 
-            setProperty("--label_focused_left_space",'calc(100% - 30px - '+label_width+')')
-            setProperty("--label_focused_font_size",label_font_size)
-
+        setProperty("--label_focused_left_space", 'calc(100% - 30px - ' + label_width + ')')
     })
 
     const helper_text_style = (props.helper_text_style)?props.helper_text_style:{}
@@ -77,6 +75,8 @@ function TextInputOutlineStandart  (props) {
             <div className="container">
 
                         <input {...input_props}
+
+                               // className={'input_right'}
 
                                ref ={ref_input}
                                value={input_value}
