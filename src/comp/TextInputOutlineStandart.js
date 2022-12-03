@@ -1,4 +1,6 @@
-﻿import React, {useEffect, useRef, useState} from 'react';
+﻿
+
+import React, {useEffect, useRef, useState} from 'react';
 
 // import './TextInput.css'
 
@@ -65,6 +67,19 @@ function TextInputOutlineStandart  (props) {
         console.log("=== props.label_position", props.label_position)
 
         setProperty("--label_focused_left_space", 'calc(100% - 30px - ' + label_width + ')')
+
+        //
+        // var style = 1document.createElement('style');
+        // style.type = 'text/css';
+        // style.innerHTML = '.input_ZZZ:focus + label, .input_ZZZ  + label.show { ' +
+        //     'color: #F00; ' +
+        //     'left: 250px;' +
+        //     '}';
+        // document.getElementsByTagName('head')[0].appendChild(style);
+        //
+        // document.getElementById(this_label1_id).className = 'input_ZZZ';
+
+
     })
 
     const helper_text_style = (props.helper_text_style)?props.helper_text_style:{}
@@ -131,9 +146,9 @@ function TextInputOutlineStandart  (props) {
 
             </div>
 
-            {/*style={{ 'position': 'absolute', 'float': 'left', 'white-space': 'nowrap', 'visibility': 'hidden', 'font': f }}*/}
+            {/*style={{ 'position': 'absolute', 'float': 'left', 'whiteSpace': 'nowrap', 'visibility': 'hidden', 'font': f }}*/}
             {/*'visibility': 'hidden'*/}
-            <div id={'test_text'} style={{ 'position': 'absolute', 'float': 'left', 'white-space': 'nowrap', 'visibility': 'hidden' }}></div>
+            <div id={'test_text'} style={{ 'position': 'absolute', 'float': 'left', 'whiteSpace': 'nowrap', 'visibility': 'hidden' }}></div>
 
 
         </div>
