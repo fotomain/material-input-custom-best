@@ -1,5 +1,7 @@
 ﻿
 
+
+
 import React, {useEffect, useRef, useState} from 'react';
 
 // import './TextInput.css'
@@ -19,8 +21,13 @@ function TextInputOutlineStandart  (props) {
     const ref_helper = useRef(null);
 
 
-    const id_local = (parseInt(Math.random()*100000000)).toString()
-    const this_input1_id = (props.id)?props.id:"this_input1" + id_local
+
+    const [id_local, set_id_local] = useState((parseInt(Math.random()*100000000)).toString());
+
+    const [this_input1_id, set_this_input1_id] = useState((props.id)?props.id:"this_input1_" + id_local)
+
+    const this_input1_class_right_id = (props.id)?props.id:"class_right_" + id_local
+    console.log("=== this_input1_class_right_id",this_input1_class_right_id)
     const this_label1_id = "this_label1_" + id_local
     const this_helper1_id = "this_helper1_" + id_local
 
@@ -66,20 +73,30 @@ function TextInputOutlineStandart  (props) {
         console.log("=== label_width", label_width)
         console.log("=== props.label_position", props.label_position)
 
-        setProperty("--label_focused_left_space", 'calc(100% - 30px - ' + label_width + ')')
+        if("right"==props.label_position){
 
-        //
-        // var style = 1document.createElement('style');
-        // style.type = 'text/css';
-        // style.innerHTML = '.input_ZZZ:focus + label, .input_ZZZ  + label.show { ' +
-        //     'color: #F00; ' +
-        //     'left: 250px;' +
-        //     '}';
-        // document.getElementsByTagName('head')[0].appendChild(style);
-        //
-        // document.getElementById(this_label1_id).className = 'input_ZZZ';
+            console.log("=== right111")
+            // setProperty("--label_focused_left_space", 'calc(100% - 30px - ' + label_width + ')')
 
+            var style = document.createElement('style');
+            style.type = 'text/css';
+        // :focus + label, .input_ZZZ  + label.show
+            style.innerHTML = '.'+this_input1_class_right_id+':focus + label, .'+this_input1_class_right_id+' + label.show { ' +
+                ((props.label_text_color)?'color:'+ props.label_text_color:'color: var(--color_main_focused)')+' !important ; ' +
+                'left: '+'calc(100% - 30px - ' + label_width + ')'+' !important ; ' +
+                '}';
+            document.getElementsByTagName('head')[0].appendChild(style);
 
+            // document.getElementById(this_input1_id).className = 'input_ZZZ';
+            document.getElementById(this_input1_id).classList.add(this_input1_class_right_id);
+        }
+        else{
+
+        }
+
+        return function cleanup() {
+            document.getElementById(this_input1_id)?.classList.remove(this_input1_class_right_id);
+        }
     })
 
     const helper_text_style = (props.helper_text_style)?props.helper_text_style:{}

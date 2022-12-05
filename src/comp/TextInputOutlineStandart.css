@@ -39,30 +39,8 @@
 
 /*222 AFTER*/
 
-/*.container input:focus + label,*/
-/*.container input + label.show {*/
-/*    color: var(--color_main);*/
-/*    font-size: var(--label_focused_font_size);*/
-/*    !*: 0.8em;*!*/
-/*    left: var(--label_focused_left_space);*/
-/*    padding: 0 0.5em;*/
-/*    top: -.9em;*/
-/*    background: white;*/
-/*}*/
-
-.container .input_right:focus + label,
-.container .input_right + label.show {
-    color: var(--color_main);
-    font-size: var(--label_focused_font_size);
-    /*: 0.8em;*/
-    left: var(--label_focused_right_space);
-    padding: 0 0.5em;
-    top: -.9em;
-    background: white;
-}
-
-.container .input_left:focus + label,
-.container .input_left + label.show {
+.container input:focus + label,
+.container input + label.show {
     color: var(--color_main);
     font-size: var(--label_focused_font_size);
     /*: 0.8em;*/
@@ -71,6 +49,30 @@
     top: -.9em;
     background: white;
 }
+
+/*.container .input_right:focus + label*/
+/*, .container .input_right + label.show*/
+/*{*/
+/*    color: var(--color_main);*/
+/*    font-size: var(--label_focused_font_size);*/
+/*    !*: 0.8em;*!*/
+/*    left: var(--label_focused_right_space);*/
+/*    padding: 0 0.5em;*/
+/*    top: -.9em;*/
+/*    background: white;*/
+/*}*/
+
+/*.container .input_left:focus + label,*/
+/*.container .input_left + label.show */
+/*{*/
+/*    color: var(--color_main);*/
+/*    font-size: var(--label_focused_font_size);*/
+/*    !*: 0.8em;*!*/
+/*    left: var(--label_focused_left_space);*/
+/*    padding: 0 0.5em;*/
+/*    top: -.9em;*/
+/*    background: white;*/
+/*}*/
 
 
 .container input:focus {

@@ -17,7 +17,7 @@ return(
     </div>
         {/*<div className={'col1_search_class'}>*/}
             <TextInputOutlineStandart
-                className={'input_left'}
+                // className={'input_left'}
                 // id={'id1'}
                 label_text={'input email please...'}
                 label_position={'right'}
@@ -33,7 +33,7 @@ return(
 
 
         <TextInputOutlineStandart
-            className={'input_right'}
+            // className={'input_right'}
             // id={'id2'}
             label_text={'input email please...'}
             color_main = 'teal'
@@ -47,7 +47,9 @@ return(
 
         <TextInputOutlineStandart
             // id={'id2'}
-            className={'input_left'}
+            // className={'input_left'}
+            label_position={'right'}
+            label_text_color={'brown'}
 
             label_text={'input email please...'}
             color_main = 'teal'
