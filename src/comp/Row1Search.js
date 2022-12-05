@@ -15,7 +15,15 @@ return(
         <Row1SearchPosts />
 
     </div>
-        {/*<div className={'col1_search_class'}>*/}
+
+        <TextInputOutlineStandart
+
+            label_text={'input email please...'}
+            type="email"
+
+        />
+
+
             <TextInputOutlineStandart
                 // className={'input_left'}
                 // id={'id1'}

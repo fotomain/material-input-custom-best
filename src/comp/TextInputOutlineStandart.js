@@ -47,13 +47,15 @@ function TextInputOutlineStandart  (props) {
     const [label_text, set_label_text] = useState(props.label_text)
     const [label_width, set_label_width] = useState(0)
 
+    const [color_main_local, set_color_main_local] = useState((props.color_main)?props.color_main:'teal');
 
-    const color_main_local = props.color_main
     setProperty("--color_main",color_main_local)
     setProperty("--color_main_focused",color_main_local)
 
 
     useEffect(()=> {
+
+        // #FFA500
 
         const label_font_size = '.8rem'
         var this_label1 = document.getElementById(this_label1_id);
