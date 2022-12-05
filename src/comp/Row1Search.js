@@ -52,13 +52,14 @@ return(
             label_text_color={'brown'}
 
             label_text={'input email please...'}
+            label_text_focused={'email'}
             color_main = 'teal'
             // is_required='true'
             // label_text={'input email please...'}
             // value={'xxxx@yyyyy.zz'}
             // placeholder={'like aa@bb.cc'}
             type="email"
-            helper_text_style={{color: 'red'}}
+            helper_text_style={{color: 'red', fontStyle:'italic'}}
             // type="email"
         />
 
