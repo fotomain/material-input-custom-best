@@ -4,14 +4,15 @@
     --color_main_focused:#661be6;
     --label_focused_left_space:16px;
     --label_focused_right_space:16px;
+    --label_font_size:1rem;
     --label_focused_font_size:.8rem;
 
 }
 
 /*111 BEFORE*/
-.container label {
+.container_mui label {
     color: #939293;
-    font-size: 1em;
+    font-size: var(--label_font_size);
     left: calc(var(--padding_all) + 1em);
     position: absolute;
     top: 0.8em;
@@ -20,9 +21,10 @@
     /*margin-left:2em;*/
 }
 
-.container input {
+.container_mui input {
     background-color: transparent;
-    border: 1px solid var(--color_main);
+    border: 1px solid;
+    border-color: var(--color_main);
     border-radius: 5px;
     color: black;
     font-size: 1em;
@@ -39,8 +41,8 @@
 
 /*222 AFTER*/
 
-.container input:focus + label,
-.container input + label.show {
+.container_mui input:focus + label,
+.container_mui input + label.show {
     color: var(--color_main);
     font-size: var(--label_focused_font_size);
     /*: 0.8em;*/
@@ -50,8 +52,8 @@
     background: white;
 }
 
-/*.container .input_right:focus + label*/
-/*, .container .input_right + label.show*/
+/*.container_mui .input_right:focus + label*/
+/*, .container_mui .input_right + label.show*/
 /*{*/
 /*    color: var(--color_main);*/
 /*    font-size: var(--label_focused_font_size);*/
@@ -62,8 +64,8 @@
 /*    background: white;*/
 /*}*/
 
-/*.container .input_left:focus + label,*/
-/*.container .input_left + label.show */
+/*.container_mui .input_left:focus + label,*/
+/*.container_mui .input_left + label.show */
 /*{*/
 /*    color: var(--color_main);*/
 /*    font-size: var(--label_focused_font_size);*/
@@ -75,27 +77,29 @@
 /*}*/
 
 
-.container input:focus {
+.container_mui input:focus {
+
     outline: none;
     border: 1px solid transparent;
-    box-shadow: 0 0 0 2px var(--color_main_focused);
+    box-shadow: 0 0 0 2px darkorange;
+
 }
 
 
-.container .left-icon {
+.container_mui .left-icon {
     left:1em;
     top: 0.9rem;
     position: absolute;
 }
 
 
-.container .right-icon {
+.container_mui .right-icon {
     right:1em;
     top: 0.9rem;
     position: absolute;
 }
 
-.container .helper-text {
+.container_mui .helper-text {
     font-size: 0.8em;
     color: var(--color_main);
     opacity: 50%;
@@ -118,7 +122,7 @@ body, input {
     font-family: "Roboto", sans-serif;
 }
 
-.container_form {
+.container_mui_form {
 
     width: 100%;
     padding-left: var(--padding_all);
