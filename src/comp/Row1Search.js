@@ -62,7 +62,7 @@ return(
             label_text={'input email please...'}
             label_text_focused={'email'}
             color = 'red'
-            color_main = 'teal'
+            color_main = 'darkmagenta'
             // is_required='true'
             // label_text={'input email please...'}
             // value={'xxxx@yyyyy.zz'}

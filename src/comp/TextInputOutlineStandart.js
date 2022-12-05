@@ -94,6 +94,7 @@ function TextInputOutlineStandart  (props) {
                     // ((props.label_text_color)?'color:'+ props.label_text_color:'color: var(--color_main_focused)')+' !important ; ' +
                      // 'box-shadow: 0 0 0 1px red '+' !important ; ' +
                     'color: '+props.color+' !important ; ' +
+                    'border-color: '+color_main_local+' !important ; ' +
                     'border-radius: 5px '+' !important ; '
             }
         )
