@@ -104,7 +104,7 @@ function TextInputOutlineStandart  (props) {
             || "filled"==props.input_variant
         )
         {
-            console.log(6666666666)
+
             border_style = ''
 
              +'border-top: none  !important ; '
@@ -112,15 +112,19 @@ function TextInputOutlineStandart  (props) {
              +'border-right: none  !important ; '
              +'border-bottom: 2px solid !important ; '
              +'border-color: '+color_main_local+' !important ; '
+             +'    border-bottom-left-radius:  0 !important; '
+             +'    border-bottom-right-radius: 0 !important; '
 
 
-             border_style_focused = ''
+
+            border_style_focused = ''
                  +'border-top: none  !important ; '
                  +'border-left: none  !important ; '
                  +'border-right: none  !important ; '
-                 +'border-bottom: 4px solid !important ; '
+                 +'border-bottom: 2px solid !important ; '
                  +'border-color: '+color_main_local+' !important ; '
-                 +'box-shadow: none !important ; '
+                 +'box-shadow: 0 4px 2px -2px '+color_main_local+' !important ; '
+                 // +'box-shadow: none !important ; '
         }
 
         if("outlined"==props.input_variant){
@@ -133,7 +137,7 @@ function TextInputOutlineStandart  (props) {
                 +'box-shadow: 0 0 0 2px '+color_main_local_focused+' !important ; '
         }
 
-        //=== INPUT START
+        //=== INPUT _START
         setClass(
             {
                 element_id: uniq_input1_id,
@@ -148,7 +152,7 @@ function TextInputOutlineStandart  (props) {
 
 
         console.log("=== color_main_local_exist",color_main_local_exist)
-        //=== INPUT FOCUS
+        //=== INPUT _FOCUSED
         setClass(
             {
                 element_id: uniq_input1_id,
@@ -245,7 +249,7 @@ function TextInputOutlineStandart  (props) {
                         + '' +
                         '    background-color: rgba(0, 0, 0, 0.06); !important; ' +
                         '    transition: background-color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms !important; ' +
-                        '    border-top-left-radius: 4px !important; ' +
+                        '    border-top-left-radius:  4px !important; ' +
                         '    border-top-right-radius: 4px !important; ' +
                         '' +
                         '' +
@@ -366,7 +370,7 @@ function TextInputOutlineStandart  (props) {
                                    }}
                             ><span>
                                 {(input_focused && props.label_text_focused)?props.label_text_focused:label_text}
-                                {(!props.is_required)?'':<a style={{color: 'red'}}> *</a>}
+                                {(!props.is_required)?'':<a style={{color: (input_is_full)?color_main_local:'red'}}> *</a>}
                             </span>
 
                             </label>
