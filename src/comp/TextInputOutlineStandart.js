@@ -368,10 +368,11 @@ function TextInputOutlineStandart  (props) {
                                        console.log("=== label onClick ")
                                        ref_input.current.focus()
                                    }}
-                            ><span>
-                                {(input_focused && props.label_text_focused)?props.label_text_focused:label_text}
-                                {(!props.is_required)?'':<a style={{color: (input_is_full)?color_main_local:'red'}}> *</a>}
-                            </span>
+                            >
+                                <span>
+                                    {(input_focused && props.label_text_focused)?props.label_text_focused:label_text}
+                                    {(!props.is_required)?'':<a style={{color: (input_is_full)?color_main_local:'red'}}> *</a>}
+                                </span>
 
                             </label>
 
