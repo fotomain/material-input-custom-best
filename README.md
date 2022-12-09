@@ -86,3 +86,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+        // var style_input_focused_label = document.createElement('style');
+        // style_input_focused_label.type = 'text/css';
+        //
+        // style_input_focused_label.innerHTML = '.'+uniq_input1_settings_class_id+':focus + label, .'+uniq_input1_settings_class_id+' + label.show { ' +
+        //      ((props.label_text_color)?'color:'+ props.label_text_color:'color: var(--color_main_focused)')+' !important ; ' +
+        //         'box-shadow: 0 0 0 2px darkorange '+' !important ; ' +
+        //         'border-radius: 5px '+' !important ; ' +
+        //      '}';
+        //  document.getElementsByTagName('head')[0].appendChild(style_input_focused_label);
+        //  document.getElementById(uniq_input1_id).classList.add(uniq_input1_settings_class_id);
+        //

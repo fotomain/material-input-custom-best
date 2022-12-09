@@ -57,12 +57,14 @@ function TextInputOutlineStandart  (props) {
     const [label_text, set_label_text] = useState(props.label_text)
     const [label_width, set_label_width] = useState(0)
 
+    const [color_main_local_exist, set_color_main_local_exist] = useState((props.color_main)?true:false);
     const [color_main_local, set_color_main_local] = useState((props.color_main)?props.color_main:'teal');
+    const [color_main_focused, set_color_main_focused] = useState((props.color_main_focused)?props.color_main_focused:'teal');
 
-    setProperty("--color_main",color_main_local)
-    setProperty("--color_main_focused",color_main_local)
+    // setProperty("--color_main",color_main_local)
+    // setProperty("--color_main_focused",color_main_local)
 
-    const ff = (params) => {
+    const setClass = (params) => {
         console.log('=== params ',params)
 
         var style_ = document.createElement('style');
@@ -85,7 +87,8 @@ function TextInputOutlineStandart  (props) {
 
         // #FFA500
 
-        ff(
+        //=== INPUT START
+        setClass(
             {
                 element_id: uniq_input1_id,
                 class_id: uniq_input1_settings_class_id,
@@ -99,21 +102,26 @@ function TextInputOutlineStandart  (props) {
             }
         )
 
-        ff(
+        console.log("=== color_main_local_exist",color_main_local_exist)
+        //=== INPUT FOCUS
+        setClass(
             {
                 element_id: uniq_input1_id,
                 class_id: uniq_input1_settings_class_id,
                 class_title: uniq_input1_settings_class_id+':focus ',
                 class_body:
 
-                    'outline: none !important ; ' +
-                    'border: 1px solid transparent !important ; '+
-                    'box-shadow: 0 0 0 2px blue '+' !important ; '
+                     'outline: none !important ; '
+                    +'border: 1px solid transparent !important ; '
+                    +'box-shadow: 0 0 0 2px '+color_main_focused+' !important ; '
                     // 'border-radius: 5px '+' !important ; '
             }
         )
 
-        ff(
+         console.log("=== props.color_main_focused",props.color_main_focused)
+        // console.log("=== props.label_box_shadow_style",props.label_box_shadow_style)
+        //=== LABEL FOCUS
+        setClass(
         {
             element_id: uniq_input1_id,
             class_id: uniq_input1_settings_class_id,
@@ -121,24 +129,14 @@ function TextInputOutlineStandart  (props) {
                         +uniq_input1_settings_class_id+' + label.show ',
             class_body:
                  ((props.label_text_color)?'color:'+ props.label_text_color:'color: var(--color_main_focused)')+' !important ; ' +
-                    'box-shadow: 0 0 0 2px darkorange '+' !important ; ' +
+                 ((!props.label_box_shadow_style)?'':props.label_box_shadow_style +' !important ; ' )+
+
                     'border-radius: 5px '+' !important ; '
             }
         )
 
-        //
-        // var style_input_focused_label = document.createElement('style');
-        // style_input_focused_label.type = 'text/css';
-        //
-        // style_input_focused_label.innerHTML = '.'+uniq_input1_settings_class_id+':focus + label, .'+uniq_input1_settings_class_id+' + label.show { ' +
-        //      ((props.label_text_color)?'color:'+ props.label_text_color:'color: var(--color_main_focused)')+' !important ; ' +
-        //         'box-shadow: 0 0 0 2px darkorange '+' !important ; ' +
-        //         'border-radius: 5px '+' !important ; ' +
-        //      '}';
-        //  document.getElementsByTagName('head')[0].appendChild(style_input_focused_label);
-        //  document.getElementById(uniq_input1_id).classList.add(uniq_input1_settings_class_id);
-        //
 
+        //=== LABEL RIGHT
         if("right"==props.label_position){
 
             var uniq_label1 = document.getElementById(uniq_label1_id);

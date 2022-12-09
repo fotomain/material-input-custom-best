@@ -58,11 +58,13 @@ return(
             // className={'input_left'}
             label_position={'right'}
             label_text_color={'brown'}
+            label_box_shadow_style={' box-shadow: 0 0 0 3px green '}
 
             label_text={'input email please...'}
             label_text_focused={'email'}
             color = 'red'
             color_main = 'darkmagenta'
+            color_main_focused = 'darkmagenta'
             // is_required='true'
             // label_text={'input email please...'}
             // value={'xxxx@yyyyy.zz'}
