@@ -59,7 +59,7 @@ function TextInputOutlineStandart  (props) {
 
     const [color_main_local_exist, set_color_main_local_exist] = useState((props.color_main)?true:false);
     const [color_main_local, set_color_main_local] = useState((props.color_main)?props.color_main:'teal');
-    const [color_main_focused, set_color_main_focused] = useState((props.color_main_focused)?props.color_main_focused:'teal');
+    const [color_main_local_focused, set_color_main_local_focused] = useState((props.color_main_focused)?props.color_main_focused:'teal');
 
     // setProperty("--color_main",color_main_local)
     // setProperty("--color_main_focused",color_main_local)
@@ -87,18 +87,54 @@ function TextInputOutlineStandart  (props) {
 
         // #FFA500
 
+        var border_style = ''
+        var border_style_focused = ''
+        console.log("=== input_variant",props.input_variant)
+        border_style =   ' border: none !important ; '
+            +' box-shadow: none !important ;'
+        border_style_focused = ' border: none !important ; '
+            +' box-shadow: none !important ;'
+
+        if(!props.input_variant || "standard"==props.input_variant){
+            console.log(6666666666)
+            border_style = ''
+
+             +'border-top: none  !important ; '
+             +'border-left: none  !important ; '
+             +'border-right: none  !important ; '
+             +'border-bottom: 2px solid !important ; '
+             +'border-color: '+color_main_local+' !important ; '
+
+
+             border_style_focused = ''
+                 +'border-top: none  !important ; '
+                 +'border-left: none  !important ; '
+                 +'border-right: none  !important ; '
+                 +'border-bottom: 4px solid !important ; '
+                 +'border-color: '+color_main_local+' !important ; '
+                 +'box-shadow: none !important ; '
+        }
+
+        if("outlined"==props.input_variant){
+            border_style = ''
+                +'border-color: '+color_main_local+' !important ; '
+                +'border-radius: 5px '+' !important ; '
+
+            border_style_focused = ''
+                +'border: 1px solid transparent !important ; '
+                +'box-shadow: 0 0 0 2px '+color_main_local_focused+' !important ; '
+        }
+
         //=== INPUT START
         setClass(
             {
                 element_id: uniq_input1_id,
                 class_id: uniq_input1_settings_class_id,
                 class_title: uniq_input1_settings_class_id+' ',
-                class_body:
-                    // ((props.label_text_color)?'color:'+ props.label_text_color:'color: var(--color_main_focused)')+' !important ; ' +
-                     // 'box-shadow: 0 0 0 1px red '+' !important ; ' +
-                    'color: '+props.color+' !important ; ' +
-                    'border-color: '+color_main_local+' !important ; ' +
-                    'border-radius: 5px '+' !important ; '
+                class_body: ''
+                    +'color: '+props.color+' !important ; '
+                    +border_style
+                    +''
             }
         )
 
@@ -112,15 +148,32 @@ function TextInputOutlineStandart  (props) {
                 class_body:
 
                      'outline: none !important ; '
-                    +'border: 1px solid transparent !important ; '
-                    +'box-shadow: 0 0 0 2px '+color_main_focused+' !important ; '
+                     +border_style_focused
                     // 'border-radius: 5px '+' !important ; '
             }
         )
 
-         console.log("=== props.color_main_focused",props.color_main_focused)
+        // console.log("=== props.color_main_focused",props.color_main_focused)
         // console.log("=== props.label_box_shadow_style",props.label_box_shadow_style)
+
+
+        //=== LABEL START
+        setClass(
+            {
+                element_id: uniq_input1_id,
+                class_id: uniq_input1_settings_class_id,
+                class_title: uniq_input1_settings_class_id+' + label ',
+
+                class_body:
+                    ((props.label_text_color)?'color:'+ props.label_text_color:'color: gray ')+' !important ; ' +
+                    ((!props.label_box_shadow_style)?'':props.label_box_shadow_style +' !important ; ' )
+                    + 'border-radius: 1px '+' !important ; '
+            }
+        )
+
+
         //=== LABEL FOCUS
+
         setClass(
         {
             element_id: uniq_input1_id,
@@ -128,10 +181,10 @@ function TextInputOutlineStandart  (props) {
             class_title: uniq_input1_settings_class_id+':focus + label, .'
                         +uniq_input1_settings_class_id+' + label.show ',
             class_body:
-                 ((props.label_text_color)?'color:'+ props.label_text_color:'color: var(--color_main_focused)')+' !important ; ' +
-                 ((!props.label_box_shadow_style)?'':props.label_box_shadow_style +' !important ; ' )+
+                 ((props.label_text_color_focused)?'color:'+ props.label_text_color_focused:'color: '+color_main_local+'')+' !important ; ' +
+                 ((!props.label_box_shadow_style_focused)?'':props.label_box_shadow_style_focused +' !important ; ' )+
 
-                    'border-radius: 5px '+' !important ; '
+                    +'border-radius: 5px '+' !important ; '
             }
         )
 
@@ -152,15 +205,33 @@ function TextInputOutlineStandart  (props) {
             console.log("=== right111")
             // setProperty("--label_focused_left_space", 'calc(100% - 30px - ' + label_width + ')')
 
-            var style = document.createElement('style');
-            style.type = 'text/css';
+            setClass(
+                {
+                    element_id: uniq_input1_id,
+                    class_id: uniq_input1_class_right_id,
+                    class_title: uniq_input1_class_right_id+':focus + label, .'+uniq_input1_class_right_id+' + label.show  ',
 
-            style.innerHTML = '.'+uniq_input1_class_right_id+':focus + label, .'+uniq_input1_class_right_id+' + label.show { ' +
-                ((props.label_text_color)?'color:'+ props.label_text_color:'color: var(--color_main_focused)')+' !important ; ' +
-                'left: '+'calc(100% - 30px - ' + label_width + ')'+' !important ; ' +
-                '}';
-            document.getElementsByTagName('head')[0].appendChild(style);
-            document.getElementById(uniq_input1_id).classList.add(uniq_input1_class_right_id);
+                    class_body:
+                        ((!props.label_text_color_focused)?
+                            'color: teal !important ;'
+                            :'color: '+props.label_text_color_focused+' !important ;') +
+                        'left: '+'calc(100% - 30px - ' + label_width + ')'+' !important ; '
+                }
+            )
+
+
+            // console.log()
+            // var style = document.createElement('style');
+            // style.type = 'text/css';
+
+            // style.innerHTML = '.'+uniq_input1_class_right_id+':focus + label, .'+uniq_input1_class_right_id+' + label.show { ' +
+            //     ((!props.label_text_color_focused)?
+            //              'color: teal !important ;'
+            //             :'color: '+props.label_text_color_focused+' !important ;') +
+            //     'left: '+'calc(100% - 30px - ' + label_width + ')'+' !important ; ' +
+            //     '}';
+            // document.getElementsByTagName('head')[0].appendChild(style);
+            // document.getElementById(uniq_input1_id).classList.add(uniq_input1_class_right_id);
         }
         else{
 
@@ -185,7 +256,7 @@ function TextInputOutlineStandart  (props) {
                                ref ={ref_input}
                                value={input_value}
                                id={uniq_input1_id}
-                               placeholder={input_placeholder}
+                               // placeholder={input_placeholder}
 
                                onFocus={(e)=>{
                                    set_input_focused(true)
@@ -226,13 +297,15 @@ function TextInputOutlineStandart  (props) {
 
                             </label>
 
+                {!props.helper_text?'':
                         <div className="helper-text"
                              ref={ref_helper}
                              id={uniq_helper1_id}
                              style={helper_text_style}
                         >
-                            Helper text
+                            {props.helper_text}
                         </div>
+                }
 
             </div>
 

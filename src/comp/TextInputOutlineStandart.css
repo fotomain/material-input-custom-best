@@ -21,8 +21,11 @@
     /*margin-left:2em;*/
 }
 
+::placeholder {  color: green; opacity: 1; }
+
 .container_mui input {
     background-color: transparent;
+    /*border: none;*/
     border: 1px solid;
     border-color: var(--color_main);
     border-radius: 5px;
@@ -81,9 +84,11 @@
 
     outline: none;
     border: 1px solid transparent;
+    /*box-shadow: none;*/
     box-shadow: 0 0 0 2px darkorange;
 
 }
+
 
 
 .container_mui .left-icon {

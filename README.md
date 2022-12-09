@@ -6,6 +6,9 @@ Do it:
 
 #Backlog
 
+##placeholder_color
+as !important
+
 ##BORDER CSS FROM CENTER
 
 ### html

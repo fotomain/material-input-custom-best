@@ -23,10 +23,25 @@ return(
 
         />
 
+        <br/>
+
+        <TextInputOutlineStandart
+
+            input_variant={'outlined'}
+
+            label_text={'input email please...'}
+            type="email"
+
+        />
+
+        <br/>
 
             <TextInputOutlineStandart
                 // className={'input_left'}
                 // id={'id1'}
+
+                input_variant={'outlined'}
+
                 label_text={'input email please...'}
                 label_position={'right'}
                 color_main = 'teal'
@@ -34,16 +49,19 @@ return(
                 // label_text={'input email please...'}
                 value={'xxxx@yyyyy.zz'}
                 placeholder={'like aa@bb.cc'}
+
                 type="email"
                 // type="date"
             />
-        {/*</div>*/}
 
+
+        <br/>
 
         <TextInputOutlineStandart
             // className={'input_right'}
             // id={'id2'}
             label_text={'input email please...'}
+
             color_main = 'teal'
             is_required='true'
             // label_text={'input email please...'}
@@ -51,17 +69,27 @@ return(
             // placeholder={'like aa@bb.cc'}
             type="email"
             // type="date"
+            helper_text={'Very required'}
+            helper_text_style={{color: 'red', fontStyle:'italic'}}
+
         />
+
+        <br/>
 
         <TextInputOutlineStandart
             // id={'id2'}
             // className={'input_left'}
+            input_variant={'outlined'}
+
             label_position={'right'}
             label_text_color={'brown'}
-            label_box_shadow_style={' box-shadow: 0 0 0 3px green '}
+            label_text_color_focused={'#D81BE6FF'}
+            label_box_shadow_style={' box-shadow: 0 0 0 1px gray '}
+            label_box_shadow_style_focused={' box-shadow: 0 0 0 3px green '}
 
             label_text={'input email please...'}
             label_text_focused={'email'}
+
             color = 'red'
             color_main = 'darkmagenta'
             color_main_focused = 'darkmagenta'
@@ -70,6 +98,7 @@ return(
             // value={'xxxx@yyyyy.zz'}
             // placeholder={'like aa@bb.cc'}
             type="email"
+            helper_text={'Helper text here'}
             helper_text_style={{color: 'red', fontStyle:'italic'}}
             // type="email"
         />
