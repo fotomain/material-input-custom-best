@@ -102,3 +102,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         //  document.getElementsByTagName('head')[0].appendChild(style_input_focused_label);
         //  document.getElementById(uniq_input1_id).classList.add(uniq_input1_settings_class_id);
         //
+
+
+            // console.log()
+            // var style = document.createElement('style');
+            // style.type = 'text/css';
+
+            // style.innerHTML = '.'+uniq_input1_class_right_id+':focus + label, .'+uniq_input1_class_right_id+' + label.show { ' +
+            //     ((!props.label_text_color_focused)?
+            //              'color: teal !important ;'
+            //             :'color: '+props.label_text_color_focused+' !important ;') +
+            //     'left: '+'calc(100% - 30px - ' + label_width + ')'+' !important ; ' +
+            //     '}';
+            // document.getElementsByTagName('head')[0].appendChild(style);
+            // document.getElementById(uniq_input1_id).classList.add(uniq_input1_class_right_id);

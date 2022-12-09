@@ -20,6 +20,16 @@ return(
 
             label_text={'input email please...'}
             type="email"
+            input_variant={'filled'}
+
+        />
+
+        <br/>
+
+        <TextInputOutlineStandart
+
+            label_text={'input email please...'}
+            type="email"
 
         />
 
@@ -60,6 +70,9 @@ return(
         <TextInputOutlineStandart
             // className={'input_right'}
             // id={'id2'}
+
+            input_variant={'filled'}
+
             label_text={'input email please...'}
 
             color_main = 'teal'
