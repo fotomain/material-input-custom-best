@@ -4,6 +4,28 @@ Do it:
 ### `npm i`
 ### `npm start`
 
+#Backlog
+
+##BORDER CSS FROM CENTER
+
+### html
+<h1 class="fromCenter">Expand from center</h1><br/>
+<h1 class="fromRight">Expand from right</h1><br/>
+<h1 class="fromLeft">Expand from left</h1>
+
+### css
+h1 { color: #666;display:inline-block; margin:0;text-transform:uppercase; }
+h1:after {
+  display:block;
+  content: '';
+  border-bottom: solid 3px #019fb6;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+h1:hover:after { transform: scaleX(1); }
+h1.fromRight:after{ transform-origin:100% 50%; }
+h1.fromLeft:after{  transform-origin:  0% 50%; }
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
