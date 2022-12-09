@@ -197,7 +197,7 @@ function TextInputOutlineStandart  (props) {
                  ((props.label_text_color_focused)?'color:'+ props.label_text_color_focused:'color: '+color_main_local+'')+' !important ; ' +
                  ((!props.label_box_shadow_style_focused)?'':props.label_box_shadow_style_focused +' !important ; ' )+
                 (("standard"==props.input_variant || !props.input_variant )?
-                    '    left: 4px !important;'
+                    '    left: 4px !important; '
                     :'   left: var(--label_focused_left_space) !important; ')
 
                     +'border-radius: 5px '+' !important ; '
