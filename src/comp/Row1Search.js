@@ -28,6 +28,16 @@ return(
 
         <TextInputOutlineStandart
 
+            input_variant={'standard'}
+            label_text={'input email please...'}
+            type="email"
+
+        />
+
+        <br/>
+
+        <TextInputOutlineStandart
+
             label_text={'input email please...'}
             type="email"
 

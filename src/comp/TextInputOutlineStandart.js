@@ -152,7 +152,7 @@ function TextInputOutlineStandart  (props) {
 
 
         console.log("=== color_main_local_exist",color_main_local_exist)
-        //=== INPUT _FOCUSED
+        //=== INPUT __FOCUSED
         setClass(
             {
                 element_id: uniq_input1_id,
@@ -196,6 +196,9 @@ function TextInputOutlineStandart  (props) {
             class_body:
                  ((props.label_text_color_focused)?'color:'+ props.label_text_color_focused:'color: '+color_main_local+'')+' !important ; ' +
                  ((!props.label_box_shadow_style_focused)?'':props.label_box_shadow_style_focused +' !important ; ' )+
+                (("standard"==props.input_variant || !props.input_variant )?
+                    '    left: 4px !important;'
+                    :'   left: var(--label_focused_left_space) !important; ')
 
                     +'border-radius: 5px '+' !important ; '
             }
@@ -259,26 +262,12 @@ function TextInputOutlineStandart  (props) {
         }
         if(
                 !props.input_variant
-            ||  "standart"==props.input_variant
+
+            ||  "standard"==props.input_variant
             ||  "filled"==props.input_variant
         ){
 
-            setClass(
-                {
-                    element_id: uniq_input1_id,
-                    class_id: input1_filed_padding,
-                    class_title: input1_filed_padding+':focus ',
 
-                    class_body: ''
-                        +'' +
-                        '    padding-top: 25px;' +
-                        '    padding-right: 12px;' +
-                        '    padding-bottom: 8px;' +
-                        '    padding-left: 12px;' +
-                        '' +
-                        ''
-                }
-            )
             setClass(
                 {
                     element_id: uniq_input1_id,
@@ -290,7 +279,9 @@ function TextInputOutlineStandart  (props) {
                         '    padding-top: 25px !important;' +
                         '    padding-right: 12px !important;' +
                         '    padding-bottom: 8px !important;' +
-                        '    padding-left: 12px !important;' +
+                        (("standard"==props.input_variant || !props.input_variant )?
+                        '    padding-left: 0 !important;'
+                        :'    padding-left: 12px !important;') +
                         '' +
                         ''
                 }
