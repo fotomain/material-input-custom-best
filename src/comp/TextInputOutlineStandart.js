@@ -185,7 +185,7 @@ function TextInputOutlineStandart  (props) {
         )
 
 
-        //=== LABEL FOCUS
+        //=== LABEL __FOCUS
 
         setClass(
         {
