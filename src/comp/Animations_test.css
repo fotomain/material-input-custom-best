@@ -1,0 +1,313 @@
+﻿
+/*======================*/
+
+.div_selected {
+    font-size: 4em;
+    padding:20px;
+    animation-name            : anime_pulse;
+    animation-duration        : 10s;
+    animation-iteration-count : infinite;
+}
+
+@keyframes anime_pulse {
+    from {
+        transform : scale(0.80);
+        opacity   : 1;
+        color:black;
+    }
+    /*60% {*/
+    /*    transform : scale(1.5);*/
+    /*    !*transform: translate(10%, 10%);*!*/
+    /*    !*opacity   : 0.25;*!*/
+    /*    color:blue;*/
+    /*}*/
+    /*40% {*/
+    /*    transform : scale(0.75);*/
+    /*    !*transform: translate(10%, 10%);*!*/
+    /*    opacity   : 0.45;*/
+    /*    color:yellow;*/
+    /*}*/
+    /*30% {*/
+    /*    transform : scale(.70);*/
+    /*    color: #e600ff;*/
+    /*    !*opacity   : 0.25;*!*/
+    /*}*/
+    30% {
+
+        transform : rotate(90deg) scale(.60);
+        color:blue;
+        content: "Text 111";
+    }
+
+    30% {
+
+        transform : rotate(90deg) scale(.40);
+        color:green;
+        content: "Text 222";
+    }
+    30% {
+
+        transform : rotate(90deg) scale(.40);
+        color:red;
+        content: "Text 333";
+    }
+    30% {
+
+        transform : rotate(90deg) scale(.40) ;
+        color:darkorange;
+        content: "Text 444";
+    }
+
+    /*40% {*/
+    /*    transform : rotate(360deg) scale(.30);*/
+    /*    color:red;*/
+    /*}*/
+
+    to {
+
+        transform : rotate(360deg) scale(1);
+        opacity   : 1;
+        color:green;
+    }
+
+    /*darkorange*/
+
+}
+
+#hi {
+    animation: pulse 5s infinite;
+    color:yellow;
+}
+
+@keyframes pulse {
+
+    0% {
+        background-color: red;
+    }
+    10% {
+        background-color: green;
+    }
+    30% {
+        background-color: blue;
+    }
+    50% {
+        background-color: red;
+    }
+    60% {
+        background-color: green;
+    }
+    80% {
+        background-color: blue;
+    }
+    100% {
+        background-color: deeppink;
+
+    }
+}
+
+#hi:after {
+    content: "";
+    animation: spin 8s linear infinite ;
+}
+
+@keyframes spin {
+    0% {
+        content: 'You ';
+        color:white;
+    }
+    15% {
+        content: 'You can';
+        color:white;
+    }
+    30% {
+        content: 'You can win!';
+        color:white;
+    }
+    45% {
+        content: 'If you want!';
+        color:white;
+    }
+    60% {
+        content: "If you wan'a";
+        color:white;
+    }
+    75% {
+        content: "If you wan'a to the";
+        color:white;
+    }
+    100% {
+        content: "If you wan'a to the win!";
+        color:white;
+
+    }
+}
+
+/* define the animation */
+
+/*@-webkit-keyframes marquee {*/
+/*    0%   { -webkit-transform: translate(0, -100%); }*/
+/*    100% { -webkit-transform: translate(0, 0); }*/
+/*}*/
+/*@keyframes marquee {*/
+/*    0%   { -webkit-transform: translate(0, -100%); }*/
+/*    100% { -webkit-transform: translate(0, 0); }*/
+/*}*/
+
+@-webkit-keyframes marquee {
+    0%   { -webkit-transform: translate(0, -100%); }
+    100% { -webkit-transform: translate(0, -200%); }
+}
+@keyframes marquee {
+    0%   { -webkit-transform: translate(0, -100%); }
+    100% { -webkit-transform: translate(0, -200%); }
+}
+
+
+
+/* define your limiting container */
+.marquee {
+    border: solid 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+/* this is the tray moving around your container */
+.marquee span {
+    display: inline-block;
+    text-indent: 0;
+    animation: marquee 3s linear ; /* here you select the animation */
+    /*animation: marquee 3s linear infinite; !* here you select the animation *!*/
+    /*-webkit-animation: marquee 15s linear infinite; !* here you select the animation *!*/
+    -webkit-animation: marquee 13s linear; /* here you select the animation */
+}
+/* pause the animation on mouse over */
+.marquee span:hover {
+    /*animation-play-state: paused;*/
+    /*-webkit-animation-play-state: paused;*/
+}
+
+{/*<div id="wrapper">*/}
+{/*    <p id="hi"></p>*/}
+{/*</div>*/}
+
+{/*<div className={'div_selected'}>*/}
+{/*            <p> Tectonic Links</p>*/}
+{/*            <p> best linker</p>*/}
+
+{/*DOC*/}
+{/*move*/}
+{/*https://webplatform.github.io/docs/tutorials/css_transforms/*/}
+{/*transforms*/}
+
+{/*https://webplatform.github.io/docs/tutorials/css_transforms/*/}
+{/*http://jsfiddle.net/vn2Vu/7/*/}
+{/*http://jsfiddle.net/vn2Vu/11/*/}
+
+{/*</div>*/}
+
+.shift_text_wrapper {
+    background-color:peachpuff;
+    width:400px;
+    height:200px;
+    margin-left: 100px;
+    margin-bottom: 100px;
+}
+
+.t_bold {
+    font-size:20px;
+}
+
+.shift_text {
+
+    /*padding: 50px;*/
+    transform: translateY(200%);
+    /*opacity: 0;*/
+    /*animation-name: amime_shift;*/
+    /*animation-duration: 2s;*/
+    margin-left: 50%;
+    animation: amime_shift 1s forwards linear;
+
+
+}
+
+@keyframes amime_shift {
+
+    0% {
+        /*opacity: 1;*/
+        color: transparent;
+        opacity:0;
+    }
+
+    50% {
+        /*opacity: 1;*/
+        /*color: blue;*/
+        color: transparent;
+        opacity:1;
+    }
+
+    70% {
+        /*opacity: 1;*/
+        /*color: red;*/
+        color: transparent;
+        opacity:1;
+    }
+    100% {
+        /*opacity: 1;*/
+        transform: translateY(50%);
+    }
+
+}
+
+.circle1_wrapper {
+    background-color:peachpuff;
+
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    margin-left: 100px;
+    margin-bottom: 100px;
+
+
+}
+
+.circle1_class  {
+
+    border-radius: 50%;
+    background-color: deepskyblue;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    opacity: 1;
+
+    animation: anime_circle1 1s linear  ;
+}
+
+@keyframes anime_circle1 {
+    0% {
+        transform: scale(0);
+        /*width:0;*/
+        /*height:0;*/
+    }
+    30% {
+        /*width:40px;*/
+        /*height:40px;*/
+        transform: scale(.20);
+    }
+    60% {
+        /*width:0;*/
+        /*height:0;*/
+        transform: scale(0);
+    }
+    90% {
+        /*width:200px;*/
+        /*height:200px;*/
+        transform: scale(1)
+    }
+
+}
+
+

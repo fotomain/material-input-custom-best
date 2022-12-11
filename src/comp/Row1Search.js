@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 
 import './Global.css'
+import './Animations_test.css'
 import Row1SearchPosts from "./Row1SearchPosts";
 import TextInput from "./TextInput";
 import TextInputOutlineStandart from "./TextInputOutlineStandart";
@@ -11,7 +12,26 @@ const Com_row1_search = React.FC = () =>{
 
 return(
     <div className={'grid'}>
+
+        <br/>
+        <br/>
+        <div className="circle1_wrapper">
+            <span className={'circle1_class'}></span>
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+        <div className="shift_text_wrapper">
+            <p className="shift_text">
+                <section className={'t_bold'}>Best Linker</section>
+                <section>soft #1</section>
+            </p>
+            {/*<p className="shift_text"></p>*/}
+        </div>
+
     <div className={'col1_search_class'}>
+
         <Row1SearchPosts />
 
     </div>
