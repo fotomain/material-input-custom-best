@@ -5,13 +5,13 @@ import React, {useEffect, useRef, useState} from 'react';
 
 // import './TextInput.css'
 
-import './TextInputOutlineStandart.css'
+import './TextInputDemo.js.css'
 
 const setProperty = (a,b) => {
     document.documentElement.style.setProperty(a,b)
 }
 
-function TextInputOutlineStandart  (props) {
+function TextInputDemo  (props) {
     // {color_main, color_text, text_label, text_helper }
     console.log(props)
 
@@ -389,4 +389,4 @@ function TextInputOutlineStandart  (props) {
 
 }
 
-export default TextInputOutlineStandart
+export default TextInputDemo

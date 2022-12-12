@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Row1Search from "./comp/Row1Search";
+import Home1Anime from "./comp/Home1Anime";
 
 // npm start
 
@@ -11,9 +12,10 @@ import Row1Search from "./comp/Row1Search";
 function App() {
   return (
     <div className="App">
-      
-        <Row1Search />
-        
+
+        <Home1Anime />
+        {/*<Row1Search />*/}
+
     </div>
   );
 }
