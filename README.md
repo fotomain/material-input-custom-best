@@ -116,3 +116,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
             //     '}';
             // document.getElementsByTagName('head')[0].appendChild(style);
             // document.getElementById(uniq_input1_id).classList.add(uniq_input1_class_right_id);
+
+
+#ANIMATIONS
+
+{/*DOC*/}
+{/*move*/}
+{/*https://webplatform.github.io/docs/tutorials/css_transforms!}*/
+{/*transforms*/}
+
+    {/*https://webplatform.github.io/docs/tutorials/css_transforms!}*/
+        {/*http://jsfiddle.net/vn2Vu/7!}*/
+            {/*http://jsfiddle.net/vn2Vu/11!}*/

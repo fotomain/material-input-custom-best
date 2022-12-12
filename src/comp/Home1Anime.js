@@ -11,7 +11,7 @@ const Home1Anime = React.FC = () =>{
 
 
     return(
-        <div className={'grid'}>
+        <div className={'container_anime0'}>
 
             <br/>
             <br/>
@@ -38,3 +38,4 @@ const Home1Anime = React.FC = () =>{
 
 }
 export default Home1Anime
+
