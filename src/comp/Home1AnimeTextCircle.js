@@ -4,7 +4,6 @@ import './Global.css'
 import './Home1AnimeTextCircle.css'
 import Row1SearchPosts from "./Row1SearchPosts";
 import TextInput from "./TextInput";
-import TextInputDemo from "./TextInputDemo";
 
 
 const Home1AnimeTextCircle = React.FC = () =>{

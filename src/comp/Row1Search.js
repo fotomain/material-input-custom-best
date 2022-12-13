@@ -4,11 +4,8 @@ import './Global.css'
 import './Home1AnimeTextCircle.css'
 import Row1SearchPosts from "./Row1SearchPosts";
 import TextInput from "./TextInput";
-import TextInputDemo from "./TextInputDemo";
-
 
 const Com_row1_search = React.FC = () =>{
-
 
 return(
 <div className={'main_grid'}>
@@ -21,7 +18,7 @@ return(
 
     <div className={'demo_grid'}>
 
-    <TextInputDemo
+    <TextInput
 
             label_text={'input email please...'}
             type="email"
@@ -31,7 +28,7 @@ return(
 
         <br/>
 
-        <TextInputDemo
+        <TextInput
 
             input_variant={'standard'}
             label_text={'input email please...'}
@@ -41,7 +38,7 @@ return(
 
         <br/>
 
-        <TextInputDemo
+        <TextInput
 
             label_text={'input email please...'}
             type="email"
@@ -50,7 +47,7 @@ return(
 
         <br/>
 
-        <TextInputDemo
+        <TextInput
 
             input_variant={'outlined'}
 
@@ -61,7 +58,7 @@ return(
 
         <br/>
 
-            <TextInputDemo
+            <TextInput
                 // className={'input_left'}
                 // id={'id1'}
 
@@ -82,7 +79,7 @@ return(
 
         <br/>
 
-        <TextInputDemo
+        <TextInput
             // className={'input_right'}
             // id={'id2'}
 
@@ -104,7 +101,7 @@ return(
 
         <br/>
 
-        <TextInputDemo
+        <TextInput
             // id={'id2'}
             // className={'input_left'}
             input_variant={'outlined'}
