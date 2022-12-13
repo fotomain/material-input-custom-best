@@ -279,7 +279,7 @@ function TextInputDemo  (props) {
                     class_title: input1_filed_padding+' ',
 
                     class_body: ''
-                        +'' +
+                        +''+
                         '    padding-top: 25px !important;' +
                         '    padding-right: 12px !important;' +
                         '    padding-bottom: 8px !important;' +
