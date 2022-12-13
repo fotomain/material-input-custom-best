@@ -2,6 +2,7 @@
 
 :root{
 
+
     --demo_grid_width:60%;
     --padding_all:10px;
     --color_main:#661be6;
@@ -13,6 +14,10 @@
 
 }
 
+
+.left_icon{
+    /*margin-bottom: 0.1px;*/
+}
 
 .demo_grid{
 
@@ -123,11 +128,22 @@
 }
 
 
-
 .container_mui .left-icon {
     left:1em;
     top: 0.9rem;
     position: absolute;
+}
+
+.container_mui .left-icon-focused {
+    left:1em;
+    /*top: 0.9rem;*/
+    position: absolute;
+    padding-top: 20px;
+
+}
+
+.container_mui .left-icon-focused:hover {
+    cursor:pointer;
 }
 
 

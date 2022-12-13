@@ -25,6 +25,7 @@ function TextInput  () {
                                 <FontAwesomeIcon icon={faClose}/>
                             </div>
                         }
+
                         <input type="text"
                                id="input_id1"
                                placeholder={input_placeholder}

@@ -2,6 +2,8 @@
 
 
 import React, {useEffect, useRef, useState} from 'react';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faClose, faSearch} from "@fortawesome/free-solid-svg-icons";
 
 // import './TextInput.css'
 
@@ -27,6 +29,8 @@ function TextInputDemo  (props) {
     const uniq_container_mui_id = ((props.id)?props.id:"uniq_container_mui_" + id_local)
     const uniq_input1_id = ((props.id)?props.id:"uniq_input1_" + id_local)
     const [label_font_size, set_label_font_size] = useState('.8rem')
+
+    const [Label1_visible, set_Label1_visible] = useState(false)
 
     // const [uniq_input1_settings_class_id, set_uniq_input1_settings_class_id] = useState('input_'+(props.id)?props.id:"_settings_class_" + id_local)
 
@@ -280,10 +284,13 @@ function TextInputDemo  (props) {
                         '    padding-right: 12px !important;' +
                         '    padding-bottom: 8px !important;' +
                         (("standard"==props.input_variant || !props.input_variant )?
-                        '    padding-left: 0 !important;'
+
+                            (!Label1_visible)?'    padding-left: 0 ':' padding-left: 25px '+' !important;'
                         :'    padding-left: 12px !important;') +
                         '' +
                         ''
+                    // +(Label1_visible)?' padding-left: 10px; !important; ':''
+
                 }
             )
 
@@ -309,6 +316,7 @@ function TextInputDemo  (props) {
 
     const helper_text_style = (props.helper_text_style)?props.helper_text_style:{}
 
+
     return(
 
         <div className={'container_mui_form'} >
@@ -317,6 +325,17 @@ function TextInputDemo  (props) {
                 id={uniq_container_mui_id}
                 className={"container_mui"}
             >
+
+                {(!Label1_visible)?'':
+                    <div className="left-icon-focused"
+                         onClick={(e)=>{
+                             console.log(22222222)
+                         }}
+                    >
+                        <FontAwesomeIcon icon={faClose}/>
+                    </div>
+                }
+
 
                         <input {...input_props}
 
@@ -329,6 +348,7 @@ function TextInputDemo  (props) {
 
                                onFocus={(e)=>{
                                    set_input_focused(true)
+                                   set_Label1_visible(true)
                                }}
                                onBlur={(e)=>{
                                    set_input_focused(false)
