@@ -28,7 +28,6 @@ const Home1AnimeTextCircle = React.FC = () =>{
 
         </div>
 
-
     )
 
 }
