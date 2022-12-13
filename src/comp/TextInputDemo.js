@@ -313,7 +313,7 @@ function TextInputDemo  (props) {
 
         <div className={'container_mui_form'} >
             <div
-                // className={("filled"==props.input_variant)?"container_mui_filled, container_mui":"container_mui"}
+
                 id={uniq_container_mui_id}
                 className={"container_mui"}
             >
