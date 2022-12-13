@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 
 import './Global.css'
-import './Home1Anime.css'
+import './Home1AnimeTextCircle.css'
 import Row1SearchPosts from "./Row1SearchPosts";
 import TextInput from "./TextInput";
 import TextInputDemo from "./TextInputDemo";
@@ -11,7 +11,7 @@ const Com_row1_search = React.FC = () =>{
 
 
 return(
-    <div className={'grid'}>
+<div className={'grid'}>
 
     <div className={'col1_search_class'}>
 
@@ -130,9 +130,7 @@ return(
         />
 
 
-    </div>
-
-
+</div> // return
 )
 
 }

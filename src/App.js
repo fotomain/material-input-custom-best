@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Row1Search from "./comp/Row1Search";
-import Home1Anime from "./comp/Home1Anime";
+import Home1AnimeTextCircle from "./comp/Home1AnimeTextCircle";
 
 // npm start
 
@@ -13,8 +13,9 @@ function App() {
   return (
     <div className="App">
 
-        <Home1Anime />
-        {/*<Row1Search />*/}
+
+        <Row1Search />
+        {/*<Home1AnimeTextCircle />*/}
 
     </div>
   );

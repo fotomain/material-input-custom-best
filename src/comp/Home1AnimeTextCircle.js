@@ -1,13 +1,13 @@
 ﻿import React from 'react';
 
 import './Global.css'
-import './Home1Anime.css'
+import './Home1AnimeTextCircle.css'
 import Row1SearchPosts from "./Row1SearchPosts";
 import TextInput from "./TextInput";
 import TextInputDemo from "./TextInputDemo";
 
 
-const Home1Anime = React.FC = () =>{
+const Home1AnimeTextCircle = React.FC = () =>{
 
 
     return(
@@ -32,5 +32,5 @@ const Home1Anime = React.FC = () =>{
     )
 
 }
-export default Home1Anime
+export default Home1AnimeTextCircle
 
