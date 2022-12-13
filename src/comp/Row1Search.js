@@ -11,7 +11,7 @@ const Com_row1_search = React.FC = () =>{
 
 
 return(
-<div className={'grid'}>
+<div className={'main_grid'}>
 
     <div className={'col1_search_class'}>
 
@@ -19,7 +19,9 @@ return(
 
     </div>
 
-        <TextInputDemo
+    <div className={'demo_grid'}>
+
+    <TextInputDemo
 
             label_text={'input email please...'}
             type="email"
@@ -129,6 +131,7 @@ return(
             // type="email"
         />
 
+    </div>
 
 </div> // return
 )

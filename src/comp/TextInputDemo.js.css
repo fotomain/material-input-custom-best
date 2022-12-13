@@ -1,4 +1,8 @@
-﻿:root{
+﻿
+
+:root{
+
+    --demo_grid_width:60%;
     --padding_all:10px;
     --color_main:#661be6;
     --color_main_focused:#661be6;
@@ -10,8 +14,30 @@
 }
 
 
+.demo_grid{
 
-/*111 BEFORE*/
+    width: var(--demo_grid_width);
+    /*justify-self: center;*/
+    /*flex:0 0 100%;*/
+    /*flex: 0 0 100%;*/
+}
+
+
+/*.demo_grid {*/
+/*    width:var(--demo_grid_width);*/
+
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+
+/*}*/
+
+
+/*!*111 BEFORE*!*/
+
 .container_mui label {
     color: #939293;
     font-size: var(--label_font_size);

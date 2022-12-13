@@ -1,8 +1,14 @@
 ﻿
-.grid{
-    /*width:100%;*/
-    /*flex:0 0 100%;*/
-    flex: 0 0 100%;
+.main_grid{
+
+    justify-self: center;
+    flex:0 0 var(--global_main_grid_width);
+    /*flex: 0 0 100%;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .col1_search_class{

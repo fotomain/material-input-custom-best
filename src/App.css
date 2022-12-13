@@ -1,5 +1,11 @@
 
-#root {width: 100%}
+:root {
+    --global_app_width: 100%;
+    --global_main_grid_width: 80%;
+}
+
+/*width_global_app*/
+#root {width: var(--global_app_width)}
 
 html, body
 {
@@ -7,13 +13,14 @@ html, body
     height: 100%;
     margin:0;
     padding:0;
-    /*displax: flex;*/
+
 }
 
 body
 {
     background: lightblue;
     background: white;
+
     display: flex;
     padding: 0;
     margin: 0;
@@ -29,6 +36,12 @@ body
 
     height: 100%;
     width: 100%;
+
+    display: flex;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
 
 }
 
