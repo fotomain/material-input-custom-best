@@ -13,23 +13,18 @@ const Home1Anime = React.FC = () =>{
     return(
         <div className={'container_anime0'}>
 
-            <br/>
-            <br/>
-            <div className="circle1_wrapper">
-                <span className={'circle1_class'}></span>
+
+            <div className={'text12_class'}>
+                    <p className="text1">
+                        <section className={'t_bold'}>BEST LINKER</section>
+                    </p>
+                    <p className="text2">
+                        <section>soft #1</section>
+                    </p>
+                    {/*<p className="shift_text"></p>*/}
             </div>
 
-            <br/>
-            <br/>
-            <br/>
-            <div className="shift_text_wrapper">
-                <p className="shift_text">
-                    <section className={'t_bold'}>Best Linker</section>
-                    <section>soft #1</section>
-                </p>
-                {/*<p className="shift_text"></p>*/}
-            </div>
-
+            <div className={'circle1_class'} ></div>
 
         </div>
 

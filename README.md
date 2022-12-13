@@ -128,3 +128,50 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     {/*https://webplatform.github.io/docs/tutorials/css_transforms!}*/
         {/*http://jsfiddle.net/vn2Vu/7!}*/
             {/*http://jsfiddle.net/vn2Vu/11!}*/
+
+
+@keyframes anime_pulse {
+from {
+transform : scale(0.80);
+opacity   : 1;
+color:black;
+}
+
+    30% {
+
+        transform : rotate(90deg) scale(.60);
+        color:blue;
+        content: "Text 111";
+    }
+
+    30% {
+
+        transform : rotate(90deg) scale(.40);
+        color:green;
+        content: "Text 222";
+    }
+    30% {
+
+        transform : rotate(90deg) scale(.40);
+        color:red;
+        content: "Text 333";
+    }
+    30% {
+
+        transform : rotate(90deg) scale(.40) ;
+        color:darkorange;
+        content: "Text 444";
+    }
+
+
+
+    to {
+
+        transform : rotate(360deg) scale(1);
+        opacity   : 1;
+        color:green;
+    }
+
+
+
+}
