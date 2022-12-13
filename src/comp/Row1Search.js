@@ -1,13 +1,22 @@
-﻿import React from 'react';
+﻿import React, {useState} from 'react';
 
 import './Global.css'
 import './Home1AnimeTextCircle.css'
 import Row1SearchPosts from "./Row1SearchPosts";
 import TextInput from "./TextInput";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faClose, faSearch} from "@fortawesome/free-solid-svg-icons";
 
-const Com_row1_search = React.FC = () =>{
 
-return(
+function Com_row1_search () {
+
+
+    const [delete_text, set_delete_text] = useState(false);
+
+    const [input_value, set_input_value] = useState('')
+
+
+    return(
 <div className={'main_grid'}>
 
     <div className={'col1_search_class'}>
@@ -106,6 +115,8 @@ return(
             // className={'input_left'}
             input_variant={'outlined'}
 
+            value={input_value}
+
             label_position={'right'}
             label_text_color={'brown'}
             label_text_color_focused={'#D81BE6FF'}
@@ -118,6 +129,25 @@ return(
             color = 'red'
             color_main = 'darkmagenta'
             color_main_focused = 'darkmagenta'
+            color_icon_left = 'brown'
+            icon_left_component = {
+                <FontAwesomeIcon
+                    icon={faClose}
+                    onClick={(e)=>{
+
+                        console.log('22222222'+Date.now())
+
+                    }}
+
+                />
+            }
+
+            // icon_left_component1 = {{
+            // 'onclick_icon_left' : {()=>{
+            //     console.log("=== onclick_icon_left set_delete_text ");
+            //     set_delete_text(true)
+            //     }}
+            // }}
             // is_required='true'
             // label_text={'input email please...'}
             // value={'xxxx@yyyyy.zz'}

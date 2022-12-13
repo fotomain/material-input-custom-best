@@ -13,6 +13,7 @@ const setProperty = (a,b) => {
 
 function TextInput  (props) {
     // {color_main, color_text, text_label, text_helper }
+    console.log("=== props")
     console.log(props)
 
     const ref_input = useRef(null);
@@ -28,7 +29,7 @@ function TextInput  (props) {
     const uniq_input1_id = ((props.id)?props.id:"uniq_input1_" + id_local)
     const [label_font_size, set_label_font_size] = useState('.8rem')
 
-    const [Label1_visible, set_Label1_visible] = useState(false)
+    const [icon_left_visible, set_icon_left_visible] = useState(false)
 
     // const [uniq_input1_settings_class_id, set_uniq_input1_settings_class_id] = useState('input_'+(props.id)?props.id:"_settings_class_" + id_local)
 
@@ -283,11 +284,11 @@ function TextInput  (props) {
                         '    padding-bottom: 8px !important;' +
                         (("standard"==props.input_variant || !props.input_variant )?
 
-                            (!Label1_visible)?'    padding-left: 0 ':' padding-left: 25px '+' !important;'
+                            (!icon_left_visible)?'    padding-left: 0 ':' padding-left: 25px '+' !important;'
                         :'    padding-left: 12px !important;') +
                         '' +
                         ''
-                    // +(Label1_visible)?' padding-left: 10px; !important; ':''
+                    // +(icon_left_visible)?' padding-left: 10px; !important; ':''
 
                 }
             )
@@ -324,13 +325,20 @@ function TextInput  (props) {
                 className={"container_mui"}
             >
 
-                {(!Label1_visible)?'':
+                {(props.icon_left_component && !icon_left_visible)?'':
                     <div className="left-icon-focused"
                          onClick={(e)=>{
-                             console.log(22222222)
+
+                             console.log('555555555'+Date.now())
+                             set_input_value('')
+
+                         }}
+
+                         style={{
+                             color: (props.color_icon_left)?props.color_icon_left:color_main_local
                          }}
                     >
-                        <FontAwesomeIcon icon={faClose}/>
+                        {props.icon_left_component}
                     </div>
                 }
 
@@ -346,11 +354,14 @@ function TextInput  (props) {
 
                                onFocus={(e)=>{
                                    set_input_focused(true)
-                                   set_Label1_visible(true)
+                                   set_icon_left_visible(true)
                                }}
                                onBlur={(e)=>{
                                    set_input_focused(false)
-                                   set_Label1_visible(false)
+                                   if (!input_value){
+                                       set_icon_left_visible(false)
+                                   }
+
                                }}
                                onChange={(e)=>{
 
