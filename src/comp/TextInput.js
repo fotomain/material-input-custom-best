@@ -308,8 +308,8 @@ function TextInput  (props) {
                         '    padding-right: 12px !important;' +
                         '    padding-bottom: 8px !important;' +
 
-                        '' +
-                        ''
+                        ' ' +
+                        ' '
 
                 }
             )
