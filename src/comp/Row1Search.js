@@ -21,7 +21,7 @@ function Com_row1_search () {
 
     <div className={'col1_search_class'}>
 
-        <Row1SearchPosts />
+        {/*<Row1SearchPosts />*/}
 
     </div>
 

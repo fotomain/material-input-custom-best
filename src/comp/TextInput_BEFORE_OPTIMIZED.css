@@ -76,20 +76,20 @@
 
 /*222 AFTER*/
 
-/*.container_mui input:focus + label,*/
-/*.container_mui input + label.show {*/
-/*    color: var(--color_main);*/
-/*    font-size: var(--label_focused_font_size);*/
-/*    !*: 0.8em;*!*/
-/*    left: var(--label_focused_left_space);*/
-/*    padding: 0 0.5em;*/
+.container_mui input:focus + label,
+.container_mui input + label.show {
+    color: var(--color_main);
+    font-size: var(--label_focused_font_size);
+    /*: 0.8em;*/
+    left: var(--label_focused_left_space);
+    padding: 0 0.5em;
 
-/*    top: -.9em;*/
-/*    background: white;*/
+    top: -.9em;
+    background: white;
 
-/*    !*top: -.9em;*!*/
-/*    !*background: white;*!*/
-/*}*/
+    /*top: -.9em;*/
+    /*background: white;*/
+}
 
 /*.container_mui .input_right:focus + label*/
 /*, .container_mui .input_right + label.show*/
@@ -116,15 +116,15 @@
 /*}*/
 
 
-/*.container_mui input:focus {*/
+.container_mui input:focus {
 
-/*    outline: none;*/
-/*    border: 1px solid transparent;*/
-/*    !*box-shadow: none;*!*/
-/*    box-shadow: 0 0 0 2px darkorange;*/
+    outline: none;
+    border: 1px solid transparent;
+    /*box-shadow: none;*/
+    box-shadow: 0 0 0 2px darkorange;
 
 
-/*}*/
+}
 
 
 .container_mui .left-icon {
@@ -175,6 +175,14 @@ body, input {
     font-family: "Roboto", sans-serif;
 }
 
+.container_mui_form {
+
+    width: 100%;
+    padding-left: var(--padding_all);
+    padding-right: var(--padding_all);
+    position: relative;
+
+}
 
 
 .container_mui_filled {
