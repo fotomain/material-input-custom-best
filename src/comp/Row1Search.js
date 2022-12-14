@@ -27,7 +27,28 @@ function Com_row1_search () {
 
     <div className={'demo_grid'}>
 
-    <TextInput
+        <TextInput
+
+            label_text={'input email please...'}
+            type="email"
+            icon_left_component = {
+                <FontAwesomeIcon
+                    icon={faClose}
+                    onClick={(e)=>{
+
+                        console.log('22222222'+Date.now())
+
+                    }}
+
+                />
+            }
+
+
+        />
+
+        <br/>
+
+        <TextInput
 
             label_text={'input email please...'}
             type="email"
@@ -62,6 +83,19 @@ function Com_row1_search () {
 
             label_text={'input email please...'}
             type="email"
+
+            icon_left_component = {
+                <FontAwesomeIcon
+                    icon={faClose}
+                    onClick={(e)=>{
+
+                        console.log('22222222'+Date.now())
+
+                    }}
+
+                />
+            }
+
 
         />
 
