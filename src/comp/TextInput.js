@@ -110,6 +110,10 @@ function TextInput  (props) {
             /*margin: 0;*/
             'alignItems': 'center',
             'justifyContent':'left',
+            'gap': (
+                (input_variant=='standard')?'0':'4px'
+            ),
+
 
             'backgroundColor': 'transparent',
 
@@ -160,7 +164,6 @@ function TextInput  (props) {
         // 'paddingLeft': (!input_is_full)?'0':'1em',
         'fontSize': '1em',
         'fontFamily': '"Roboto", sans-serif',
-
     }
 
 
@@ -223,10 +226,12 @@ function TextInput  (props) {
         var css_container1={ }
         css_container1.backgroundColor='rgba(0, 0, 0, 0.06)'
         css_container1.transition='background-color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms'
+
         css_container1.borderTopLeftRadius='4px'
         css_container1.borderTopRightRadius='4px'
         css_container1.borderBottomLeftRadius='4px'
         css_container1.borderBottomRightRadius='4px'
+
         css_container1.borderTop='none'
         css_container1.borderLeft='none'
         css_container1.borderRight='none'
@@ -277,15 +282,15 @@ function TextInput  (props) {
             css_container.backgroundColor='transparent'
             css_container_focused.backgroundColor='transparent'
             if(input_is_full) {
-                css_input.paddingLeft = '1px'
+                // css_input.paddingLeft = '1px'
             }
 
-            css_input.paddingLeft = '.0rem'
-            css_input_focused.paddingLeft = '.0rem'
+            // css_input.paddingLeft = '.0rem'
+            // css_input_focused.paddingLeft = '.0rem'
 
              if(icon_left_visible) {
-                css_input.paddingLeft = '.5rem'
-                css_input_focused.paddingLeft = '.5rem'
+                // css_input.paddingLeft = '.5rem'
+                // css_input_focused.paddingLeft = '.5rem'
                 css_label_focused.marginLeft ='-10px'
               }
 
@@ -376,6 +381,14 @@ function TextInput  (props) {
                 }}
             >
 
+                {(props.icon_left_component && icon_left_visible)?
+                    <div     style={{marginRight:'5px'}}></div>
+                    : ("standard"==props.input_variant)?
+                        ''
+                        :
+                        <div     style={{marginRight:'1px'}}></div>
+                }
+
                 {(props.icon_left_component && !icon_left_visible)?'':
                     <div id={'css_icon_left111'} style={css_icon_left}
                          onClick={(e)=>{
@@ -400,7 +413,6 @@ function TextInput  (props) {
                         {props.icon_left_component}
                     </div>
                 }
-
 
                         <input {...input_props}
 
