@@ -179,13 +179,10 @@ function TextInput  (props) {
             'border':'none',
             'color': label_text_color,
             'fontSize': label_font_size,
-            // 'marginTop': '-2.5rem',
-            // 'marginLeft': '2rem',
-            // 'paddingRight': '4px',
+
             'position': 'absolute',
             'transition': 'all 0.1s linear',
-            'marginLeft': '7px',
-            // css_label_focused.marginLeft ='7px'
+            'marginLeft': '7px', // !!! like css_label_focused.marginLeft ='7px'
         }
 
     var css_label_focused =
