@@ -194,7 +194,7 @@ function TextInput  (props) {
 
     if( "filled"==props.input_variant) {
 
-        var css_container1={}
+        var css_container1={ }
         css_container1.backgroundColor='rgba(0, 0, 0, 0.06)'
         css_container1.transition='background-color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms'
         css_container1.borderTopLeftRadius='4px'
