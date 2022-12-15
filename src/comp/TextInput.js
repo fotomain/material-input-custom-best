@@ -111,7 +111,7 @@ function TextInput  (props) {
             'alignItems': 'center',
             'justifyContent':'left',
             'gap': (
-                (input_variant=='standard')?'0':'4px'
+                (input_variant=='standard' && !icon_left_visible )?'0':'4px'
             ),
 
 
