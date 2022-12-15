@@ -29,6 +29,8 @@ function Com_row1_search () {
 
         <TextInput
 
+            value={'email@email.com'}
+
             label_text={'input email please...'}
             type="email"
             icon_left_component = {
@@ -108,7 +110,7 @@ function Com_row1_search () {
                 input_variant={'outlined'}
 
                 label_text={'input email please...'}
-                label_position={'right'}
+                label_focused_position={'right'}
                 color_main = 'teal'
                 is_required='true'
                 // label_text={'input email please...'}

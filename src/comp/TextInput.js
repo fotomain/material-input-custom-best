@@ -55,6 +55,8 @@ function TextInput  (props) {
     // console.log("=== id_local ",id_local)
     // console.log("=== ref ",ref_label,ref_input)
 
+    // const [first_load, set_first_load] = useState(true)
+    const [input_refresh_focused, set_input_refresh_focused] = useState(true)
     const [input_props, set_input_props] = useState(props)
         // Object.entries(props).map(([key, val])=>{
         //     }))
@@ -69,8 +71,8 @@ function TextInput  (props) {
     const [label_text_focused, set_label_text_focused] = useState(
         (props.label_text_focused)?props.label_text_focused:props.label_text
     )
-    const [label_position_right, set_label_position_right] = useState(
-        "right"==props.label_position
+    const [label_focused_position_right, set_label_focused_position_right] = useState(
+        props.label_focused_position && "right"==props.label_focused_position
     )
 
 
@@ -135,11 +137,18 @@ function TextInput  (props) {
     useEffect(() => {
 
         //=== LABEL RIGHT
+        console.log("//=== LABEL RIGHT")
         var t_css_label_focused_right ={...css_label_focused}
         var uniq_input1_div = document.getElementById(uniq_input1_id);
         console.log("=== uniq_input1_div",uniq_input1_div)
 
-        if(input_focused && "right"==props.label_position){
+        if(
+            // input_value && first_load && "right"==props.label_focused_position
+            // ||
+            input_refresh_focused
+            ||
+            input_focused && "right"==props.label_focused_position && input_refresh_focused
+        ){
             const input_width = uniq_input1_div.clientWidth
             var test = document.getElementById("service_calc_text");
             test.innerText = label_text_focused;
@@ -165,12 +174,15 @@ function TextInput  (props) {
                 }
             console.log("=== t_css_label_focused_right",t_css_label_focused_right)
                 set_css_label_focused_right(t_css_label_focused_right)
+                set_input_refresh_focused(false)
         }
+
+        // set_first_load(false)
 
         return () => {
             // effect
         };
-    },[input_focused]);
+    });
 
 
 
@@ -241,7 +253,7 @@ function TextInput  (props) {
 
                 <div   style={
                     ( input_focused || input_is_full )?
-                        (label_position_right)?
+                        (label_focused_position_right)?
                             css_label_focused_right
                             :
                             css_label_focused
@@ -265,6 +277,7 @@ function TextInput  (props) {
                                 >
                                     {((input_focused || input_is_full) && props.label_text_focused)?props.label_text_focused:label_text}
                                     {(!props.is_required)?'':<a style={{color: (input_is_full)?color_main_local:'red'}}> *</a>}
+                                    {/*{input_is_full,input_focused}*/}
                                 </span>
 
                             </label>
