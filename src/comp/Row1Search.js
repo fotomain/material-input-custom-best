@@ -35,6 +35,7 @@ function Com_row1_search () {
             type="email"
             icon_left_component = {
                 <FontAwesomeIcon
+                    style={{cursor:'pointer'}}
                     icon={faClose}
                     onClick={(e)=>{
 
@@ -153,7 +154,7 @@ function Com_row1_search () {
 
             value={input_value}
 
-            label_position={'right'}
+            label_focused_position={'right'}
             label_text_color={'brown'}
             label_text_color_focused={'#D81BE6FF'}
             label_box_shadow_style={' box-shadow: 0 0 0 1px gray '}

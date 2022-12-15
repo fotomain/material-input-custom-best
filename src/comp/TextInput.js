@@ -37,6 +37,7 @@ function TextInput  (props) {
     )
 
     const [icon_left_visible, set_icon_left_visible] = useState(false)
+    const [icon_left_hovered, set_icon_left_hovered] = useState(false)
 
     // const [uniq_input1_settings_class_id, set_uniq_input1_settings_class_id] = useState('input_'+(props.id)?props.id:"_settings_class_" + id_local)
 
@@ -85,8 +86,16 @@ function TextInput  (props) {
     const css_padding_all = '10px';
 
 
-    const css_input =
+    const css_container =
         {
+
+            'display': 'flex',
+            'flex-direction': 'row',
+            /*padding: 0;*/
+            /*margin: 0;*/
+            'align-items': 'center',
+            'justify-content':'left',
+
             'backgroundColor': 'transparent',
             'border': '1px solid',
             'borderColor': color_main_local,
@@ -95,18 +104,41 @@ function TextInput  (props) {
 
             'fontSize': '1em',
 
+            'width': '100%',
+            'height': '50px',
+
             'paddingTop': '1em',
             'paddingBottom': '1em',
-            'paddingLeft': '1em',
+            'paddingLeft':  (  (props.icon_left_component && icon_left_visible)
+                            || (!input_is_full && !input_focused) )
+                                ?'1em'
+                                :'',
+            // 'paddingLeft': '1em',
             'paddingRight': '1em',
+            // firstChild: {
+            //     'width': '50%'
+            // },
 
-            'width': '100%'
+
+
         }
 
-    const css_input_focused ={
-        ...css_input,
+    const css_container_focused ={
+        ...css_container,
         'outline': 'none',
         'boxShadow': '0 0 0 2px '+color_main_local_focused,
+
+    }
+
+    const css_input ={
+        'border': 'none',
+        'outline': 'none',
+        'paddingLeft': '1em',
+        'fontSize': '1em',
+        'fontFamily': '"Roboto", sans-serif',
+    }
+    const css_input_focused ={
+        ...css_input,
     }
 
 
@@ -115,8 +147,9 @@ function TextInput  (props) {
         {
             'color': label_text_color,
             'fontSize': label_font_size,
-            'marginTop': '-2.5rem',
-            'paddingLeft': '1rem',
+            // 'marginTop': '-2.5rem',
+            // 'marginLeft': '2rem',
+            // 'paddingRight': '4px',
             'position': 'absolute',
             'transition': 'all 0.1s linear',
 
@@ -127,20 +160,29 @@ function TextInput  (props) {
             ...css_label,
             'color': label_text_color_focused,
             'fontSize': label_font_size_focused,
-            'marginTop': '-4rem',
+            'marginTop': '-10%',
+            // 'marginTop': '-3.3rem',
             'backgroundColor': 'white',
-            'paddingLeft': '4px',
-            'marginLeft': '.5rem',
 
+            // 'marginLeft': '10px',
+            'marginLeft':  (  (props.icon_left_component && icon_left_visible)
+                || (!input_is_full && !input_focused) )
+                ?'-5px'
+                :'10px',
+
+        }
+
+    const css_icon_left =
+        {
+            // 'left':'10em',
+            // 'top': '0.9rem',
+            // 'paddingTop': '20px',
+            // 'marginLeft': '30px',
+            // 'paddingLeft': '10px',
         }
 
     useEffect(() => {
 
-        //=== LABEL RIGHT
-        console.log("//=== LABEL RIGHT")
-        var t_css_label_focused_right ={...css_label_focused}
-        var uniq_input1_div = document.getElementById(uniq_input1_id);
-        console.log("=== uniq_input1_div",uniq_input1_div)
 
         if(
             // input_value && first_load && "right"==props.label_focused_position
@@ -149,6 +191,14 @@ function TextInput  (props) {
             ||
             input_focused && "right"==props.label_focused_position && input_refresh_focused
         ){
+
+            //=== LABEL RIGHT
+            console.log("//=== LABEL RIGHT")
+            var t_css_label_focused_right ={...css_label_focused}
+            var uniq_input1_div = document.getElementById(uniq_container_mui_id);
+            console.log("=== uniq_input1_div",uniq_input1_div)
+
+
             const input_width = uniq_input1_div.clientWidth
             var test = document.getElementById("service_calc_text");
             test.innerText = label_text_focused;
@@ -165,10 +215,10 @@ function TextInput  (props) {
                     ...css_label_focused,
                     'color': label_text_color_focused,
                     'fontSize': label_font_size_focused,
-                    'marginTop': '-4rem',
+                    // 'marginTop': '-4rem',
                     'backgroundColor': 'white',
                     'paddingLeft': '4px',
-                    'marginLeft': 'calc( '+input_width+'px - ' + label_width + ')',
+                    'marginLeft': 'calc( '+input_width+'px - 4% - ' + label_width + ')',
 
 
                 }
@@ -194,16 +244,29 @@ function TextInput  (props) {
             <div
 
                 id={uniq_container_mui_id}
-                className={"css_container_mui"}
+                // className={"css_container_mui"}
+                style={(input_focused)?css_container_focused:css_container}
+                onClick={(e)=>{
+                    console.log("=== label onClick ")
+                    ref_input.current.focus()
+                }}
             >
 
                 {(props.icon_left_component && !icon_left_visible)?'':
-                    <div className="left-icon-focused"
+                    <div id={'css_icon_left111'} style={css_icon_left}
                          onClick={(e)=>{
 
                              console.log('555555555'+Date.now())
                              set_input_value('')
-
+                             set_input_is_full(false)
+                         }}
+                         onMouseEnter={(e)=>{
+                             // alert('onMouseEnter!!!')
+                             set_icon_left_hovered(true)
+                         }}
+                         onMouseLeave={(e)=>{
+                             // alert('onMouseLeave!!!')
+                             set_icon_left_hovered(false)
                          }}
 
                          style={{
