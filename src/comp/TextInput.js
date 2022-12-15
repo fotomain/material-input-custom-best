@@ -251,8 +251,13 @@ function TextInput  (props) {
                         >
                         </input>
 
+
                 <div   style={
-                    ( input_focused || input_is_full )?
+                    (
+                        (input_focused || input_is_full)
+                        ||
+                        (!input_is_full && props.placeholder)
+                    )?
                         (label_focused_position_right)?
                             css_label_focused_right
                             :
@@ -260,6 +265,7 @@ function TextInput  (props) {
                         :
                         css_label
                 }>
+                    {/*{(!input_is_full || props.placeholder)?'':*/}
                             <label
 
                                 id={uniq_label1_id}
@@ -281,7 +287,9 @@ function TextInput  (props) {
                                 </span>
 
                             </label>
+                    {/*}*/}
                 </div>
+
 
             </div>{/*uniq_container_mui_id*/}
             {!props.helper_text?'':
