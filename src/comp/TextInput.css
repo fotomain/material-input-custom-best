@@ -3,7 +3,7 @@
 
 
     --demo_grid_width:60%;
-    --padding_all:10px;
+    --padding_all:0px;
     --color_main:#661be6;
     --color_main_focused:#661be6;
     --label_focused_left_space:16px;
@@ -72,10 +72,10 @@
     color: black;
     font-size: 1em;
 
-    padding-top: 1em;
-    padding-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+    /*padding-top: 1em;*/
+    /*padding-bottom: 1em;*/
+    /*padding-left: 1em;*/
+    /*padding-right: 1em;*/
 
     width: 100%;
     /*!!! for icons */
@@ -179,9 +179,9 @@ body {
     line-height: 1.75;
 }
 
-body, input {
-    font-family: "Roboto", sans-serif;
-}
+/*body, input {*/
+/*    font-family: "Roboto", sans-serif;*/
+/*}*/
 
 
 

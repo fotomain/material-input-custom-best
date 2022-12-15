@@ -33,7 +33,9 @@ function TextInput  (props) {
         (!props.input_variant)?'standard':props.input_variant
     )
 
-    const [label_font_size, set_label_font_size] = useState('1rem')
+    const [label_font_size, set_label_font_size] = useState(
+        (props.label_font_size)?props.label_font_size:'1rem'
+    )
     const [label_font_size_focused, set_label_font_size_focused] = useState('.8rem')
     const [label_text_color, set_label_text_color] = useState(
     (props.label_text_color)?props.label_text_color:'gray '
@@ -42,7 +44,13 @@ function TextInput  (props) {
     (props.label_text_color_focused)?props.label_text_color_focused:'teal '
     )
 
-    const [icon_left_visible, set_icon_left_visible] = useState(false)
+    const [icon_left_visible, set_icon_left_visible] = useState(
+        props.icon_left_component && props.value
+    )
+
+    const [icon_left_component, set_icon_left_component] = useState(
+        props.icon_left_component
+    )
     const [icon_left_hovered, set_icon_left_hovered] = useState(false)
 
     // const [uniq_input1_settings_class_id, set_uniq_input1_settings_class_id] = useState('input_'+(props.id)?props.id:"_settings_class_" + id_local)
@@ -122,10 +130,10 @@ function TextInput  (props) {
 
             'paddingTop': '1em',
             'paddingBottom': '1em',
-            'paddingLeft':  (  (props.icon_left_component && icon_left_visible)
-                            || (!input_is_full && !input_focused) )
-                                ?'1em'
-                                :'',
+            // 'paddingLeft':  (  (props.icon_left_component && icon_left_visible)
+            //                 || (!input_is_full && !input_focused) )
+            //                     ?'1em'
+            //                     :'',
             // 'paddingLeft': '1em',
             'paddingRight': '1em',
             // firstChild: {
@@ -146,15 +154,19 @@ function TextInput  (props) {
 
     var css_input ={
         // zIndex: 10,
+        ...props, //!!!!! color ,
         'border': 'none',
         'outline': 'none',
-        'paddingLeft': '1em',
+        // 'paddingLeft': (!input_is_full)?'0':'1em',
         'fontSize': '1em',
         'fontFamily': '"Roboto", sans-serif',
 
     }
+
+
     var css_input_focused ={
         ...css_input,
+        // 'paddingLeft': '1em', //!!!! placeholder
     }
 
     var css_label =
@@ -169,6 +181,7 @@ function TextInput  (props) {
             'position': 'absolute',
             'transition': 'all 0.1s linear',
 
+
         }
 
     var css_label_focused =
@@ -177,14 +190,17 @@ function TextInput  (props) {
             'color': label_text_color_focused,
             'fontSize': label_font_size_focused,
             'marginTop': '-10%',
-            // 'marginTop': '-3.3rem',
+
+            'paddingLeft': '3px',
+            'paddingRight': '3px',
+
             'backgroundColor': 'white',
 
-            // 'marginLeft': '10px',
-            'marginLeft':  (  (props.icon_left_component && icon_left_visible)
-                || (!input_is_full && !input_focused) )
-                ?'-5px'
-                :'10px',
+            // 'marginLeft':
+            //     (  (props.icon_left_component && icon_left_visible)
+            //     || (!input_is_full && !input_focused) )
+            //     ?'-5px'
+            //     :'10px',
 
         }
 
@@ -251,21 +267,31 @@ function TextInput  (props) {
             backgroundColor :'rgba(0, 0, 0, 0 )',
         }
 
-        css_label_focused = {
-            ...css_label_focused,
-            backgroundColor :'transparent',
-        }
+        css_label_focused.backgroundColor ='rgba(0, 0, 0, 0 )'
+
 
         if(
             "standard"==input_variant
         ) {
+            css_label_focused.marginLeft ='0'
             css_container.backgroundColor='transparent'
             css_container_focused.backgroundColor='transparent'
             if(input_is_full) {
                 css_input.paddingLeft = '1px'
             }
-            css_input_focused.paddingLeft='1px'
+
+            css_input.paddingLeft = '.0rem'
+            css_input_focused.paddingLeft = '.0rem'
+
+             if(icon_left_visible) {
+                css_input.paddingLeft = '.5rem'
+                css_input_focused.paddingLeft = '.5rem'
+                css_label_focused.marginLeft ='-10px'
+              }
+
         }
+
+
         console.log("=== css_container",css_container)
         console.log("=== css_container_focused",css_container_focused)
 
@@ -285,7 +311,7 @@ function TextInput  (props) {
 
             //=== LABEL RIGHT
             console.log("//=== LABEL RIGHT")
-            var t_css_label_focused_right ={...css_label_focused}
+            var t_css_label_focused_right = css_label_focused
             var uniq_input1_div = document.getElementById(uniq_container_mui_id);
             console.log("=== uniq_input1_div",uniq_input1_div)
 
@@ -299,7 +325,12 @@ function TextInput  (props) {
             console.log("=== label_height ",label_height)
             console.log("=== label_width  ",label_width)
 
-            // set_label_width(width)
+            var label_shift = ' - 20px - ' + label_width
+            // var label_shift =  ' - ' + label_width + ' - 40px '
+            // // var t_=''
+            //   if(input_focused){
+            //       label_shift = ' - ' + label_width + ' - 40px '
+            //   }
 
             t_css_label_focused_right =
                 {
@@ -308,9 +339,11 @@ function TextInput  (props) {
                     'fontSize': label_font_size_focused,
                     // 'marginTop': '-4rem',
                     'backgroundColor': 'white',
-                    'paddingLeft': '4px',
+                    // 'paddingLeft': '4px',
 
-                    'marginLeft': 'calc( '+input_width+'px - '+((parseInt(label_width.replace('px',''))>100)?'25px':'30px')+' - ' + label_width + ')',
+                    // 'marginLeft': 'calc( '+input_width+'px '+t_+' - '+((parseInt(label_width.replace('px',''))>100)?'25px':'30px')+' - ' + label_width + ')',
+
+                    'marginLeft': 'calc( '+input_width+'px ' + label_shift + ')',
 
                 }
             console.log("=== t_css_label_focused_right",t_css_label_focused_right)
@@ -381,12 +414,16 @@ function TextInput  (props) {
                                onFocus={(e)=>{
                                    console.log("=== input onFocus ")
                                    set_input_focused(true)
-                                   set_icon_left_visible(true)
+                                   if(icon_left_component) {
+                                       set_icon_left_visible(true)
+                                   }
                                }}
                                onBlur={(e)=>{
                                    set_input_focused(false)
                                    if (!input_value){
-                                       set_icon_left_visible(false)
+                                       if(icon_left_component) {
+                                           set_icon_left_visible(false)
+                                       }
                                    }
 
                                }}
@@ -407,17 +444,26 @@ function TextInput  (props) {
 
 
                 <div   style={
-                    (
-                        (input_focused || input_is_full)
-                        ||
-                        (!input_is_full && props.placeholder)
-                    )?
+
+                    (!input_focused && !input_is_full && !props.placeholder )?css_label:
                         (label_focused_position_right)?
                             css_label_focused_right
                             :
                             css_label_focused
-                        :
-                        css_label
+
+
+
+                    // (
+                    //     (input_focused || input_is_full)
+                    //     ||
+                    //     (!input_is_full && props.placeholder)
+                    // )?
+                    //     (label_focused_position_right)?
+                    //         css_label_focused_right
+                    //         :
+                    //         css_label_focused
+                    //     :
+                    //     css_label
                 }>
                     {/*{(!input_is_full || props.placeholder)?'':*/}
                             <label
@@ -437,7 +483,13 @@ function TextInput  (props) {
                                 <span
 
                                 >
-                                    {((input_focused || input_is_full) && props.label_text_focused)?props.label_text_focused:label_text}
+                                    {((input_focused || input_is_full)
+                                        &&
+                                        props.label_text_focused)
+                                        ?
+                                        props.label_text_focused
+                                        :
+                                        label_text}
                                     {(!props.is_required)?'':<a style={{color: (input_is_full)?color_main_local:'red'}}> *</a>}
                                     {/*{input_is_full,input_focused}*/}
                                 </span>

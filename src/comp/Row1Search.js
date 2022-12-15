@@ -80,13 +80,48 @@ function Com_row1_search () {
             label_text={'input email please...'}
             type="email"
 
+            icon_left_component = {
+                <FontAwesomeIcon
+                    style={{cursor:'pointer'}}
+                    icon={faClose}
+                    onClick={(e)=>{
+
+                        console.log('22222222'+Date.now())
+
+                    }}
+
+                />
+            }
         />
+
 
         <br/>
 
         <TextInput
 
+            // input_variant={'standard'}
             label_text={'input email please...'}
+            type="email"
+            value={'value <> 0'}
+
+            icon_left_component = {
+                <FontAwesomeIcon
+                    style={{cursor:'pointer'}}
+                    icon={faClose}
+                    onClick={(e)=>{
+
+                        console.log('22222222'+Date.now())
+
+                    }}
+
+                />
+            }
+        />
+        <br/>
+
+        <TextInput
+
+            label_text={'input email please... standard'}
             type="email"
 
         />
@@ -97,7 +132,8 @@ function Com_row1_search () {
 
             input_variant={'outlined'}
 
-            label_text={'input email please...'}
+            label_text={'input email please...outlined+icon'}
+            label_font_size={'0.9rem'}
             type="email"
 
             icon_left_component = {
@@ -112,6 +148,18 @@ function Com_row1_search () {
                 />
             }
 
+
+        />
+
+        <br/>
+
+        <TextInput
+
+            input_variant={'outlined'}
+
+            label_text={'input email please...outlined+classic'}
+            label_font_size={'0.9rem'}
+            type="email"
 
         />
 
@@ -169,7 +217,7 @@ function Com_row1_search () {
 
             label_focused_position={'right'}
             label_text_color={'brown'}
-            label_text_color_focused={'#D81BE6FF'}
+            label_text_color_focused={'rgb(216, 27, 230)'}
             label_box_shadow_style={' box-shadow: 0 0 0 1px gray '}
             label_box_shadow_style_focused={' box-shadow: 0 0 0 3px green '}
 
