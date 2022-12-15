@@ -86,20 +86,27 @@ function TextInput  (props) {
     const css_padding_all = '10px';
 
 
-    const css_container =
+    var css_container =
         {
+            zIndex: 1,
 
             'display': 'flex',
-            'flex-direction': 'row',
+            'flexDirection': 'row',
             /*padding: 0;*/
             /*margin: 0;*/
-            'align-items': 'center',
-            'justify-content':'left',
+            'alignItems': 'center',
+            'justifyContent':'left',
 
             'backgroundColor': 'transparent',
-            'border': '1px solid',
+
+            'borderTop': '1px solid',
+            'borderLeft': '1px solid',
+            'borderRight': '1px solid',
+            'borderBottom': '1px solid',
             'borderColor': color_main_local,
+            // 'borderColor': 'red',
             'borderRadius': '5px',
+
             'color': 'black',
 
             'fontSize': '1em',
@@ -123,28 +130,31 @@ function TextInput  (props) {
 
         }
 
-    const css_container_focused ={
+    var css_container_focused ={
         ...css_container,
         'outline': 'none',
         'boxShadow': '0 0 0 2px '+color_main_local_focused,
+        // 'boxShadow': '0 0 0 2px '+'red',
 
     }
 
-    const css_input ={
+    var css_input ={
+        // zIndex: 10,
         'border': 'none',
         'outline': 'none',
         'paddingLeft': '1em',
         'fontSize': '1em',
         'fontFamily': '"Roboto", sans-serif',
+
     }
-    const css_input_focused ={
+    var css_input_focused ={
         ...css_input,
     }
 
-
-
-    const css_label =
+    var css_label =
         {
+            'outlined':'none',
+            'border':'none',
             'color': label_text_color,
             'fontSize': label_font_size,
             // 'marginTop': '-2.5rem',
@@ -155,7 +165,7 @@ function TextInput  (props) {
 
         }
 
-    const css_label_focused =
+    var css_label_focused =
         {
             ...css_label,
             'color': label_text_color_focused,
@@ -180,6 +190,66 @@ function TextInput  (props) {
             // 'marginLeft': '30px',
             // 'paddingLeft': '10px',
         }
+
+
+    if( "filled"==props.input_variant) {
+
+        var css_container1={}
+        css_container1.backgroundColor='rgba(0, 0, 0, 0.06)'
+        css_container1.transition='background-color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms'
+        css_container1.borderTopLeftRadius='4px'
+        css_container1.borderTopRightRadius='4px'
+        css_container1.borderBottomLeftRadius='4px'
+        css_container1.borderBottomRightRadius='4px'
+        css_container1.borderTop='none'
+        css_container1.borderLeft='none'
+        css_container1.borderRight='none'
+        css_container1.borderBottom='2px solid'
+        css_container1.borderColor=color_main_local
+        // css_container1.boxShadow = '0 4px 2px -2px '+color_main_local
+
+        css_container = {
+            ...css_container,
+            ...css_container1
+        }
+
+        if(input_is_full){
+            css_container = {
+                ...css_container,
+                paddingTop: '25px',
+                paddingBottom: '8px',
+            }
+        }
+
+        css_container_focused = {
+            ...css_container_focused,
+            ...css_container1,
+            'outline': 'none',
+            boxShadow: '0 4px 2px -2px '+color_main_local,
+            paddingTop: '25px',
+            paddingBottom: '8px',
+        }
+
+        css_input = {
+            ...css_input,
+            backgroundColor :'rgba(0, 0, 0, 0 )',
+        }
+
+        css_input_focused = {
+            ...css_input_focused,
+            backgroundColor :'rgba(0, 0, 0, 0 )',
+        }
+
+        css_label_focused = {
+            ...css_label_focused,
+            backgroundColor :'transparent',
+        }
+
+        console.log("=== css_container",css_container)
+        console.log("=== css_container_focused",css_container_focused)
+
+    }
+
 
     useEffect(() => {
 

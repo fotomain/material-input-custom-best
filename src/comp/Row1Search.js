@@ -57,6 +57,19 @@ function Com_row1_search () {
             type="email"
             input_variant={'filled'}
 
+            icon_left_component = {
+                <FontAwesomeIcon
+                    style={{cursor:'pointer'}}
+                    icon={faClose}
+                    onClick={(e)=>{
+
+                        console.log('22222222'+Date.now())
+
+                    }}
+
+                />
+            }
+
         />
 
         <br/>
