@@ -27,6 +27,12 @@ function TextInput  (props) {
     // const [uniq_input1_id, set_uniq_input1_id] = useState((props.id)?props.id:"uniq_input1_" + id_local)
     const uniq_container_mui_id = ((props.id)?props.id:"uniq_container_mui_" + id_local)
     const uniq_input1_id = ((props.id)?props.id:"uniq_input1_" + id_local)
+
+
+    const [input_variant, set_input_variant] = useState(
+        (!props.input_variant)?'standard':props.input_variant
+    )
+
     const [label_font_size, set_label_font_size] = useState('1rem')
     const [label_font_size_focused, set_label_font_size_focused] = useState('.8rem')
     const [label_text_color, set_label_text_color] = useState(
@@ -192,7 +198,11 @@ function TextInput  (props) {
         }
 
 
-    if( "filled"==props.input_variant) {
+    if(
+        "filled"==input_variant
+        ||
+        "standard"==input_variant
+    ) {
 
         var css_container1={ }
         css_container1.backgroundColor='rgba(0, 0, 0, 0.06)'
@@ -206,7 +216,8 @@ function TextInput  (props) {
         css_container1.borderRight='none'
         css_container1.borderBottom='2px solid'
         css_container1.borderColor=color_main_local
-        // css_container1.boxShadow = '0 4px 2px -2px '+color_main_local
+
+
 
         css_container = {
             ...css_container,
@@ -245,6 +256,16 @@ function TextInput  (props) {
             backgroundColor :'transparent',
         }
 
+        if(
+            "standard"==input_variant
+        ) {
+            css_container.backgroundColor='transparent'
+            css_container_focused.backgroundColor='transparent'
+            if(input_is_full) {
+                css_input.paddingLeft = '1px'
+            }
+            css_input_focused.paddingLeft='1px'
+        }
         console.log("=== css_container",css_container)
         console.log("=== css_container_focused",css_container_focused)
 
@@ -288,7 +309,8 @@ function TextInput  (props) {
                     // 'marginTop': '-4rem',
                     'backgroundColor': 'white',
                     'paddingLeft': '4px',
-                    'marginLeft': 'calc( '+input_width+'px - 4% - ' + label_width + ')',
+
+                    'marginLeft': 'calc( '+input_width+'px - '+((parseInt(label_width.replace('px',''))>100)?'25px':'30px')+' - ' + label_width + ')',
 
 
                 }
