@@ -312,7 +312,6 @@ function TextInput  (props) {
 
                     'marginLeft': 'calc( '+input_width+'px - '+((parseInt(label_width.replace('px',''))>100)?'25px':'30px')+' - ' + label_width + ')',
 
-
                 }
             console.log("=== t_css_label_focused_right",t_css_label_focused_right)
                 set_css_label_focused_right(t_css_label_focused_right)
