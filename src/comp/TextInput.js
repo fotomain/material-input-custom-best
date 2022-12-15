@@ -202,7 +202,7 @@ function TextInput  (props) {
             const input_width = uniq_input1_div.clientWidth
             var test = document.getElementById("service_calc_text");
             test.innerText = label_text_focused;
-            test.style.fontSize = label_font_size;
+            test.style.fontSize = label_font_size_focused; //!!!!!!!!!!!!
             var label_height = (test.clientHeight + 1) + "px";
             var label_width = (test.clientWidth + 1) + "px"
             console.log("=== label_height ",label_height)
@@ -330,6 +330,8 @@ function TextInput  (props) {
                 }>
                     {/*{(!input_is_full || props.placeholder)?'':*/}
                             <label
+
+                                ref={ref_label}
 
                                 id={uniq_label1_id}
 
