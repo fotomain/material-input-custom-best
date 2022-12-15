@@ -76,6 +76,17 @@ function Com_row1_search () {
 
         <TextInput
 
+            label_text={'input email please...'}
+            type="email"
+            input_variant={'filled'}
+
+
+        />
+
+        <br/>
+
+        <TextInput
+
             input_variant={'standard'}
             label_text={'input email please...'}
             type="email"

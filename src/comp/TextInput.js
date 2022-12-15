@@ -164,6 +164,7 @@ function TextInput  (props) {
         // 'paddingLeft': (!input_is_full)?'0':'1em',
         'fontSize': '1em',
         'fontFamily': '"Roboto", sans-serif',
+        width:'100%',
     }
 
 
@@ -183,8 +184,8 @@ function TextInput  (props) {
             // 'paddingRight': '4px',
             'position': 'absolute',
             'transition': 'all 0.1s linear',
-
-
+            'marginLeft': '7px',
+            // css_label_focused.marginLeft ='7px'
         }
 
     var css_label_focused =
@@ -192,8 +193,9 @@ function TextInput  (props) {
             ...css_label,
             'color': label_text_color_focused,
             'fontSize': label_font_size_focused,
-            'marginTop': '-10%',
+            'marginTop': '-50px',
 
+            'marginLeft': '4px',
             'paddingLeft': '3px',
             'paddingRight': '3px',
 
@@ -276,6 +278,12 @@ function TextInput  (props) {
 
 
         if(
+            "filled"==input_variant
+        ) {
+            css_label_focused.marginLeft ='7px'
+        }
+
+        if(
             "standard"==input_variant
         ) {
             css_label_focused.marginLeft ='0'
@@ -291,7 +299,7 @@ function TextInput  (props) {
              if(icon_left_visible) {
                 // css_input.paddingLeft = '.5rem'
                 // css_input_focused.paddingLeft = '.5rem'
-                css_label_focused.marginLeft ='-10px'
+                // css_label_focused.marginLeft ='-10px'
               }
 
         }
