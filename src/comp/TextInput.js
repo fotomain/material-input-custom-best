@@ -165,6 +165,11 @@ function TextInput  (props) {
         'fontSize': '1em',
         'fontFamily': '"Roboto", sans-serif',
         width:'100%',
+
+        whiteSpace: 'nowrap',
+        'overflow': 'hidden',
+        textOverflow: 'ellipsis',
+
     }
 
 
@@ -183,6 +188,12 @@ function TextInput  (props) {
             'position': 'absolute',
             'transition': 'all 0.1s linear',
             'marginLeft': '7px', // !!! like css_label_focused.marginLeft ='7px'
+
+            whiteSpace: 'nowrap',
+            'overflow': 'hidden',
+            textOverflow: 'ellipsis',
+            maxWidth: '180px',
+
         }
 
     var css_label_focused =
@@ -467,8 +478,6 @@ function TextInput  (props) {
                             css_label_focused_right
                             :
                             css_label_focused
-
-
 
                     // (
                     //     (input_focused || input_is_full)

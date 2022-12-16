@@ -29,9 +29,9 @@
 .demo_grid{
 
     width: var(--demo_grid_width);
-    /*justify-self: center;*/
-    /*flex:0 0 100%;*/
-    /*flex: 0 0 100%;*/
+    justify-self: center;
+    flex:0 0 100%;
+    flex: 0 0 100%;
 }
 
 
