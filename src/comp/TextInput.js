@@ -47,6 +47,9 @@ function TextInput  (props) {
     const [icon_left_visible, set_icon_left_visible] = useState(
         props.icon_left_component && props.value
     )
+
+    const [icon_right_pressed, set_icon_right_pressed] = useState(false)
+
     const [icon_right_visible, set_icon_right_visible] = useState(
         props.icon_right_component && props.value
     )
@@ -54,6 +57,7 @@ function TextInput  (props) {
     const [icon_left_component, set_icon_left_component] = useState(
         props.icon_left_component
     )
+
     const [icon_left_hovered, set_icon_left_hovered] = useState(false)
 
     // const [uniq_input1_settings_class_id, set_uniq_input1_settings_class_id] = useState('input_'+(props.id)?props.id:"_settings_class_" + id_local)
@@ -83,7 +87,9 @@ function TextInput  (props) {
 
     const [input_focused, set_input_focused] = useState(false)
     const [input_is_full, set_input_is_full] = useState(props.value)
-    const [input_value, set_input_value] = useState(props.value)
+    const [input_value, set_input_value] = useState(
+        (props.value)?(props.value):''
+    )
 
     const [label_text, set_label_text] = useState(props.label_text)
     const [label_text_focused, set_label_text_focused] = useState(
@@ -405,6 +411,26 @@ function TextInput  (props) {
     });
 
 
+    const [div_clicked, set_div_clicked] = useState(false);
+    useEffect(() => {
+
+        console.log("=== useEffect icon_right_pressed ",icon_right_pressed)
+
+        if(!icon_right_pressed) {
+            console.log("=== useEffect div_clicked ")
+            ref_input.current.focus()
+        }else {
+            console.log("=== useEffect NOT focused ")
+            set_icon_right_pressed(false)
+        }
+
+
+        return () => {
+            // console.log("=== set_click_input_focused(false) ")
+            // set_click_input_focused(false)
+        };
+    }, [div_clicked]);
+
 
 
 
@@ -418,7 +444,8 @@ function TextInput  (props) {
                 style={(input_focused)?css_container_focused:css_container}
                 onClick={(e)=>{
                     // console.log("=== label onClick ")
-                    ref_input.current.focus()
+                    console.log("=== DIV LOCAL pressed -> icon_right_pressed", icon_right_pressed)
+                    set_div_clicked(!div_clicked)
                 }}
             >
 
@@ -436,9 +463,10 @@ function TextInput  (props) {
                     <div id={'css_icon_left111'} style={css_icon_left}
                          onClick={(e)=>{
 
-                             console.log('555555555'+Date.now())
+                             console.log('=== icon_left_component onClick 555555555'+Date.now())
                              set_input_value('')
                              set_input_is_full(false)
+                             set_input_focused()
                          }}
                          onMouseEnter={(e)=>{
                              // alert('onMouseEnter!!!')
@@ -486,6 +514,11 @@ function TextInput  (props) {
                                }}
                                onChange={(e)=>{
 
+                                   // console.log("=== local onChange ",e)
+                                   if(props.onChange){
+                                       props.onChange(e)
+                                   }
+
                                    set_input_value(e.target.value)
 
                                    if(e.target.value) {
@@ -504,16 +537,14 @@ function TextInput  (props) {
                     <div id={'css_icon_right111'} style={css_icon_left}
                          onClick={(e)=>{
 
-                             console.log('666666666666'+Date.now())
-                             // set_input_value('')
-                             // set_input_is_full(false)
+                             console.log('=== LOCAL icon_right_component 66666'+Date.now())
+                             set_icon_right_pressed(true)
+
                          }}
                          onMouseEnter={(e)=>{
-                             // alert('onMouseEnter!!!')
                              set_icon_left_hovered(true)
                          }}
                          onMouseLeave={(e)=>{
-                             // alert('onMouseLeave!!!')
                              set_icon_left_hovered(false)
                          }}
 
@@ -525,13 +556,13 @@ function TextInput  (props) {
                     </div>
                 }
 
-                {(props.icon_right_component && icon_right_visible)?
-                    <div     style={{marginRight:'5px'}}></div>
-                    : ("standard"==props.input_variant)?
-                        ''
-                        :
-                        <div     style={{marginRight:'1px'}}></div>
-                }
+                {/*{(props.icon_right_component && icon_right_visible)?*/}
+                {/*    <div     style={{marginRight:'5px'}}></div>*/}
+                {/*    : ("standard"==props.input_variant)?*/}
+                {/*        ''*/}
+                {/*        :*/}
+                {/*        <div     style={{marginRight:'1px'}}></div>*/}
+                {/*}*/}
 
 
                 <div   style={

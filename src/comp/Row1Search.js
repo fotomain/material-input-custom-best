@@ -31,6 +31,10 @@ function Com_row1_search () {
 
             value={'email@email.com'}
 
+            onChange={(e)=>{
+                // console.log("=== upper onChange ",e)
+            }}
+
             label_text={'input email please...'}
             type="email"
             icon_left_component = {
@@ -52,7 +56,7 @@ function Com_row1_search () {
                     icon={faSearch}
                     onClick={(e)=>{
 
-                        console.log('=== icon_right_component 666666666'+Date.now())
+                        console.log('=== GLOBAL icon_right_component 55555'+Date.now())
 
                     }}
 
