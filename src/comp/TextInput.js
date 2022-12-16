@@ -13,8 +13,8 @@ const setProperty = (a,b) => {
 
 function TextInput  (props) {
     // {color_main, color_text, text_label, text_helper }
-    console.log("=== props")
-    console.log(props)
+    // console.log("=== props")
+    // console.log(props)
 
     const ref_input = useRef(null);
     const ref_label = useRef(null);
@@ -46,6 +46,9 @@ function TextInput  (props) {
 
     const [icon_left_visible, set_icon_left_visible] = useState(
         props.icon_left_component && props.value
+    )
+    const [icon_right_visible, set_icon_right_visible] = useState(
+        props.icon_right_component && props.value
     )
 
     const [icon_left_component, set_icon_left_component] = useState(
@@ -170,8 +173,30 @@ function TextInput  (props) {
         'overflow': 'hidden',
         textOverflow: 'ellipsis',
 
+
     }
 
+    if(
+        (props.type=="email")
+        &&
+        input_value && -1!=input_value.indexOf(' ')
+
+    ) {
+
+        // const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const emailPattern = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if (!emailPattern.test(input_value) ) {
+
+            css_input = {
+                ...css_input,
+                // textDecoration:'underline overline'
+                textDecorationStyle: 'wavy',
+                textDecorationColor: 'green',
+                textDecorationLine: 'underline'
+
+            }
+        }
+    }
 
     var css_input_focused ={
         ...css_input,
@@ -313,8 +338,8 @@ function TextInput  (props) {
         }
 
 
-        console.log("=== css_container",css_container)
-        console.log("=== css_container_focused",css_container_focused)
+        // console.log("=== css_container",css_container)
+        // console.log("=== css_container_focused",css_container_focused)
 
     }
 
@@ -334,7 +359,7 @@ function TextInput  (props) {
             console.log("//=== LABEL RIGHT")
             var t_css_label_focused_right = css_label_focused
             var uniq_input1_div = document.getElementById(uniq_container_mui_id);
-            console.log("=== uniq_input1_div",uniq_input1_div)
+            // console.log("=== uniq_input1_div",uniq_input1_div)
 
 
             const input_width = uniq_input1_div.clientWidth
@@ -343,8 +368,8 @@ function TextInput  (props) {
             test.style.fontSize = label_font_size_focused; //!!!!!!!!!!!!
             var label_height = (test.clientHeight + 1) + "px";
             var label_width = (test.clientWidth + 1) + "px"
-            console.log("=== label_height ",label_height)
-            console.log("=== label_width  ",label_width)
+            // console.log("=== label_height ",label_height)
+            // console.log("=== label_width  ",label_width)
 
             var label_shift = ' - 20px - ' + label_width
             // var label_shift =  ' - ' + label_width + ' - 40px '
@@ -367,7 +392,7 @@ function TextInput  (props) {
                     'marginLeft': 'calc( '+input_width+'px ' + label_shift + ')',
 
                 }
-            console.log("=== t_css_label_focused_right",t_css_label_focused_right)
+            // console.log("=== t_css_label_focused_right",t_css_label_focused_right)
                 set_css_label_focused_right(t_css_label_focused_right)
                 set_input_refresh_focused(false)
         }
@@ -392,7 +417,7 @@ function TextInput  (props) {
                 // className={"css_container_mui"}
                 style={(input_focused)?css_container_focused:css_container}
                 onClick={(e)=>{
-                    console.log("=== label onClick ")
+                    // console.log("=== label onClick ")
                     ref_input.current.focus()
                 }}
             >
@@ -404,6 +429,8 @@ function TextInput  (props) {
                         :
                         <div     style={{marginRight:'1px'}}></div>
                 }
+
+
 
                 {(props.icon_left_component && !icon_left_visible)?'':
                     <div id={'css_icon_left111'} style={css_icon_left}
@@ -444,6 +471,7 @@ function TextInput  (props) {
                                    set_input_focused(true)
                                    if(icon_left_component) {
                                        set_icon_left_visible(true)
+                                       set_icon_right_visible(true)
                                    }
                                }}
                                onBlur={(e)=>{
@@ -451,6 +479,7 @@ function TextInput  (props) {
                                    if (!input_value){
                                        if(icon_left_component) {
                                            set_icon_left_visible(false)
+                                           set_icon_right_visible(false)
                                        }
                                    }
 
@@ -469,6 +498,40 @@ function TextInput  (props) {
 
                         >
                         </input>
+
+
+                {(props.icon_right_component && !icon_right_visible)?'':
+                    <div id={'css_icon_right111'} style={css_icon_left}
+                         onClick={(e)=>{
+
+                             console.log('666666666666'+Date.now())
+                             // set_input_value('')
+                             // set_input_is_full(false)
+                         }}
+                         onMouseEnter={(e)=>{
+                             // alert('onMouseEnter!!!')
+                             set_icon_left_hovered(true)
+                         }}
+                         onMouseLeave={(e)=>{
+                             // alert('onMouseLeave!!!')
+                             set_icon_left_hovered(false)
+                         }}
+
+                         style={{
+                             color: (props.color_icon_left)?props.color_icon_left:color_main_local
+                         }}
+                    >
+                        {props.icon_right_component}
+                    </div>
+                }
+
+                {(props.icon_right_component && icon_right_visible)?
+                    <div     style={{marginRight:'5px'}}></div>
+                    : ("standard"==props.input_variant)?
+                        ''
+                        :
+                        <div     style={{marginRight:'1px'}}></div>
+                }
 
 
                 <div   style={

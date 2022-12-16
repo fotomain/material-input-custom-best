@@ -46,6 +46,18 @@ function Com_row1_search () {
                 />
             }
 
+            icon_right_component = {
+                <FontAwesomeIcon
+                    style={{cursor:'pointer'}}
+                    icon={faSearch}
+                    onClick={(e)=>{
+
+                        console.log('=== icon_right_component 666666666'+Date.now())
+
+                    }}
+
+                />
+            }
 
         />
 

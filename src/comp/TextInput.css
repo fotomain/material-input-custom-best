@@ -30,8 +30,9 @@
 
     width: var(--demo_grid_width);
     justify-self: center;
-    flex:0 0 100%;
-    flex: 0 0 100%;
+    padding-top:100px;
+    /*flex:0 0 100%;*/
+    /*flex: 0 0 100%;*/
 }
 
 
