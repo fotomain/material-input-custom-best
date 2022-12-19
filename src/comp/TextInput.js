@@ -12,7 +12,7 @@ const setProperty = (a,b) => {
 }
 
 function TextInput  (props) {
-    // {color_main, color_text, text_label, text_helper }
+
     // console.log("=== props")
     // console.log(props)
 
@@ -20,14 +20,10 @@ function TextInput  (props) {
     const ref_label = useRef(null);
     const ref_helper = useRef(null);
 
-
-    // const [id_local, set_id_local] = useState((parseInt(Math.random()*100000000)).toString());
     const id_local = ((parseInt(Math.random()*100000000)).toString());
 
-    // const [uniq_input1_id, set_uniq_input1_id] = useState((props.id)?props.id:"uniq_input1_" + id_local)
     const uniq_container_mui_id = ((props.id)?props.id:"uniq_container_mui_" + id_local)
     const uniq_input1_id = ((props.id)?props.id:"uniq_input1_" + id_local)
-
 
     const [input_variant, set_input_variant] = useState(
         (!props.input_variant)?'standard':props.input_variant
@@ -58,19 +54,9 @@ function TextInput  (props) {
         props.icon_left_component
     )
 
-    const [icon_left_hovered, set_icon_left_hovered] = useState(false)
-
-    // const [uniq_input1_settings_class_id, set_uniq_input1_settings_class_id] = useState('input_'+(props.id)?props.id:"_settings_class_" + id_local)
-
-    const t1 = (props.id) ? props.id : "_settings_class_" + id_local
-    const uniq_input1_settings_class_id = "input_"+t1
-    const uniq_container_mui_filled = "container_mui_filled_"+t1
-    const input1_filed_padding = "filled_"+t1
-
-
+    const [icon_hovered, set_icon_hovered] = useState(false)
 
     const uniq_label1_id = "uniq_label1_" + id_local
-
 
     const uniq_helper1_id = "uniq_helper1_" + id_local
 
@@ -80,8 +66,6 @@ function TextInput  (props) {
     // const [first_load, set_first_load] = useState(true)
     const [input_refresh_focused, set_input_refresh_focused] = useState(true)
     const [input_props, set_input_props] = useState(props)
-        // Object.entries(props).map(([key, val])=>{
-        //     }))
 
     const [css_label_focused_right, set_css_label_focused_right] = useState({})
 
@@ -111,7 +95,7 @@ function TextInput  (props) {
 
     var css_container =
         {
-            zIndex: 1,
+            // zIndex: 1,
 
             'display': 'flex',
             'flexDirection': 'row',
@@ -143,17 +127,7 @@ function TextInput  (props) {
 
             'paddingTop': '1em',
             'paddingBottom': '1em',
-            // 'paddingLeft':  (  (props.icon_left_component && icon_left_visible)
-            //                 || (!input_is_full && !input_focused) )
-            //                     ?'1em'
-            //                     :'',
-            // 'paddingLeft': '1em',
             'paddingRight': '1em',
-            // firstChild: {
-            //     'width': '50%'
-            // },
-
-
 
         }
 
@@ -161,7 +135,6 @@ function TextInput  (props) {
         ...css_container,
         'outline': 'none',
         'boxShadow': '0 0 0 2px '+color_main_local_focused,
-        // 'boxShadow': '0 0 0 2px '+'red',
 
     }
 
@@ -206,7 +179,6 @@ function TextInput  (props) {
 
     var css_input_focused ={
         ...css_input,
-        // 'paddingLeft': '1em', //!!!! placeholder
     }
 
     var css_label =
@@ -232,7 +204,8 @@ function TextInput  (props) {
             ...css_label,
             'color': label_text_color_focused,
             'fontSize': label_font_size_focused,
-            'marginTop': '-50px',
+
+            'marginTop': ("outlined"!==input_variant)?'-50px':'-55px',
 
             'marginLeft': '4px',
             'paddingLeft': '3px',
@@ -240,21 +213,12 @@ function TextInput  (props) {
 
             'backgroundColor': 'white',
 
-            // 'marginLeft':
-            //     (  (props.icon_left_component && icon_left_visible)
-            //     || (!input_is_full && !input_focused) )
-            //     ?'-5px'
-            //     :'10px',
-
         }
 
     const css_icon_left =
         {
-            // 'left':'10em',
-            // 'top': '0.9rem',
-            // 'paddingTop': '20px',
-            // 'marginLeft': '30px',
-            // 'paddingLeft': '10px',
+            'cursor':'pointer',
+            color: (props.color_icon_left)?props.color_icon_left:color_main_local
         }
 
 
@@ -354,21 +318,17 @@ function TextInput  (props) {
 
 
         if(
-            // input_value && first_load && "right"==props.label_focused_position
-            // ||
             input_refresh_focused
             ||
-            input_focused && "right"==props.label_focused_position && input_refresh_focused
+            input_focused && "right"==props.label_focused_position
         ){
 
             //=== LABEL RIGHT
             console.log("//=== LABEL RIGHT")
             var t_css_label_focused_right = css_label_focused
-            var uniq_input1_div = document.getElementById(uniq_container_mui_id);
-            // console.log("=== uniq_input1_div",uniq_input1_div)
+            var div_of_input = document.getElementById(uniq_container_mui_id);
 
-
-            const input_width = uniq_input1_div.clientWidth
+            const input_width = div_of_input.clientWidth
             var test = document.getElementById("service_calc_text");
             test.innerText = label_text_focused;
             test.style.fontSize = label_font_size_focused; //!!!!!!!!!!!!
@@ -378,22 +338,14 @@ function TextInput  (props) {
             // console.log("=== label_width  ",label_width)
 
             var label_shift = ' - 20px - ' + label_width
-            // var label_shift =  ' - ' + label_width + ' - 40px '
-            // // var t_=''
-            //   if(input_focused){
-            //       label_shift = ' - ' + label_width + ' - 40px '
-            //   }
 
             t_css_label_focused_right =
                 {
                     ...css_label_focused,
                     'color': label_text_color_focused,
                     'fontSize': label_font_size_focused,
-                    // 'marginTop': '-4rem',
-                    'backgroundColor': 'white',
-                    // 'paddingLeft': '4px',
 
-                    // 'marginLeft': 'calc( '+input_width+'px '+t_+' - '+((parseInt(label_width.replace('px',''))>100)?'25px':'30px')+' - ' + label_width + ')',
+                    'backgroundColor': 'white',
 
                     'marginLeft': 'calc( '+input_width+'px ' + label_shift + ')',
 
@@ -449,7 +401,7 @@ function TextInput  (props) {
                 }}
             >
 
-                {(props.icon_left_component && icon_left_visible)?
+                {(icon_left_visible)?
                     <div     style={{marginRight:'5px'}}></div>
                     : ("standard"==props.input_variant)?
                         ''
@@ -459,8 +411,10 @@ function TextInput  (props) {
 
 
 
-                {(props.icon_left_component && !icon_left_visible)?'':
-                    <div id={'css_icon_left111'} style={css_icon_left}
+                {(!icon_left_visible)?'':
+                    <div id={'css_icon_left111'}
+                         style={css_icon_left}
+
                          onClick={(e)=>{
 
                              console.log('=== icon_left_component onClick 555555555'+Date.now())
@@ -470,16 +424,13 @@ function TextInput  (props) {
                          }}
                          onMouseEnter={(e)=>{
                              // alert('onMouseEnter!!!')
-                             set_icon_left_hovered(true)
+                             set_icon_hovered(true)
                          }}
                          onMouseLeave={(e)=>{
                              // alert('onMouseLeave!!!')
-                             set_icon_left_hovered(false)
+                             set_icon_hovered(false)
                          }}
 
-                         style={{
-                             color: (props.color_icon_left)?props.color_icon_left:color_main_local
-                         }}
                     >
                         {props.icon_left_component}
                     </div>
@@ -492,7 +443,6 @@ function TextInput  (props) {
                                ref ={ref_input}
                                value={input_value}
                                id={uniq_input1_id}
-                               // placeholder={input_placeholder}
 
                                onFocus={(e)=>{
                                    console.log("=== input onFocus ")
@@ -533,8 +483,9 @@ function TextInput  (props) {
                         </input>
 
 
-                {(props.icon_right_component && !icon_right_visible)?'':
-                    <div id={'css_icon_right111'} style={css_icon_left}
+                {(!icon_right_visible)?'':
+                    <div id={'css_icon_right111'}
+                         style={css_icon_left}
                          onClick={(e)=>{
 
                              console.log('=== LOCAL icon_right_component 66666'+Date.now())
@@ -542,27 +493,16 @@ function TextInput  (props) {
 
                          }}
                          onMouseEnter={(e)=>{
-                             set_icon_left_hovered(true)
+                             set_icon_hovered(true)
                          }}
                          onMouseLeave={(e)=>{
-                             set_icon_left_hovered(false)
+                             set_icon_hovered(false)
                          }}
 
-                         style={{
-                             color: (props.color_icon_left)?props.color_icon_left:color_main_local
-                         }}
                     >
                         {props.icon_right_component}
                     </div>
                 }
-
-                {/*{(props.icon_right_component && icon_right_visible)?*/}
-                {/*    <div     style={{marginRight:'5px'}}></div>*/}
-                {/*    : ("standard"==props.input_variant)?*/}
-                {/*        ''*/}
-                {/*        :*/}
-                {/*        <div     style={{marginRight:'1px'}}></div>*/}
-                {/*}*/}
 
 
                 <div   style={
@@ -585,14 +525,11 @@ function TextInput  (props) {
                     //     :
                     //     css_label
                 }>
-                    {/*{(!input_is_full || props.placeholder)?'':*/}
                             <label
 
                                 ref={ref_label}
 
                                 id={uniq_label1_id}
-
-                                // className={(input_is_full || props.placeholder)?'show':''}
 
                                 htmlFor="input_id1"
                                    onClick={(e)=>{
@@ -615,7 +552,6 @@ function TextInput  (props) {
                                 </span>
 
                             </label>
-                    {/*}*/}
                 </div>
 
 
@@ -630,8 +566,6 @@ function TextInput  (props) {
                 </div>
             }
 
-            {/*style={{ 'position': 'absolute', 'float': 'left', 'whiteSpace': 'nowrap', 'visibility': 'hidden', 'font': f }}*/}
-            {/*'visibility': 'hidden'*/}
             <div id={'service_calc_text'} style={{ 'position': 'absolute', 'float': 'left', 'whiteSpace': 'nowrap', 'visibility': 'hidden' }}></div>
 
 

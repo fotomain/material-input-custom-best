@@ -30,6 +30,7 @@ function Com_row1_search () {
         <div>{input_value}</div>
         <TextInput
 
+            id={'input_filter_posts_string'}
             value={'email@email.com'}
 
             onChange={(e)=>{
@@ -41,7 +42,7 @@ function Com_row1_search () {
             type="email"
             icon_left_component = {
                 <FontAwesomeIcon
-                    style={{cursor:'pointer'}}
+
                     icon={faClose}
                     onClick={(e)=>{
 
@@ -55,7 +56,7 @@ function Com_row1_search () {
 
             icon_right_component = {
                 <FontAwesomeIcon
-                    style={{cursor:'pointer'}}
+
                     icon={faSearch}
                     onClick={(e)=>{
 
@@ -226,9 +227,6 @@ function Com_row1_search () {
 
             color_main = 'teal'
             is_required='true'
-            // label_text={'input email please...'}
-            // value={'xxxx@yyyyy.zz'}
-            // placeholder={'like aa@bb.cc'}
             type="email"
             // type="date"
             helper_text={'Very required'}
@@ -270,16 +268,6 @@ function Com_row1_search () {
                 />
             }
 
-            // icon_left_component1 = {{
-            // 'onclick_icon_left' : {()=>{
-            //     console.log("=== onclick_icon_left set_delete_text ");
-            //     set_delete_text(true)
-            //     }}
-            // }}
-            // is_required='true'
-            // label_text={'input email please...'}
-            // value={'xxxx@yyyyy.zz'}
-            // placeholder={'like aa@bb.cc'}
             type="email"
             helper_text={'Helper text here'}
             helper_text_style={{color: 'red', fontStyle:'italic'}}

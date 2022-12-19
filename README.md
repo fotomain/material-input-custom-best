@@ -175,3 +175,12 @@ color:black;
 
 
 }
+
+      // Object.entries(props).map(([key, val])=>{
+        //     }))
+
+          // var label_shift =  ' - ' + label_width + ' - 40px '
+            // // var t_=''
+            //   if(input_focused){
+            //       label_shift = ' - ' + label_width + ' - 40px '
+            //   }
