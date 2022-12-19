@@ -70,6 +70,7 @@ function TextInput  (props) {
 
     const [input_focused, set_input_focused] = useState(false)
     const [input_is_full, set_input_is_full] = useState(props.value)
+    const [input_changed , set_input_changed ] = useState(false)
     const [input_value, set_input_value] = useState(
         (props.value)?(props.value):''
     )
@@ -456,6 +457,7 @@ function TextInput  (props) {
                                onChange={(e)=>{
 
                                    // console.log("=== local onChange ",e)
+                                   set_input_changed(true)
 
                                    set_input_value(e.target.value)
 
