@@ -27,12 +27,14 @@ function Com_row1_search () {
 
     <div className={'demo_grid'}>
 
+        <div>{input_value}</div>
         <TextInput
 
             value={'email@email.com'}
 
             onChange={(e)=>{
                 // console.log("=== upper onChange ",e)
+                set_input_value(e.target.value)
             }}
 
             label_text={'input email please...'}
@@ -43,7 +45,8 @@ function Com_row1_search () {
                     icon={faClose}
                     onClick={(e)=>{
 
-                        console.log('22222222'+Date.now())
+                        console.log('=== GLOBAL icon_left_component 11111'+Date.now())
+                        set_input_value('')
 
                     }}
 
