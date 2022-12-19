@@ -63,7 +63,6 @@ function TextInput  (props) {
     // console.log("=== id_local ",id_local)
     // console.log("=== ref ",ref_label,ref_input)
 
-    // const [first_load, set_first_load] = useState(true)
     const [input_refresh_focused, set_input_refresh_focused] = useState(true)
     const [input_props, set_input_props] = useState(props)
 
@@ -90,13 +89,8 @@ function TextInput  (props) {
 
     const helper_text_style = (props.helper_text_style)?props.helper_text_style:{}
 
-    const css_padding_all = '10px';
-
-
     var css_container =
         {
-            // zIndex: 1,
-
             'display': 'flex',
             'flexDirection': 'row',
             /*padding: 0;*/
@@ -139,7 +133,7 @@ function TextInput  (props) {
     }
 
     var css_input ={
-        // zIndex: 10,
+
         ...props, //!!!!! color ,
         'border': 'none',
         'outline': 'none',
@@ -155,14 +149,13 @@ function TextInput  (props) {
 
     }
 
+    //===== VALIDATE STYLE email
     if(
         (props.type=="email")
         &&
-        input_value && -1!=input_value.indexOf(' ')
-
+        input_value
     ) {
 
-        // const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         const emailPattern = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         if (!emailPattern.test(input_value) ) {
 
@@ -319,8 +312,6 @@ function TextInput  (props) {
 
         if(
             input_refresh_focused
-            ||
-            input_focused && "right"==props.label_focused_position
         ){
 
             //=== LABEL RIGHT
@@ -350,12 +341,12 @@ function TextInput  (props) {
                     'marginLeft': 'calc( '+input_width+'px ' + label_shift + ')',
 
                 }
-            // console.log("=== t_css_label_focused_right",t_css_label_focused_right)
+                // console.log("=== t_css_label_focused_right",t_css_label_focused_right)
                 set_css_label_focused_right(t_css_label_focused_right)
                 set_input_refresh_focused(false)
         }
 
-        // set_first_load(false)
+
 
         return () => {
             // effect
@@ -465,9 +456,6 @@ function TextInput  (props) {
                                onChange={(e)=>{
 
                                    // console.log("=== local onChange ",e)
-                                   if(props.onChange){
-                                       props.onChange(e)
-                                   }
 
                                    set_input_value(e.target.value)
 
@@ -476,6 +464,11 @@ function TextInput  (props) {
                                    }else {
                                        set_input_is_full(false)
                                    }
+
+                                   if(props.onChange){
+                                       props.onChange(e)
+                                   }
+
                                }}
 
 
