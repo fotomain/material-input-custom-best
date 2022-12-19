@@ -1,4 +1,4 @@
-﻿import React, {useState} from 'react';
+﻿import React, {useEffect, useState} from 'react';
 
 import './Global.css'
 import './Home1AnimeTextCircle.css'
@@ -7,17 +7,28 @@ import TextInput from "./TextInput";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose, faSearch} from "@fortawesome/free-solid-svg-icons";
 
-
 function Com_row1_search () {
 
 
     const [delete_text, set_delete_text] = useState(false);
 
-    const [input_value, set_input_value] = useState('')
+    const [input_value, set_input_value] = useState('fff')
 
+    const [input_value1, set_input_value1] = useState('aaa')
+
+    // useEffect(() => {
+    //     console.log("=== useEffect input_value " + Date.now())
+    //     return () => {
+    //         // effect
+    //     };
+    // }, [input_value]);
+    //
+
+    const [timer1, set_timer1] = useState(null);
 
     return(
-<div className={'main_grid'}>
+
+    <div className={'main_grid'}>
 
     <div className={'col1_search_class'}>
 
@@ -27,19 +38,42 @@ function Com_row1_search () {
 
     <div className={'demo_grid'}>
 
-        <div>{input_value}</div>
+        <button onClick={(e)=> {
+            set_input_value1(Date.now())
+        }}>Change</button>
+
+        <div>{input_value1}</div>
         <TextInput
 
-            id={'input_filter_posts_string'}
-            value={'email@email.com'}
+            id={'input_filter_posts_string'+Date.now()}
+            // value={'email@email.com'}
+            value={input_value1}
+
+            // defaultValue={'ggg'}
 
             onChange={(e)=>{
-                // console.log("=== upper onChange ",e)
-                if(e.target) {
-                    set_input_value(e.target.value)
-                }else {
-                    set_input_value(e)
+
+
+                if(e?.target) {
+                    console.log("=== upper onChange  target ")
+                    set_input_value1(e.target.value)
                 }
+                else {
+                    console.log("=== upper onChange  value ")
+                    set_input_value1(e)
+                }
+
+                clearTimeout(timer1)
+
+                const newTimer = setTimeout(()=>{
+
+                //    api
+                    console.log("=== api",e)
+
+                },500)
+
+                set_timer1(newTimer)
+
             }}
 
             label_text={'input email please...'}
@@ -75,6 +109,8 @@ function Com_row1_search () {
 
         <br/>
 
+        {(true)?'':
+            <div>
         <TextInput
 
             label_text={'input email please...'}
@@ -277,6 +313,9 @@ function Com_row1_search () {
             helper_text_style={{color: 'red', fontStyle:'italic'}}
             // type="email"
         />
+
+        </div>
+        }
 
     </div>
 

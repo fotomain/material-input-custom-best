@@ -1,25 +1,39 @@
 ﻿
 
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose, faSearch} from "@fortawesome/free-solid-svg-icons";
 
 import './TextInput.css'
 import {clear} from "@testing-library/user-event/dist/clear";
 
-const setProperty = (a,b) => {
-    document.documentElement.style.setProperty(a,b)
-}
 
 function TextInput  (props) {
 
     // console.log("=== props")
     // console.log(props)
+    console.log("=== props.value ", props.value)
 
-    const ref_input = useRef(null);
-    const ref_label = useRef(null);
-    const ref_helper = useRef(null);
+    // (null!=props.value)?(props.value):
+    const  defaultValue = (props.value)?props.value:props.defaultValue;
+    console.log("=== defaultValue ", defaultValue)
+
+    const [input_value, set_input_value] = useState(
+        (props.value)?props.value:props.defaultValue
+    )
+    const [input_is_full, set_input_is_full] = useState(!!props.value)
+
+    const [input_focused, set_input_focused] = useState(!!props.value)
+
+    const [input_changed , set_input_changed ] = useState(props.value)
+
+    console.log("=== input_focused",input_focused)
+    console.log("=== input_is_full",input_is_full)
+
+    const ref_input     = useRef(null);
+    const ref_label     = useRef(null);
+    const ref_helper    = useRef(null);
 
     const id_local = ((parseInt(Math.random()*100000000)).toString());
 
@@ -35,20 +49,20 @@ function TextInput  (props) {
     )
     const [label_font_size_focused, set_label_font_size_focused] = useState('.8rem')
     const [label_text_color, set_label_text_color] = useState(
-    (props.label_text_color)?props.label_text_color:'gray '
+        (props.label_text_color)?props.label_text_color:'gray '
     )
     const [label_text_color_focused, set_label_text_color_focused] = useState(
-    (props.label_text_color_focused)?props.label_text_color_focused:'teal '
+        (props.label_text_color_focused)?props.label_text_color_focused:'teal '
     )
 
     const [icon_left_visible, set_icon_left_visible] = useState(
-        props.icon_left_component && props.value
+        props.icon_left_component && (!!props.value || !!input_value)
     )
 
     const [icon_right_pressed, set_icon_right_pressed] = useState(false)
 
     const [icon_right_visible, set_icon_right_visible] = useState(
-        props.icon_right_component && props.value
+        props.icon_right_component && (!!props.value || !!input_value)
     )
 
     const [icon_left_component, set_icon_left_component] = useState(
@@ -65,16 +79,13 @@ function TextInput  (props) {
     // console.log("=== ref ",ref_label,ref_input)
 
     const [input_refresh_focused, set_input_refresh_focused] = useState(true)
-    const [input_props, set_input_props] = useState(props)
+
+    // const [input_props, set_input_props] = useState(props)
 
     const [css_label_focused_right, set_css_label_focused_right] = useState({})
 
-    const [input_focused, set_input_focused] = useState(false)
-    const [input_is_full, set_input_is_full] = useState(props.value)
-    const [input_changed , set_input_changed ] = useState(null)
-    const [input_value, set_input_value] = useState(
-        (props.value)?(props.value):''
-    )
+
+
 
     const [label_text, set_label_text] = useState(props.label_text)
     const [label_text_focused, set_label_text_focused] = useState(
@@ -84,8 +95,6 @@ function TextInput  (props) {
         props.label_focused_position && "right"==props.label_focused_position
     )
 
-
-    const [color_main_local_exist, set_color_main_local_exist] = useState((props.color_main)?true:false);
     const [color_main_local, set_color_main_local] = useState((props.color_main)?props.color_main:'teal');
     const [color_main_local_focused, set_color_main_local_focused] = useState((props.color_main_focused)?props.color_main_focused:'teal');
 
@@ -139,7 +148,7 @@ function TextInput  (props) {
         ...props, //!!!!! color ,
         'border': 'none',
         'outline': 'none',
-        // 'paddingLeft': (!input_is_full)?'0':'1em',
+
         'fontSize': '1em',
         'fontFamily': '"Roboto", sans-serif',
         width:'100%',
@@ -245,7 +254,9 @@ function TextInput  (props) {
             ...css_container1
         }
 
-        if(input_is_full){
+        const show_padded = (!!props.value || !!input_value)
+        console.log("=== show_padded",show_padded)
+        if( show_padded ){
             css_container = {
                 ...css_container,
                 paddingTop: '25px',
@@ -287,18 +298,6 @@ function TextInput  (props) {
             css_label_focused.marginLeft ='0'
             css_container.backgroundColor='transparent'
             css_container_focused.backgroundColor='transparent'
-            if(input_is_full) {
-                // css_input.paddingLeft = '1px'
-            }
-
-            // css_input.paddingLeft = '.0rem'
-            // css_input_focused.paddingLeft = '.0rem'
-
-             if(icon_left_visible) {
-                // css_input.paddingLeft = '.5rem'
-                // css_input_focused.paddingLeft = '.5rem'
-                // css_label_focused.marginLeft ='-10px'
-              }
 
         }
 
@@ -311,8 +310,12 @@ function TextInput  (props) {
 
     useEffect(() => {
 
+        // console.log("=== LOCAL useEffect 000 ")
+
 
         if(
+            label_focused_position_right
+            &&
             input_refresh_focused
         ){
 
@@ -343,12 +346,12 @@ function TextInput  (props) {
                     'marginLeft': 'calc( '+input_width+'px ' + label_shift + ')',
 
                 }
-                // console.log("=== t_css_label_focused_right",t_css_label_focused_right)
-                set_css_label_focused_right(t_css_label_focused_right)
-                set_input_refresh_focused(false)
+            // console.log("=== t_css_label_focused_right",t_css_label_focused_right)
+            set_css_label_focused_right(t_css_label_focused_right)
+            set_input_refresh_focused(false)
         }
 
-
+        // ref_input.current.focus()
 
         return () => {
             // effect
@@ -357,6 +360,7 @@ function TextInput  (props) {
 
 
     const [div_clicked, set_div_clicked] = useState(false);
+
     useEffect(() => {
 
         console.log("=== useEffect icon_right_pressed ",icon_right_pressed)
@@ -380,20 +384,28 @@ function TextInput  (props) {
     useEffect(() => {
 
         console.log("=== input_changed",input_changed)
-        if(null == input_changed) { return }
+        if(!input_changed) { return }
 
-        const new_value = (''==input_changed)?input_changed:input_changed.target.value
+
+        var new_value =''
+        if(input_changed?.target){
+            new_value = input_changed.target?.value
+        }
+        else {
+            new_value = input_changed
+        }
+
         console.log("=== new_value",new_value)
 
-                if (new_value) {
-                    set_input_is_full(true)
-                } else {
-                    set_input_is_full(false)
-                }
+        if (new_value) {
+            set_input_is_full(true)
+        } else {
+            set_input_is_full(false)
+        }
 
-                if (props.onChange) {
-                    props.onChange(input_changed)
-                }
+        if (props.onChange) {
+            props.onChange(input_changed)
+        }
 
 
         return () => {
@@ -404,13 +416,14 @@ function TextInput  (props) {
 
 
     const [timer1, set_timer1] = useState(null);
-    const set_input_value_timeouter = e =>{
+    const set_input_value_timeouter = (e) =>{
 
         set_input_value((e.target)?e.target.value:e)
 
         clearTimeout(timer1)
 
         const newTimer = setTimeout(()=>{
+            console.log("=== set_input_value_timeouter")
             set_input_changed(e)
         },500)
 
@@ -424,7 +437,7 @@ function TextInput  (props) {
 
                 id={uniq_container_mui_id}
                 // className={"css_container_mui"}
-                style={(input_focused)?css_container_focused:css_container}
+                style={(input_focused || props.value || input_value )?css_container_focused:css_container}
                 onClick={(e)=>{
                     // console.log("=== label onClick ")
                     console.log("=== DIV LOCAL pressed -> icon_right_pressed", icon_right_pressed)
@@ -449,9 +462,12 @@ function TextInput  (props) {
                          onClick={(e)=>{
 
                              console.log('=== icon_left_component onClick 555555555'+Date.now())
-                             set_input_value_timeouter('')
+                             if(props.onChange) {
+                                 props.onChange('')
+                             }
+                             set_input_value('')
                              set_input_is_full(false)
-                             set_input_focused()
+                             set_input_focused(true)
                          }}
                          onMouseEnter={(e)=>{
                              // alert('onMouseEnter!!!')
@@ -467,43 +483,56 @@ function TextInput  (props) {
                     </div>
                 }
 
-                        <input {...input_props}
+                {/*{...props}*/}
 
-                               style={(input_focused)?css_input_focused:css_input}
+                {/*{...input_props}*/}
 
-                               ref ={ref_input}
-                               value={input_value}
-                               id={uniq_input1_id}
+                {/*{...props}*/}
 
-                               onFocus={(e)=>{
-                                   console.log("=== input onFocus ")
-                                   set_input_focused(true)
-                                   if(icon_left_component) {
-                                       set_icon_left_visible(true)
-                                       set_icon_right_visible(true)
-                                   }
-                               }}
-                               onBlur={(e)=>{
-                                   set_input_focused(false)
-                                   if (!input_value){
-                                       if(icon_left_component) {
-                                           set_icon_left_visible(false)
-                                           set_icon_right_visible(false)
-                                       }
-                                   }
+                    <input
 
-                               }}
-                               onChange={(e)=>{
+                        {...props}
 
-                                   // console.log("=== local onChange ",e)
-                                   set_input_value_timeouter(e)
+                        style={(input_focused)?css_input_focused:css_input}
+
+                        ref ={ref_input}
+                        value={props.value}
+                        id={uniq_input1_id}
+
+                        onFocus={(e)=>{
+                            console.log("=== input onFocus ")
+                            set_input_focused(true)
+                            if(icon_left_component) {
+                                set_icon_left_visible(true)
+                                set_icon_right_visible(true)
+                            }
+                        }}
+                        onBlur={(e)=>{
+                            set_input_focused(false)
+                            set_input_changed(null)
+                            if (!input_value){
+                                if(icon_left_component) {
+                                    set_icon_left_visible(false)
+                                    set_icon_right_visible(false)
+                                }
+                            }
+
+                        }}
+                        onChange={(e)=>{
+
+                            console.log("=== LOCAL onChange ")
+                            if(props.onChange) {
+                                props.onChange(e)
+                            }
+                            set_input_value_timeouter(e)
+
+                            // props.setValue(e.target.value)
+
+                        }}
 
 
-                               }}
-
-
-                        >
-                        </input>
+                    >
+                    </input>
 
 
                 {(!icon_right_visible)?'':
@@ -530,11 +559,13 @@ function TextInput  (props) {
 
                 <div   style={
 
-                    (!input_focused && !input_is_full && !props.placeholder )?css_label:
-                        (label_focused_position_right)?
-                            css_label_focused_right
-                            :
-                            css_label_focused
+                    (( input_focused || props.value || input_value || props.placeholder) )
+                        ?
+                            (label_focused_position_right)?
+                                css_label_focused_right
+                                :
+                                css_label_focused
+                        :css_label
 
                     // (
                     //     (input_focused || input_is_full)
@@ -548,18 +579,18 @@ function TextInput  (props) {
                     //     :
                     //     css_label
                 }>
-                            <label
+                    <label
 
-                                ref={ref_label}
+                        ref={ref_label}
 
-                                id={uniq_label1_id}
+                        id={uniq_label1_id}
 
-                                htmlFor="input_id1"
-                                   onClick={(e)=>{
-                                       console.log("=== label onClick ")
-                                       ref_input.current.focus()
-                                   }}
-                            >
+                        htmlFor="input_id1"
+                        onClick={(e)=>{
+                            console.log("=== label onClick ")
+                            ref_input.current.focus()
+                        }}
+                    >
                                 <span
 
                                 >
@@ -574,7 +605,7 @@ function TextInput  (props) {
                                     {/*{input_is_full,input_focused}*/}
                                 </span>
 
-                            </label>
+                    </label>
                 </div>
 
 

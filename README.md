@@ -184,3 +184,8 @@ color:black;
             //   if(input_focused){
             //       label_shift = ' - ' + label_width + ' - 40px '
             //   }
+
+
+const setProperty = (a,b) => {
+document.documentElement.style.setProperty(a,b)
+}
