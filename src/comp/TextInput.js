@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose, faSearch} from "@fortawesome/free-solid-svg-icons";
 
 import './TextInput.css'
+import {clear} from "@testing-library/user-event/dist/clear";
 
 const setProperty = (a,b) => {
     document.documentElement.style.setProperty(a,b)
@@ -70,7 +71,7 @@ function TextInput  (props) {
 
     const [input_focused, set_input_focused] = useState(false)
     const [input_is_full, set_input_is_full] = useState(props.value)
-    const [input_changed , set_input_changed ] = useState(false)
+    const [input_changed , set_input_changed ] = useState(null)
     const [input_value, set_input_value] = useState(
         (props.value)?(props.value):''
     )
@@ -376,7 +377,45 @@ function TextInput  (props) {
     }, [div_clicked]);
 
 
+    useEffect(() => {
 
+        console.log("=== input_changed",input_changed)
+        if(null == input_changed) { return }
+
+        const new_value = (''==input_changed)?input_changed:input_changed.target.value
+        console.log("=== new_value",new_value)
+
+                if (new_value) {
+                    set_input_is_full(true)
+                } else {
+                    set_input_is_full(false)
+                }
+
+                if (props.onChange) {
+                    props.onChange(input_changed)
+                }
+
+
+        return () => {
+            // effect
+
+        };
+    }, [input_changed]);
+
+
+    const [timer1, set_timer1] = useState(null);
+    const set_input_value_timeouter = e =>{
+
+        set_input_value((e.target)?e.target.value:e)
+
+        clearTimeout(timer1)
+
+        const newTimer = setTimeout(()=>{
+            set_input_changed(e)
+        },500)
+
+        set_timer1(newTimer)
+    }
 
     return(
 
@@ -410,7 +449,7 @@ function TextInput  (props) {
                          onClick={(e)=>{
 
                              console.log('=== icon_left_component onClick 555555555'+Date.now())
-                             set_input_value('')
+                             set_input_value_timeouter('')
                              set_input_is_full(false)
                              set_input_focused()
                          }}
@@ -457,19 +496,8 @@ function TextInput  (props) {
                                onChange={(e)=>{
 
                                    // console.log("=== local onChange ",e)
-                                   set_input_changed(true)
+                                   set_input_value_timeouter(e)
 
-                                   set_input_value(e.target.value)
-
-                                   if(e.target.value) {
-                                       set_input_is_full(true)
-                                   }else {
-                                       set_input_is_full(false)
-                                   }
-
-                                   if(props.onChange){
-                                       props.onChange(e)
-                                   }
 
                                }}
 

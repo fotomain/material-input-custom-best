@@ -35,7 +35,11 @@ function Com_row1_search () {
 
             onChange={(e)=>{
                 // console.log("=== upper onChange ",e)
-                set_input_value(e.target.value)
+                if(e.target) {
+                    set_input_value(e.target.value)
+                }else {
+                    set_input_value(e)
+                }
             }}
 
             label_text={'input email please...'}
