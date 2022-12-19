@@ -208,9 +208,9 @@ function TextInput  (props) {
 
         }
 
-    const css_icon_left =
+    const css_icon =
         {
-            'cursor':'pointer',
+            cursor:'pointer',
             color: (props.color_icon_left)?props.color_icon_left:color_main_local
         }
 
@@ -403,8 +403,8 @@ function TextInput  (props) {
 
 
                 {(!icon_left_visible)?'':
-                    <div id={'css_icon_left111'}
-                         style={css_icon_left}
+                    <div id={'icon_left111'}
+                         style={css_icon}
 
                          onClick={(e)=>{
 
@@ -477,8 +477,8 @@ function TextInput  (props) {
 
 
                 {(!icon_right_visible)?'':
-                    <div id={'css_icon_right111'}
-                         style={css_icon_left}
+                    <div id={'icon_right111'}
+                         style={css_icon}
                          onClick={(e)=>{
 
                              console.log('=== LOCAL icon_right_component 66666'+Date.now())
