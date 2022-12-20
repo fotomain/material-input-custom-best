@@ -347,7 +347,7 @@ function Com_row1_search () {
             // className={'input_left'}
             input_variant={'outlined'}
 
-            value={input_value}
+            // value={input_value}
 
             label_focused_position={'right'}
             label_text_color={'brown'}
@@ -379,6 +379,12 @@ function Com_row1_search () {
             helper_text_style={{color: 'red', fontStyle:'italic'}}
             // type="email"
         />
+
+        <TextInput/>
+
+
+        <input></input>
+        <button>Empty press</button>
 
         </div>
         }

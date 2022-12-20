@@ -36,7 +36,7 @@ function TextInput  (props) {
     )
     console.log('=== input_is_full',input_is_full)
 
-    const [input_focused, set_input_focused] = useState(!!props.value)
+    const [input_focused, set_input_focused] = useState(false)
 
     const [input_changed , set_input_changed ] = useState(props.value)
 
@@ -70,11 +70,11 @@ function TextInput  (props) {
         (!!props.icon_left_component && (!!props.value || !!input_value))
     )
 
-    console.log("=== icon_left_visible",icon_left_visible)
-    console.log("=== icon_left_visible === ",!!props.icon_left_component && (!!props.value || !!input_value))
-    console.log("=== icon_left_visible === 1 ", !!props.icon_left_component )
-    console.log("=== icon_left_visible === 2 ", !!props.value)
-    console.log("=== icon_left_visible === 3 ", !!input_value)
+    // console.log("=== icon_left_visible",icon_left_visible)
+    // console.log("=== icon_left_visible === ",!!props.icon_left_component && (!!props.value || !!input_value))
+    // console.log("=== icon_left_visible === 1 ", !!props.icon_left_component )
+    // console.log("=== icon_left_visible === 2 ", !!props.value)
+    // console.log("=== icon_left_visible === 3 ", !!input_value)
 
     var ret = "not defined!!!"
     if(!!props.icon_left_component){
@@ -99,7 +99,7 @@ function TextInput  (props) {
 
     const icon_left_must_show =ret;
 
-    console.log("=== icon_left_must_show === ", icon_left_must_show)
+    // console.log("=== icon_left_must_show === ", icon_left_must_show)
 
     const [icon_right_pressed, set_icon_right_pressed] = useState(false)
 
@@ -128,8 +128,6 @@ function TextInput  (props) {
     // const [input_props, set_input_props] = useState(props)
 
     const [css_label_focused_right, set_css_label_focused_right] = useState({})
-
-
 
 
     const [label_text, set_label_text] = useState(props.label_text)
