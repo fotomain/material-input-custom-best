@@ -42,7 +42,7 @@ function Com_row1_search () {
             set_input_value1(Date.now())
         }}>Change</button>
 
-        <div>{input_value1}</div>
+        <div>{(input_value1)?input_value1:'- - -'}</div>
         <TextInput
 
             id={'input_filter_posts_string'+Date.now()}

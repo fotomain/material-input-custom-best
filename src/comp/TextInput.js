@@ -14,6 +14,15 @@ function TextInput  (props) {
     // console.log("=== props")
     // console.log(props)
     console.log("=== props.value ", props.value)
+    var props_variant=null;
+    switch (true) {
+        case (!!props.value && !!props.onChange) : props_variant='v_c'; break
+        case ( !props.value &&  !props.onChange) : props_variant='n_n'; break
+        case ( !props.value && !!props.onChange) : props_variant='n_c'; break
+        case (!!props.value &&  !props.onChange) : props_variant='v_n'; break
+    }
+
+    console.log("=== props_variant",props_variant)
 
     // (null!=props.value)?(props.value):
     const  defaultValue = (props.value)?props.value:props.defaultValue;
@@ -22,7 +31,10 @@ function TextInput  (props) {
     const [input_value, set_input_value] = useState(
         (props.value)?props.value:props.defaultValue
     )
-    const [input_is_full, set_input_is_full] = useState(!!props.value)
+    const [input_is_full, set_input_is_full] = useState(
+        (!!props.value || !!input_value)
+    )
+    console.log('=== input_is_full',input_is_full)
 
     const [input_focused, set_input_focused] = useState(!!props.value)
 
@@ -56,8 +68,39 @@ function TextInput  (props) {
     )
 
     const [icon_left_visible, set_icon_left_visible] = useState(
-        props.icon_left_component && (!!props.value || !!input_value)
+        (!!props.icon_left_component && (!!props.value || !!input_value))
     )
+
+    console.log("=== icon_left_visible",icon_left_visible)
+    console.log("=== icon_left_visible === ",!!props.icon_left_component && (!!props.value || !!input_value))
+    console.log("=== icon_left_visible === 1 ", !!props.icon_left_component )
+    console.log("=== icon_left_visible === 2 ", !!props.value)
+    console.log("=== icon_left_visible === 3 ", !!input_value)
+
+    var ret = "not defined!!!"
+    if(!!props.icon_left_component){
+
+            if((!!props.value || !!input_value)){
+                ret=true
+            }
+            else {
+
+                if(input_focused){
+                    ret=true
+                }
+                else {
+                    ret=false
+                }
+            }
+
+    }
+    else {
+        ret = false
+    }
+
+    const icon_left_must_show =ret;
+
+    console.log("=== icon_left_must_show === ", icon_left_must_show)
 
     const [icon_right_pressed, set_icon_right_pressed] = useState(false)
 
@@ -66,7 +109,10 @@ function TextInput  (props) {
     )
 
     const [icon_left_component, set_icon_left_component] = useState(
-        props.icon_left_component
+        !!props.icon_left_component
+    )
+    const [icon_right_component, set_icon_right_component] = useState(
+        !!props.icon_left_component
     )
 
     const [icon_hovered, set_icon_hovered] = useState(false)
@@ -109,7 +155,7 @@ function TextInput  (props) {
             'alignItems': 'center',
             'justifyContent':'left',
             'gap': (
-                (input_variant=='standard' && !icon_left_visible )?'0':'4px'
+                (input_variant=='standard' && !icon_left_must_show )?'0':'4px'
             ),
 
 
@@ -437,7 +483,7 @@ function TextInput  (props) {
 
                 id={uniq_container_mui_id}
                 // className={"css_container_mui"}
-                style={(input_focused || props.value || input_value )?css_container_focused:css_container}
+                style={(input_focused)?css_container_focused:css_container}
                 onClick={(e)=>{
                     // console.log("=== label onClick ")
                     console.log("=== DIV LOCAL pressed -> icon_right_pressed", icon_right_pressed)
@@ -445,17 +491,21 @@ function TextInput  (props) {
                 }}
             >
 
-                {(icon_left_visible)?
+                {/*{(icon_left_visible || (!!props.icon_left_component && (!!props.value || !!input_value)) )?*/}
+                {/*    <div     style={{marginRight:'5px'}}></div>*/}
+                {/*    : ("standard"==props.input_variant)?*/}
+                {/*        ''*/}
+                {/*        :*/}
+                {/*        <div     style={{marginRight:'1px'}}></div>*/}
+                {/*}*/}
+
+                {(!icon_left_must_show)?'':
                     <div     style={{marginRight:'5px'}}></div>
-                    : ("standard"==props.input_variant)?
-                        ''
-                        :
-                        <div     style={{marginRight:'1px'}}></div>
                 }
 
 
 
-                {(!icon_left_visible)?'':
+                {( !icon_left_must_show )?'':
                     <div id={'icon_left111'}
                          style={css_icon}
 
@@ -502,20 +552,24 @@ function TextInput  (props) {
                         onFocus={(e)=>{
                             console.log("=== input onFocus ")
                             set_input_focused(true)
-                            if(icon_left_component) {
-                                set_icon_left_visible(true)
-                                set_icon_right_visible(true)
-                            }
+                            // if(icon_left_component) {
+                            //     set_icon_left_visible(true)
+                            // }
+                            // if(icon_right_component) {
+                            //     set_icon_right_visible(true)
+                            // }
                         }}
                         onBlur={(e)=>{
                             set_input_focused(false)
                             set_input_changed(null)
-                            if (!input_value){
-                                if(icon_left_component) {
-                                    set_icon_left_visible(false)
-                                    set_icon_right_visible(false)
-                                }
-                            }
+
+                                // if(!(!!props.icon_left_component &&  (!!props.value || !!input_value))) {
+                                //     set_icon_left_visible(false)
+                                // }
+                                // if(!(!!props.icon_left_component &&  (!!props.value || !!input_value))) {
+                                //     set_icon_right_visible(false)
+                                // }
+
 
                         }}
                         onChange={(e)=>{
@@ -535,7 +589,7 @@ function TextInput  (props) {
                     </input>
 
 
-                {(!icon_right_visible)?'':
+                {( !icon_left_must_show )?'':
                     <div id={'icon_right111'}
                          style={css_icon}
                          onClick={(e)=>{
