@@ -52,9 +52,8 @@ function TextInput  (props) {
     const uniq_container_mui_id = ((props.id)?props.id:"uniq_container_mui_" + id_local)
     const uniq_input1_id = ((props.id)?props.id:"uniq_input1_" + id_local)
 
-    const [input_variant, set_input_variant] = useState(
-        (!props.input_variant)?'standard':props.input_variant
-    )
+    const input_variant = (!props.input_variant)?'standard':props.input_variant
+
 
     const [label_font_size, set_label_font_size] = useState(
         (props.label_font_size)?props.label_font_size:'1rem'
@@ -146,6 +145,12 @@ function TextInput  (props) {
 
     const helper_text_style = (props.helper_text_style)?props.helper_text_style:{}
 
+    var t_gap = '0px'
+    switch (true) {
+        case ((input_variant=='standard') && !icon_left_must_show) : t_gap = '0px'; break
+        default: t_gap = '4px'
+    }
+
     var css_container =
         {
             'display': 'flex',
@@ -155,7 +160,7 @@ function TextInput  (props) {
             'alignItems': 'center',
             'justifyContent':'left',
             'gap': (
-                (input_variant=='standard' && !icon_left_must_show )?'0':'4px'
+                t_gap
             ),
 
 
@@ -450,7 +455,7 @@ function TextInput  (props) {
         }
 
         if (props.onChange) {
-            props.onChange(input_changed)
+            props.onChange(new_value)
         }
 
 
@@ -499,10 +504,9 @@ function TextInput  (props) {
                 {/*        <div     style={{marginRight:'1px'}}></div>*/}
                 {/*}*/}
 
-                {(!icon_left_must_show)?'':
+                {(!(icon_left_must_show || ("standard"!=input_variant) ))?'':
                     <div     style={{marginRight:'5px'}}></div>
                 }
-
 
 
                 {( !icon_left_must_show )?'':
@@ -546,7 +550,9 @@ function TextInput  (props) {
                         style={(input_focused)?css_input_focused:css_input}
 
                         ref ={ref_input}
-                        value={props.value}
+                        value={(
+                            "v_n"==props_variant || "v_c"==props_variant
+                        )?props.value:input_value}
                         id={uniq_input1_id}
 
                         onFocus={(e)=>{
@@ -574,9 +580,16 @@ function TextInput  (props) {
                         }}
                         onChange={(e)=>{
 
-                            console.log("=== LOCAL onChange ")
-                            if(props.onChange) {
+                            console.log("=== LOCAL onChange ", props_variant)
+
+                            if( "n_c"==props_variant || "v_c"==props_variant){
                                 props.onChange(e)
+                            } else {
+                                if("v_n"==props_variant){
+                                    alert('=== Warning! props.onChange no defined for input  '
+                                        +((props.id)?' with id: '+props.id:'')
+                                    )
+                                }
                             }
                             set_input_value_timeouter(e)
 

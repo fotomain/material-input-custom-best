@@ -85,7 +85,7 @@ function Com_row1_search () {
                     onClick={(e)=>{
 
                         console.log('=== GLOBAL icon_left_component 11111'+Date.now())
-                        set_input_value('')
+                        // set_input_value('')
 
                     }}
 
@@ -109,7 +109,73 @@ function Com_row1_search () {
 
         <br/>
 
-        {(true)?'':
+        <TextInput
+
+            id={'input_filter_posts_string1'+Date.now()}
+            // value={'email@email.com'}
+            value={input_value1}
+
+            // defaultValue={'ggg'}
+
+            onChange={(e)=>{
+
+
+                if(e?.target) {
+                    console.log("=== upper onChange  target ")
+                    set_input_value1(e.target.value)
+                }
+                else {
+                    console.log("=== upper onChange  value ")
+                    set_input_value1(e)
+                }
+
+                clearTimeout(timer1)
+
+                const newTimer = setTimeout(()=>{
+
+                    //    api
+                    console.log("=== api",e)
+
+                },500)
+
+                set_timer1(newTimer)
+
+            }}
+
+            label_text={'input email please...'}
+            type="email"
+            icon_left_component = {
+                <FontAwesomeIcon
+
+                    icon={faClose}
+                    onClick={(e)=>{
+
+                        console.log('=== GLOBAL icon_left_component 11111'+Date.now())
+                        // set_input_value('')
+
+                    }}
+
+                />
+            }
+
+            icon_right_component = {
+                <FontAwesomeIcon
+
+                    icon={faSearch}
+                    onClick={(e)=>{
+
+                        console.log('=== GLOBAL icon_right_component 55555'+Date.now())
+
+                    }}
+
+                />
+            }
+
+        />
+
+        <br/>
+
+        {(false)?'':
             <div>
         <TextInput
 
@@ -238,7 +304,7 @@ function Com_row1_search () {
 
             <TextInput
                 // className={'input_left'}
-                // id={'id1'}
+                id={'id1'}
 
                 input_variant={'outlined'}
 
