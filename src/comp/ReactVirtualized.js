@@ -5,6 +5,12 @@ import { List } from "react-virtualized";
 
 function ReactVirtualized () {
 
+    const list_rowHeight = 120
+    // const card_Height = '100px'
+    const [card_Height, set_card_Height] = useState(100);
+    //=== auto start end
+    const [settings_scrollToAlignment, set_settings_scrollToAlignment] = useState('center');
+
     const data000 = new Array(1000).fill().map((value, index) => ({
         id: index,
         name: faker.name.firstName(5),
@@ -16,6 +22,7 @@ function ReactVirtualized () {
         name: faker.name.firstName(5),
         body: faker.lorem.paragraph(1).substring(1,40),
     })));
+
     const itemsPerPage = 20;
     const [hasMore, setHasMore] = useState(true);
     const [records, setrecords] = useState(itemsPerPage);
@@ -23,10 +30,33 @@ function ReactVirtualized () {
     const renderRow = ({ index, key, style }) => (
         // style={{paddingTop: '20px', paddingBottom: '20px'}}
 
-            <div  key={key} style={{...style,paddingTop: '20px'}} className="post">
-                <h5>{`${data_list[index].name}-${data_list[index].id}`}</h5>
+            <div  key={key} style={{...style,
+                // style_conteiner_row
+                // border:'1px solid blue',
 
-                <p>{data_list[index].body}</p>
+                }}
+                  className="post">
+
+                <div
+                    // style_conteiner_card
+                    style={{
+                    border:'1px solid red',
+                    paddingLeft:'10px',
+
+                    marginTop: '5px',
+                    borderRadius: '10px',
+
+                    height:card_Height,
+
+                    display:'flex',
+                    flexDirection:'row',
+                    gap:'10px',
+
+
+                }} >
+                    <h5 style={{flex:1}}>{`${data_list[index].name}-${data_list[index].id}`}</h5>
+                    <p style={{flex:2}} >{data_list[index].body}</p>
+                </div>
 
             </div>
 
@@ -98,17 +128,20 @@ function ReactVirtualized () {
         }}>Add__Down</button>
 
 
-        {/*<section style={{ overflow: 'scroll', width:'80%', height:'600px', display: 'grid', gap: '2rem' }}>*/}
+        {/*<section style={{ overflow: 'scroll', width:'8 0%', height:'600px', display: 'grid', gap: '2rem' }}>*/}
 
 
             <List
+                // style={{marginTop: '3px'}}
                 ref={tableRef}
                 width={300}
                 height={500}
                 rowRenderer={renderRow}
                 rowCount={data_list.length}
-                rowHeight={120}
+                rowHeight={list_rowHeight}
                 scrollToIndex={row_index_to_scroll}
+                scrollToAlignment={settings_scrollToAlignment}
+                useDragHandle
             />
         {/*</section>*/}
 
