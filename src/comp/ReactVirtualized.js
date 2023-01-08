@@ -68,6 +68,25 @@ function ReactVirtualized () {
             console.log(111)
 
             const t_id = Date.now()
+            // const t_random = 0
+            const t_random = Math.round((Math.random()*999))
+            console.log(t_random)
+
+            data_list.splice(t_random,0,
+                {
+                    id: t_id,
+                    name: faker.name.firstName(5),
+                    body: faker.lorem.paragraph(1).substring(1,40),            })
+            set_data_list(data_list)
+            set_selected_id(t_id)
+            set_row_index_to_scroll(t_random)
+        }}>Add__Random</button>
+
+
+        <button onClick={(e)=>{
+            console.log(111)
+
+            const t_id = Date.now()
             data_list.push(
                 {
                     id: t_id,
