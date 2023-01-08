@@ -34,15 +34,17 @@ function ReactVirtualized () {
     )
 
     const tableRef = useRef();
-    const [selectedIndex, setSelectedIndex] = useState(-1);
+    const [selected_id, set_selected_id] = useState(-1);
+    const [row_index_to_scroll, set_row_index_to_scroll] = useState(-1);
 
     useEffect(
         () => {
             if(tableRef) {
-                tableRef.current.recomputeRowHeights();
+                // tableRef.current.recomputeRowHeights();
+
             }
         },
-        [selectedIndex]
+        [selected_id]
     );
 
     return(
@@ -51,16 +53,32 @@ function ReactVirtualized () {
         <button onClick={(e)=>{
             console.log(111)
 
-            const t_index = Date.now()
+            const t_id = Date.now()
             data_list.unshift(
             {
-                id: t_index,
+                id: t_id,
                 name: faker.name.firstName(5),
                 body: faker.lorem.paragraph(1).substring(1,40),            })
             set_data_list(data_list)
-            setSelectedIndex(t_index)
+            set_selected_id(t_id)
+            set_row_index_to_scroll(1)
         }}>Add____Up</button>
-        <button>Add__Down</button>
+
+        <button onClick={(e)=>{
+            console.log(111)
+
+            const t_id = Date.now()
+            data_list.push(
+                {
+                    id: t_id,
+                    name: faker.name.firstName(5),
+                    body: faker.lorem.paragraph(1).substring(1,40),            })
+            set_data_list(data_list)
+            set_selected_id(t_id)
+            set_row_index_to_scroll(data_list.length-1)
+        }}>Add__Down</button>
+
+
         {/*<section style={{ overflow: 'scroll', width:'80%', height:'600px', display: 'grid', gap: '2rem' }}>*/}
 
 
@@ -71,6 +89,7 @@ function ReactVirtualized () {
                 rowRenderer={renderRow}
                 rowCount={data_list.length}
                 rowHeight={120}
+                scrollToIndex={row_index_to_scroll}
             />
         {/*</section>*/}
 
