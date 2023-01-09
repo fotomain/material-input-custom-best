@@ -3,15 +3,21 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import faker from 'faker'
 
-function ReactVirtualized () {
+// DOC https://codesandbox.io/s/slack-basic-clone-forked-tvck8b?file=/src/App.css:0-167
+
+function ReactBeautifulDND () {
 
     const grid = 16;
 
+    const [end_number, set_end_number] = useState(10);
+    const [show_data, set_show_data] = useState(null);
 
     const getListStyle = isDraggingOver => ({
         background: isDraggingOver ? "lightblue" : "lightgrey",
         padding: grid,
-        width: 250
+        height: 500,
+        width: 250,
+        overflow:'auto',
     });
 
 
@@ -21,7 +27,7 @@ function ReactVirtualized () {
             content: `item ${k}`
         }));
 
-    const [items, set_items] = useState(getItems(10));
+    const [items, set_items] = useState(getItems(end_number));
 
     const getItemStyle = (isDragging, draggableStyle) => ({
         // some basic styles to make the items look a bit nicer
@@ -58,10 +64,47 @@ function ReactVirtualized () {
         set_items(items1)
     }
 
+     useEffect(() => {
+
+            const options = {
+                rootMargin: '0px',
+                threshold: 1.0
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    console.log(entry.intersectionRatio > 0 ? '=== YES visible  '+Date.now() : '=== NOT visible '+Date.now());
+                });
+            }, options);
+    //
+    //         // end_number
+             const first_element = document.querySelector('#item-'+(0))
+             const last_element = document.getElementById('div_item-'+(end_number-1))
+             // console.log("=== last_element",last_element)
+                if(last_element) {
+                    observer.observe(last_element);
+                }
+
+     },[end_number,show_data]);
+
+
     return(
 
-        <div className="app__container">
+        <div className={'main_grid'}>
 
+            <button onClick={(e)=>{
+                console.log(111)
+
+                // const t_id = Date.now()
+                // data_list.unshift(
+                //     {
+                //         id: t_id,
+                //         name: faker.name.firstName(5),
+                //         body: faker.lorem.paragraph(1).substring(1,40),            })
+                // set_data_list(data_list)
+                // set_selected_id(t_id)
+                // set_row_index_to_scroll(1)
+                //
+            }}>Add____Up</button>
 
         <DragDropContext onDragEnd={onDragEnd}>
             <div className="stack__container" >
@@ -71,6 +114,10 @@ function ReactVirtualized () {
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                         style={getListStyle(snapshot.isDraggingOver)}
+                        onScroll={(e)=>{
+                            // console.log(e)}
+                            set_show_data(e)
+                        }}
                     >
                         {items.map((item, index) => (
                             <Draggable  key={item.id} draggableId={item.id} index={index}>
@@ -100,4 +147,4 @@ function ReactVirtualized () {
 )
 
 }
-export default ReactVirtualized
+export default ReactBeautifulDND
