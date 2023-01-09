@@ -1,6 +1,6 @@
 ﻿import React, {createRef, useEffect, useRef, useState} from 'react';
 
-import Draggable from 'react-draggable'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import faker from 'faker'
 import { List } from "react-virtualized";
 
@@ -23,7 +23,7 @@ function ReactVirtualized () {
 
     // const [data_refs, set_data_refs] = useState(new Array(1000).fill().map((value, index) => ({  ref: useRef(null)  })));
 
-    const [under_data, set_under_data] = useState(null);
+    const [over_id, set_over_id] = useState('-');
     const [data_length, set_eata_length] = useState(data000.length);
     const data_refs = useRef([]);
     useEffect(() => {
@@ -44,66 +44,36 @@ function ReactVirtualized () {
     const [records, setrecords] = useState(itemsPerPage);
 
 
-    const onDrag_event = (e, data) => {
-        if(dragStartIndex) {
-            console.log('onDrag_event', e.type);
-            console.log(e.target.id);
-            console.log(e)
+    const onDrag_event = (e) => {
 
-        }
-    }
-    const onStart_event = (e, data) => {
-        console.log('onStart_event', e.type);
-        console.log({e, data});
-
-        console.log("=== e.target", e.target.name)
-        setdragStartIndex(e.target.id)
+        console.log('=== onDrag_event', e.target.id);
 
     }
-    const onMouseEnter_event = (e) => {
-        console.log('=== onMouseEnter_event'  )
-        set_under_data(e.target.id)
-    }
-    const onMouseLeave_event = (e) => {
-        console.log('=== onMouseLeave_event'  )
-        set_under_data('')
+
+    const onDragStart_event = (e) => {
+        console.log('=========== onStart_event', e.target.id);
+
     }
 
-    const onStop_event = (e, data) => {
-        console.log('onStop', e.type);
+    const onDragEnd_event = (e) => {
+        console.log('=========== onDragEnd_event', e.target.id);
 
-        console.log(dragStartIndex);
-        console.log("================ e ", e)
-        console.log(e.target.id);
-        console.log(e.clientY);
-
-
-
-        for (let i = 0; i <data_list.length ; i++) {
-            const el  = document.getElementById("id_"+i)
-
-            if(undefined == el){ continue; }
-
-            // console.log("===================================", el?.getBoundingClientRect())
-            // console.log(el)
-
-                const rect = el?.getBoundingClientRect();
-
-            if( ("id_"+i)!==e.target.id &&  rect && (rect.top <= e.clientY) && (e.clientY <= rect.bottom) ){
-
-                 console.log("================ el ", el)
-                 // console.log(e)
-                 // console.log(el)
-                 console.log(rect)
-                    console.log("=== element id_",i)
-            }
-        }
-
-        console.log(under_data);
-        // console.log(data);
-        // console.log(data.node.firstChild.id);
-        setdragStartIndex(0)
     }
+
+    const onDrop_event = (e) => {
+        console.log('=========== onDrop_event', e.target.id);
+    }
+
+    const onTouchStart_event = (e) => {
+        console.log('=========== onTouchStart_event', e.target.id);
+    }
+    const onTouchMove_event = (e) => {
+        console.log('=========== onTouchMove_event', e.target.id);
+        console.log('=========== e', e);
+    }
+
+
+
 
     // TODO onTouchStart
 
@@ -117,9 +87,6 @@ function ReactVirtualized () {
         const  ref1 = createRef()
 
         return (
-
-
-
 
             // style={{paddingTop: '20px', paddingBottom: '20px'}}
 
@@ -166,30 +133,31 @@ function ReactVirtualized () {
             //                 </div>
             //     </Draggable>
 
-            <Draggable
-                       axis={'y'}
-                       nodeRef={ref1}
-                       id={'id_'+key}
-                       key={key}
-                       onDrag={onDrag_event}
-                       onStart={onStart_event}
-                       onStop={onStop_event}
-                       onMouseEnter={(e)=>{
-                           console.log(111111111)}}
-                       onMouseLeave={(e)=>{
-                           console.log(5555555)}}
-            >
+                    <div
+                        style={{touchAction: true}}
+                        key={key}
+                        id={'id_'+index}
+                        ref = {ref1}
+                        onDrag={onDrag_event}
+                        onDragStart={onDragStart_event}
+                        onDragEnd={onDragEnd_event}
+                        onDragOver={(e)=>{
+                            // console.log(e.target.id)
+                            set_over_id(e.target.id)
+                            e.preventDefault()
+                        }
+                        }
+                        onDrop={onDrop_event}
+                        draggable={true}
 
-                <div
-                    key={key}
-                    id={'id_'+index}
-                    ref = {ref1}
+
+                        onTouchStart={onTouchStart_event}
+                        onTouchMove={onTouchMove_event}
+
                     >
-                    ddddd {index}
+                        ddddd {index}
 
-                </div>
-
-            </Draggable>
+                    </div>
 
         )
     }
@@ -208,6 +176,18 @@ function ReactVirtualized () {
         },
         [selected_id]
     );
+
+    function handleOnDragEnd(result) {
+        console.log("=== result ",result)
+        // if (!result.destination) return;
+        //
+        // const items = Array.from(characters);
+        // const [reorderedItem] = items.splice(result.source.index, 1);
+        // items.splice(result.destination.index, 0, reorderedItem);
+        //
+        // updateCharacters(items);
+    }
+
 
     return(
 
@@ -263,22 +243,26 @@ function ReactVirtualized () {
             set_row_index_to_scroll(data_list.length-1)
         }}>Add__Down</button>
 
+        <p>over_id = {over_id}</p>
+
 
         {/*<section style={{ overflow: 'scroll', width:'8 0%', height:'600px', display: 'grid', gap: '2rem' }}>*/}
 
 
-            <List
-                // style={{marginTop: '3px'}}
-                ref={tableRef}
-                width={300}
-                height={500}
-                rowRenderer={renderRow}
-                rowCount={data_list.length}
-                rowHeight={list_rowHeight}
-                scrollToIndex={row_index_to_scroll}
-                scrollToAlignment={settings_scrollToAlignment}
-                useDragHandle
-            />
+                        <List
+                            // style={{marginTop: '3px'}}
+                            width={300}
+                            height={500}
+                            rowRenderer={renderRow}
+                            rowCount={data_list.length}
+                            rowHeight={list_rowHeight}
+                            scrollToIndex={row_index_to_scroll}
+                            scrollToAlignment={settings_scrollToAlignment}
+                            useDragHandle
+                        />
+
+
+
         {/*</section>*/}
 
     </div> // return
