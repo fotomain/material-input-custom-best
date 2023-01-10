@@ -5,7 +5,9 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import faker from 'faker'
 // import './ReactBeautifulDND.css';
 
-
+// todo
+// add item up down
+// del item
 
 function ReactBeautifulDND () {
 
