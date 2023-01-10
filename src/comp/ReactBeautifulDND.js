@@ -15,23 +15,12 @@ import bkg1 from "./images_main/bkg1.jpg";
 // pallete http://localhost:3000/
 
 // TONY
-// rgb(23, 74, 91);
+// click item - show del button
+//     set_card_is_last_toched_index
 
-// black = #203c48
-// action = #ec3540
-// gradient = #e9e9ef #fa4da3
+// select many csrds mode
+//     set_card_is_in select many csrds mode
 
-// #fa4da3
-// #ec3540
-// #e9e9ef
-// #e9e9ef ##ecc9d5 #fa4da3
-
-
-// .color1 {color: #ffaf9e;}
-// .color2 {color: #ffc884;}
-// .color3 {color: #006990;}
-// .color4 {color: #009f92;}
-// .color5 {color: #2fd69e;}
 // del item
 //      from array
 //      from node

@@ -6,6 +6,8 @@ import InfiniteScrollModel from "./comp/InfiniteScrollModel";
 import ReactVirtualized from "./comp/ReactBeautifulDND";
 import ReactBeautifulDND from "./comp/ReactBeautifulDND";
 
+import bkg1 from "./comp/images_main/bkg1.jpg";
+
 // npm start
 
 // npm i --save @fortawesome/fontawesome-svg-core
@@ -16,7 +18,7 @@ import ReactBeautifulDND from "./comp/ReactBeautifulDND";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{backgroundImage: 'url(' + bkg1 + ')',}}>
 
         <ReactBeautifulDND />
         {/*<InfiniteScrollModel />*/}
