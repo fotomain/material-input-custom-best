@@ -1,42 +1,55 @@
 ﻿import React, {createRef, useEffect, useRef, useState} from 'react';
 
+// DOC https://codesandbox.io/s/slack-basic-clone-forked-tvck8b?file=/src/App.css:0-167
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import faker from 'faker'
+// import './ReactBeautifulDND.css';
 
-// DOC https://codesandbox.io/s/slack-basic-clone-forked-tvck8b?file=/src/App.css:0-167
+
 
 function ReactBeautifulDND () {
 
-    const grid = 16;
+    const card_container_heigth = 16;
 
-    const [end_number, set_end_number] = useState(10);
+    const items_portion =6
+
+    const [do_add_items, set_do_add_items] = useState(false);
+    const [end_number, set_end_number] = useState(items_portion);
     const [show_data, set_show_data] = useState(null);
 
-    const getListStyle = isDraggingOver => ({
-        background: isDraggingOver ? "lightblue" : "lightgrey",
-        padding: grid,
+
+
+    const getItems = (count1, count2) =>
+        Array.from({ length: (count2-count1) }, (v, k) => k).map(k => ({
+            id: `item-${count1+k}`,
+            content: `item ${count1+k}`
+        }));
+
+    const [items, set_items] = useState(getItems(0,end_number));
+
+    console.log("=== items ")
+    console.log(items)
+
+
+    const color1 = "rgba(165, 97, 42, 0.41)"
+    const color2 = "rgba(165, 97, 42, 0.26)"
+
+    const list_container_style = isDraggingOver => ({
+        background: isDraggingOver ? color1:color2,
+        padding: card_container_heigth,
         height: 500,
         width: 250,
         overflow:'auto',
     });
 
-
-    const getItems = count =>
-        Array.from({ length: count }, (v, k) => k).map(k => ({
-            id: `item-${k}`,
-            content: `item ${k}`
-        }));
-
-    const [items, set_items] = useState(getItems(end_number));
-
-    const getItemStyle = (isDragging, draggableStyle) => ({
+    const card_container_style = (isDragging, draggableStyle) => ({
         // some basic styles to make the items look a bit nicer
         userSelect: "none",
-        padding: grid * 2,
-        margin: `0 0 ${grid}px 0`,
+        padding: card_container_heigth * 2,
+        margin: `0 0 ${card_container_heigth}px 0`,
 
         // change background colour if dragging
-        background: isDragging ? "lightgreen" : "grey",
+        background: isDragging ? "rgba(165, 97, 42, 0.17)" : "white",
 
         // styles we need to apply on draggables
         ...draggableStyle
@@ -64,6 +77,35 @@ function ReactBeautifulDND () {
         set_items(items1)
     }
 
+    useEffect(() => {
+
+        if(do_add_items){
+
+            var items2 = getItems(end_number,(end_number + items_portion))
+            console.log("=== items2 ")
+            console.log(items2)
+            var nn = [...items]
+            nn = [...items2]
+            // console.log("=== nn ",nn)
+            // set_items((prev)=>[...prev,...nn])
+            set_items(prev=>{
+
+                return [...prev, ...items2]
+
+            })
+
+            set_end_number(prev=> {
+                return prev+items_portion
+            })
+
+            set_do_add_items(false)
+        }
+
+        return () => {
+
+        };
+    }, [do_add_items]);
+
      useEffect(() => {
 
             const options = {
@@ -72,7 +114,13 @@ function ReactBeautifulDND () {
             };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    console.log(entry.intersectionRatio > 0 ? '=== YES visible  '+Date.now() : '=== NOT visible '+Date.now());
+                    if(entry.intersectionRatio > 0){
+                        console.log('=== YES visible item '+end_number+"   "+Date.now());
+                        set_do_add_items(true)
+                    }else{
+                        console.log('=== NOT visible item '+end_number+"   "+Date.now());
+                    }
+
                 });
             }, options);
     //
@@ -83,6 +131,10 @@ function ReactBeautifulDND () {
                 if(last_element) {
                     observer.observe(last_element);
                 }
+
+             return () => {
+                 observer.disconnect();
+             };
 
      },[end_number,show_data]);
 
@@ -113,7 +165,7 @@ function ReactBeautifulDND () {
                     <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        style={getListStyle(snapshot.isDraggingOver)}
+                        style={list_container_style(snapshot.isDraggingOver)}
                         onScroll={(e)=>{
                             // console.log(e)}
                             set_show_data(e)
@@ -126,7 +178,7 @@ function ReactBeautifulDND () {
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
-                                        style={getItemStyle(
+                                        style={card_container_style(
                                             snapshot.isDragging,
                                             provided.draggableProps.style
                                         )}

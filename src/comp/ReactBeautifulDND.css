@@ -1,4 +1,10 @@
-﻿/*.stack__container {*/
+﻿
+.colors {
+    color: rgba(165, 97, 42, 0.26);
+    color: rgba(165, 97, 42, 0.41);
+    color: rgba(165, 97, 42, 0.17);
+}
+/*.stack__container {*/
 /*    display: flex;*/
 /*    flex-direction: column;*/
 /*    align-items: center;*/
