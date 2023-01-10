@@ -7,6 +7,7 @@ import ReactVirtualized from "./comp/ReactBeautifulDND";
 import ReactBeautifulDND from "./comp/ReactBeautifulDND";
 
 import bkg1 from "./comp/images_main/bkg1.jpg";
+import ReactVirtualizedBeautiful from "./comp/ReactVirtualizedBeautiful";
 
 // npm start
 
@@ -20,7 +21,8 @@ function App() {
   return (
     <div className="App" style={{backgroundImage: 'url(' + bkg1 + ')',}}>
 
-        <ReactBeautifulDND />
+        <ReactVirtualizedBeautiful />
+        {/*<ReactBeautifulDND />*/}
         {/*<InfiniteScrollModel />*/}
         {/*<Row1Search />*/}
         {/*<Home1AnimeTextCircle />*/}
