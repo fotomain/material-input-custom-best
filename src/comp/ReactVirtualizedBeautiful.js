@@ -1,4 +1,8 @@
 ﻿
+// === DOC https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/patterns/virtual-lists.md
+// === DOC image
+// https://upmostly.com/tutorials/react-background-image
+
 import React,  {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 
@@ -7,7 +11,7 @@ import { WindowScroller, List } from "react-virtualized";
 
 
 // ============= TODO
-//
+// last - to bottom mode scrollToIndex={row_index_to_scroll}
 // TONY pallete
 // flex 2 columns
 // background_image_base64
@@ -81,8 +85,9 @@ function ReactVirtualized () {
         }
     }
 
-    const get_data_list = (count1, count2) => Array(1000).fill().map((value, index) => ({
-        id: index.toString(),
+    const get_data_list = (count1, count2) =>
+        Array.from({ length: (count2-count1) }, (v, k) => k).map(k => ({
+        id: (count1+k).toString(),
         name: faker.name.firstName(5),
         body: faker.lorem.paragraph(1).substring(1,40),
         style_normal: {
@@ -93,7 +98,7 @@ function ReactVirtualized () {
 
             backgroundColor:'yellow',
         },
-    }));
+        }));
 
     const items_portion_to_add = 10
 
@@ -116,7 +121,7 @@ function ReactVirtualized () {
 
                 {(provided, snapshot) => {
 
-                    console.log(snapshot.isDragging + ' ' + Date.now())
+                    // console.log(snapshot.isDragging + ' ' + Date.now())
 
                     const style1 = {
                         ...provided.draggableProps.style,
@@ -171,13 +176,15 @@ function ReactVirtualized () {
             result.source.index,
             result.destination.index,
         );
-        // set_data_list(newRows);
+        set_data_list(newRows);
     }
 
     const reorder = (list , startIndex, endIndex) => {
+        console.log("=== list ",list)
         const result = Array.from(list);
         const [removed] = result.splice(startIndex, 1);
         result.splice(endIndex, 0, removed);
+        console.log("=== result ",result)
         return result;
     };
 
@@ -243,7 +250,7 @@ function ReactVirtualized () {
                 set_data_list(data_list)
                 set_selected_id(t_id)
 
-                set_row_index_to_scroll(nn+1)
+                set_row_index_to_scroll(nn-1)
                 console.log("=== nn ",nn)
 
             }}>Add__Down</button>
@@ -270,11 +277,21 @@ function ReactVirtualized () {
                     )}
                 >
                     {(droppableProvided) => (
-                        <WindowScroller>
+                        <WindowScroller
+
+                        >
                             {({ height, isScrolling, onChildScroll, scrollTop }) => (
 
 
                                 <List
+                                    // autoHeight
+                                    width={300}
+                                    // height={height}
+                                    height={500}
+                                    isScrolling={isScrolling}
+                                    onScroll={onChildScroll}
+                                    scrollTop={scrollTop}
+
                                     style={list_style.list_container}
                                     ref={(ref) => {
                                         // react-virtualized has no way to get the list's ref that I can so
@@ -288,12 +305,16 @@ function ReactVirtualized () {
                                         }
                                     }}
 
-                                    width={300}
-                                    height={500}
+
+                                    // height={500}
                                     rowRenderer={getRowRender(data_list)}
                                     rowCount={data_list.length}
                                     rowHeight={120}
-                                    scrollToIndex={row_index_to_scroll}
+                                    // scrollToIndex={row_index_to_scroll}
+                                    scrollToIndex={{
+                                        index: row_index_to_scroll,
+                                        behavior: "smooth"
+                                    }}
                                 />
                             )}
                         </WindowScroller>

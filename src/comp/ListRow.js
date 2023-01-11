@@ -14,6 +14,7 @@ const getItemStyle = (isDragging, draggableStyle, style_normal, style_when_drug)
 
 
         {
+
             // some basic styles to make the items look a bit nicer
             userSelect: "none",
             // padding: grid * 2,
@@ -31,7 +32,7 @@ const getItemStyle = (isDragging, draggableStyle, style_normal, style_when_drug)
             pointerEvents: "auto",
             cursor: isDragging ? "all-scroll" : "pointer",
             // styles we need to apply on draggables
-            ...draggableStyle
+            ...draggableStyle,
         });
 }
 function getStyle(provided, style ) {
@@ -69,8 +70,8 @@ function ListRow  (props) {
 
     // console.log("=== row_data",row_data)
     //=== DOC !!! IF( isDragging ) style == UNDEF !!!
-    console.log("=== style",style)
-    console.log("=== isDragging",isDragging)
+    // console.log("=== style",style)
+    // console.log("=== isDragging",isDragging)
 
     return(
 
