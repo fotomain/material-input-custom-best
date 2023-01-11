@@ -8,6 +8,7 @@ import ReactBeautifulDND from "./comp/ReactBeautifulDND";
 
 import bkg1 from "./comp/images_main/bkg1.jpg";
 import ReactVirtualizedBeautiful from "./comp/ReactVirtualizedBeautiful";
+import bkg_app from "./comp/images_main/bkg3.jpg";
 
 // npm start
 
@@ -19,7 +20,13 @@ import ReactVirtualizedBeautiful from "./comp/ReactVirtualizedBeautiful";
 
 function App() {
   return (
-    <div className="App" style={{backgroundImage: 'url(' + bkg1 + ')',}}>
+    <div className="App"
+         style={{
+             backgroundRepeat: "no-repeat",
+             backgroundSize:'100% 100%',
+             backgroundImage: 'url(' + bkg_app + ')'
+         }}
+    >
 
         <ReactVirtualizedBeautiful />
         {/*<ReactBeautifulDND />*/}

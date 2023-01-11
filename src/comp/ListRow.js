@@ -12,10 +12,10 @@ function getStyle(provided, style ) {
 }
 
 
-function QuoteItem  (props) {
+function ListRow  (props) {
 
     const {
-        quote,
+        row_data,
         isDragging,
         // isGroupedOver,
         provided,
@@ -24,7 +24,7 @@ function QuoteItem  (props) {
         index,
     } = props;
 
-    console.log("=== quote",quote)
+    console.log("=== row_data",row_data)
 
     return(
 
@@ -45,11 +45,11 @@ function QuoteItem  (props) {
              // aria-label={`${quote.author.name} quote ${quote.content}`}
         >
 
-            {(!quote?.name)?'':
+            {(!row_data?.name)?'':
                 <div>
-                     <h5>{`${quote.name}-${quote.id}`}</h5>
+                     <h5>{`${row_data.name}-${row_data.id}`}</h5>
 
-                     <p>{quote.body}</p>
+                     <p>{row_data.body}</p>
                 </div>
             }
 
@@ -60,4 +60,4 @@ function QuoteItem  (props) {
 
 }
 
-export default QuoteItem
+export default ListRow

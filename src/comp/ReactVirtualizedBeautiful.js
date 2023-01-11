@@ -3,7 +3,10 @@ import React,  {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import faker from 'faker'
+
+// DOC CSS https://github.com/bvaughn/react-virtualized/blob/master/source/styles.css
 import { WindowScroller, List } from "react-virtualized";
+
 
 import {
     Droppable,
@@ -16,7 +19,7 @@ import {
          // DropResult,
 } from 'react-beautiful-dnd';
 // react-virtualized-beautiful-dnd
-import QuoteItem from "./QuoteItem";
+import ListRow from "./ListRow";
 
 function ReactVirtualized () {
 
@@ -26,8 +29,17 @@ function ReactVirtualized () {
         body: faker.lorem.paragraph(1),
     }));
 
+    // react-virtualized STYLES owerride
+    var list_style={
+        background:'white',
+        border:'1px solid white',
+        borderRadius:'10px',
+        marginTop:'10px',
+        marginBottom:'10px',
+    }
+
     const [data_list, set_data_list] = useState(new Array(1000).fill().map((value, index) => ({
-        id: index,
+        id: index.toString(),
         name: faker.name.firstName(5),
         body: faker.lorem.paragraph(1).substring(1,40),
     })));
@@ -35,19 +47,19 @@ function ReactVirtualized () {
     const [hasMore, setHasMore] = useState(true);
     const [records, setrecords] = useState(itemsPerPage);
 
-    const getRowRender  = ( quotes ) => ({ index, style }) => {
+    const getRowRender  = ( row_data_array ) => ({ index, style }) => {
 
-        const quote = quotes[index];
+        const row_data = row_data_array[index];
 
         return (
             <Draggable
-                draggableId={quote.id.toString()}
+                draggableId={row_data.id}
                 index={index}
-                key={quote.id}>
+                key={row_data.id}>
                 {(provided, snapshot) => (
-                    <QuoteItem
+                    <ListRow
                         provided={provided}
-                        quote={quote}
+                        row_data={row_data}
                         isDragging={snapshot.isDragging}
                         style={{ margin: 0, ...style }}
                         index={index}
@@ -170,7 +182,7 @@ function ReactVirtualized () {
                         snapshot  ,
                         rubric  ,
                     ) => (
-                        <QuoteItem
+                        <ListRow
                             provided={provided}
                             isDragging={snapshot.isDragging}
                             quote={data_list[rubric.source.index]}
@@ -179,36 +191,38 @@ function ReactVirtualized () {
                         />
                     )}
                 >
-                    {(droppableProvided) => (
-                        <WindowScroller>
-                            {({ height, isScrolling, onChildScroll, scrollTop }) => (
+                {(droppableProvided) => (
+                            <WindowScroller>
+                                {({ height, isScrolling, onChildScroll, scrollTop }) => (
 
 
-            <List
-                ref={(ref) => {
-                    // react-virtualized has no way to get the list's ref that I can so
-                    // So we use the `ReactDOM.findDOMNode(ref)` escape hatch to get the ref
-                    if (ref) {
-                        // eslint-disable-next-line react/no-find-dom-node
-                        const whatHasMyLifeComeTo = ReactDOM.findDOMNode(ref);
-                        if (whatHasMyLifeComeTo instanceof HTMLElement) {
-                            droppableProvided.innerRef(whatHasMyLifeComeTo);
-                        }
-                    }
-                }}
+                                <List
+                                    style={list_style}
+                                    ref={(ref) => {
+                                        // react-virtualized has no way to get the list's ref that I can so
+                                        // So we use the `ReactDOM.findDOMNode(ref)` escape hatch to get the ref
+                                        if (ref) {
+                                            // eslint-disable-next-line react/no-find-dom-node
+                                            const whatHasMyLifeComeTo = ReactDOM.findDOMNode(ref);
+                                            if (whatHasMyLifeComeTo instanceof HTMLElement) {
+                                                droppableProvided.innerRef(whatHasMyLifeComeTo);
+                                            }
+                                        }
+                                    }}
 
-                width={300}
-                height={500}
-                rowRenderer={getRowRender(data_list)}
-                rowCount={data_list.length}
-                rowHeight={120}
-                scrollToIndex={row_index_to_scroll}
-            />
+                                    width={300}
+                                    height={500}
+                                    rowRenderer={getRowRender(data_list)}
+                                    rowCount={data_list.length}
+                                    rowHeight={120}
+                                    scrollToIndex={row_index_to_scroll}
+
+                                />
                             )}
                                 </WindowScroller>
-                                )}
-                        </Droppable>
-                        </DragDropContext>
+                        )}
+                </Droppable>
+                </DragDropContext>
             {/*</section>*/}
 
         </div> // return

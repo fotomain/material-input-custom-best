@@ -7,7 +7,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import composeRefs from "@seznam/compose-react-refs";
 import faker from 'faker'
 
-import bkg1 from "./images_main/bkg1.jpg";
+import bkg_app from "./images_main/bkg3.jpg";
 
 // import './ReactBeautifulDND.css';
 
@@ -65,7 +65,7 @@ function ReactBeautifulDND () {
 
     const list_container_style = isDraggingOver => ({
         // background: isDraggingOver ? color1:color2,
-        backgroundImage: 'url(' + bkg1 + ')',
+        backgroundImage: 'url(' + bkg_app + ')',
         padding: card_container_padding,
         height: card_container_height,
         width: card_container_width,
