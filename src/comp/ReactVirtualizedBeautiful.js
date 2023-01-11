@@ -5,6 +5,28 @@ import ReactDOM from 'react-dom';
 import faker from 'faker'
 import { WindowScroller, List } from "react-virtualized";
 
+
+// ============= TODO
+//
+// TONY pallete
+// flex 2 columns
+// background_image_base64
+//      from asset
+// auto add
+// click item - show del button
+//     set_card_is_last_toched_index
+
+// select many csrds mode
+//     set_card_is_in select many csrds mode
+
+//
+// ============= DONE
+// search = as focus
+// stop load items after data_finished
+// add item up down
+
+
+//=== DOC CSS https://github.com/bvaughn/react-virtualized/blob/master/source/styles.css
 //=== DOC https://codesandbox.io/s/vertical-list-forked-ifl58?file=/index.js
 import {
     Droppable,
@@ -36,9 +58,6 @@ function ReactVirtualized () {
             paddingRight:'8px',
 
         },
-        row_container_when_drug: {
-            backgroundColor:'green',
-        },
         row_container: {
 
             marginTop: '5px',
@@ -62,20 +81,27 @@ function ReactVirtualized () {
         }
     }
 
-    const data000 = new Array(1000).fill().map((value, index) => ({
+    const get_data_list = (count1, count2) => Array(1000).fill().map((value, index) => ({
         id: index.toString(),
         name: faker.name.firstName(5),
-        body: faker.lorem.paragraph(1),
+        body: faker.lorem.paragraph(1).substring(1,40),
+        style_normal: {
+            background_image_base64:'/images_public/bkg3.jpg"',
+            backgroundColor:'teal',
+        },
+        style_when_drug: {
+
+            backgroundColor:'yellow',
+        },
     }));
 
-    const [data_list, set_data_list] = useState(new Array(1000).fill().map((value, index) => ({
-        id: index,
-        name: faker.name.firstName(5),
-        body: faker.lorem.paragraph(1).substring(1,40),
-    })));
-    const itemsPerPage = 20;
-    const [hasMore, setHasMore] = useState(true);
-    const [records, setrecords] = useState(itemsPerPage);
+    const items_portion_to_add = 10
+
+    const [end_number, set_end_number] = useState(items_portion_to_add);
+
+
+    const [data_list, set_data_list] = useState(get_data_list(0,end_number));
+
 
     const getRowRender  = ( row_data_array ) => ({ index, style }) => {
 
@@ -106,7 +132,7 @@ function ReactVirtualized () {
                         <ListRow
                             provided={provided}
                             // snapshot={snapshot}
-                            row_data={data_list[index]}
+                            row_array={data_list}
                             isDragging={snapshot.isDragging}
                             style={snapshot.isDragging?style1:style2}
                             index={index}
@@ -116,18 +142,6 @@ function ReactVirtualized () {
 
         );
     }
-    // (
-    //     // style={{paddingTop: '20px', paddingBottom: '20px'}}
-    //
-    //     <div  key={key} style={{...style,paddingTop: '20px'}} className="post">
-    //         <h5>{`${data_list[index].name}-${data_list[index].id}`}</h5>
-    //
-    //         <p>{data_list[index].body}</p>
-    //
-    //     </div>
-    //
-    //
-    // )
 
     const tableRef = useRef();
     const [selected_id, set_selected_id] = useState(-1);
@@ -157,7 +171,7 @@ function ReactVirtualized () {
             result.source.index,
             result.destination.index,
         );
-        set_data_list(newRows);
+        // set_data_list(newRows);
     }
 
     const reorder = (list , startIndex, endIndex) => {
@@ -175,48 +189,63 @@ function ReactVirtualized () {
             <button onClick={(e)=>{
                 console.log(111)
 
-                const t_id = Date.now()
+                const t_id = Date.now().toString()
                 data_list.unshift(
                     {
                         id: t_id,
                         name: faker.name.firstName(5),
-                        body: faker.lorem.paragraph(1).substring(1,40),            })
+                        body: faker.lorem.paragraph(1).substring(1,40),
+                        style_normal: {
+                            background_image_base64:'/images_public/bkg3.jpg"',
+                            backgroundColor:'teal',
+                        },
+                        style_when_drug: {
+
+                            backgroundColor:'yellow',
+                        },
+
+                    })
                 set_data_list(data_list)
                 set_selected_id(t_id)
-                set_row_index_to_scroll(1)
+                set_row_index_to_scroll(0)
+
             }}>Add____Up</button>
 
             <button onClick={(e)=>{
                 console.log(111)
 
-                const t_id = Date.now()
-                // const t_random = 0
-                const t_random = Math.round((Math.random()*999))
-                console.log(t_random)
 
-                data_list.splice(t_random,0,
-                    {
-                        id: t_id,
-                        name: faker.name.firstName(5),
-                        body: faker.lorem.paragraph(1).substring(1,40),            })
-                set_data_list(data_list)
-                set_selected_id(t_id)
-                set_row_index_to_scroll(t_random)
             }}>Add__Random</button>
 
 
             <button onClick={(e)=>{
-                console.log(111)
 
-                const t_id = Date.now()
+                console.log(222)
+
+                const t_id = Date.now().toString()
+                const nn = data_list.length-1
+                console.log("=== nn ",nn)
                 data_list.push(
                     {
                         id: t_id,
                         name: faker.name.firstName(5),
-                        body: faker.lorem.paragraph(1).substring(1,40),            })
+                        body: faker.lorem.paragraph(1).substring(1,40),
+                        style_normal: {
+                            background_image_base64:'/images_public/bkg3.jpg"',
+                            backgroundColor:'teal',
+                        },
+                        style_when_drug: {
+
+                            backgroundColor:'yellow',
+                        },
+
+                    })
                 set_data_list(data_list)
                 set_selected_id(t_id)
-                set_row_index_to_scroll(data_list.length-1)
+
+                set_row_index_to_scroll(nn+1)
+                console.log("=== nn ",nn)
+
             }}>Add__Down</button>
 
 
@@ -234,7 +263,7 @@ function ReactVirtualized () {
                         <ListRow
                             provided={provided}
                             isDragging={snapshot.isDragging}
-                            row_data={data_list[rubric.source.index]}
+                            row_array={data_list}
                             style={{ margin: 0 }}
                             index={rubric.source.index}
                         />

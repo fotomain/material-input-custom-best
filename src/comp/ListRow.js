@@ -1,12 +1,17 @@
+
 import React  from 'react';
 
 //=== DOC COOL https://stackblitz.com/edit/react-dpfmdi?file=src%2Fstyle.css
 import './ListRow.css';
+import bkg_app from "./images_main/bkg3.jpg";
 
-const getItemStyle = (isDragging, draggableStyle, style) => {
-    console.log("=== style2",style?.row_container_when_drug?.backgroundColor)
+const getItemStyle = (isDragging, draggableStyle, style_normal, style_when_drug) => {
+    // console.log("=== style_when_drug",style_when_drug)
+    // console.log("=== style_normal",style_normal)
     // background: isDragging ? style2.row_container_when_drug.backgroundColor : "grey",
     return (
+
+
 
         {
             // some basic styles to make the items look a bit nicer
@@ -17,7 +22,10 @@ const getItemStyle = (isDragging, draggableStyle, style) => {
 
             // change background colour if dragging
 
-            background: isDragging ? "lightgreen" : "grey",
+            background: isDragging ? style_when_drug.backgroundColor : style_normal.backgroundColor,
+            //=== DOC https://upmostly.com/tutorials/react-background-image
+            //
+            // backgroundImage: "'url(./images_main/bkg3.jpg)'",
             // background: isDragging ? "lightgreen" : "grey",
             border: isDragging ? "3px solid orange" : "none",
             pointerEvents: "auto",
@@ -48,7 +56,7 @@ function getStyle(provided, style ) {
 function ListRow  (props) {
 
     const {
-        row_data,
+        row_array,
         isDragging,
         // isGroupedOver,
         provided,
@@ -56,6 +64,8 @@ function ListRow  (props) {
         // isClone,
         index,
     } = props;
+
+    const row_data = row_array[index]
 
     // console.log("=== row_data",row_data)
     //=== DOC !!! IF( isDragging ) style == UNDEF !!!
@@ -76,11 +86,14 @@ function ListRow  (props) {
              {...provided.dragHandleProps}
             // style={(isDragging)?getStyle( provided, style.when_drug ):getStyle( provided, style )}
 
-             style={getItemStyle(
-                 isDragging,
-                 provided.draggableProps.style,
-                 style
-             )}
+             style={
+                 getItemStyle(
+                     isDragging,
+                     provided.draggableProps.style,
+                     row_data.style_normal,
+                     row_data.style_when_drug,
+                 )
+             }
 
             // style={getStyle( provided, style )}
              data-is-dragging={isDragging}
