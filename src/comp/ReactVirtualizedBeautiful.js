@@ -17,7 +17,7 @@ import {
     // DropResult,
 } from 'react-beautiful-dnd';
 // react-virtualized-beautiful-dnd
-import QuoteItem from "./ListRow";
+import ListRow from "./ListRow";
 
 function ReactVirtualized () {
 
@@ -103,7 +103,7 @@ function ReactVirtualized () {
                     };
 
                     return (
-                        <QuoteItem
+                        <ListRow
                             provided={provided}
                             // snapshot={snapshot}
                             row_data={data_list[index]}
@@ -231,7 +231,7 @@ function ReactVirtualized () {
                         snapshot  ,
                         rubric  ,
                     ) => (
-                        <QuoteItem
+                        <ListRow
                             provided={provided}
                             isDragging={snapshot.isDragging}
                             row_data={data_list[rubric.source.index]}
