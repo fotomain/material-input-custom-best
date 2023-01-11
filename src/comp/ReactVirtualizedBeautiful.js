@@ -3,25 +3,64 @@ import React,  {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import faker from 'faker'
-
-// DOC CSS https://github.com/bvaughn/react-virtualized/blob/master/source/styles.css
 import { WindowScroller, List } from "react-virtualized";
 
-
+//=== DOC https://codesandbox.io/s/vertical-list-forked-ifl58?file=/index.js
 import {
     Droppable,
     Draggable,
     DragDropContext,
-         // DroppableProvided,
-         // DraggableProvided,
-         // DraggableStateSnapshot,
-         // DraggableRubric,
-         // DropResult,
+    // DroppableProvided,
+    // DraggableProvided,
+    // DraggableStateSnapshot,
+    // DraggableRubric,
+    // DropResult,
 } from 'react-beautiful-dnd';
 // react-virtualized-beautiful-dnd
-import ListRow from "./ListRow";
+import QuoteItem from "./ListRow";
 
 function ReactVirtualized () {
+
+    const row_data_heigth = 100;
+
+    const list_style={
+        list_container: {
+            background: 'white',
+            border: '1px solid white',
+            borderRadius: '10px',
+
+            marginTop: '10px',
+            marginBottom: '10px',
+
+            paddingLeft:'8px',
+            paddingRight:'8px',
+
+        },
+        row_container_when_drug: {
+            backgroundColor:'green',
+        },
+        row_container: {
+
+            marginTop: '5px',
+            // marginLeft: '15px',
+            // marginRight: '15px',
+
+            backgroundColor: 'teal',
+            opacity: '0.8',
+
+            border:'1px solid red',
+
+            borderRadius: '10px',
+
+            height:row_data_heigth,
+
+            display:'flex',
+            flexDirection:'row',
+            gap:'10px',
+
+
+        }
+    }
 
     const data000 = new Array(1000).fill().map((value, index) => ({
         id: index.toString(),
@@ -29,17 +68,8 @@ function ReactVirtualized () {
         body: faker.lorem.paragraph(1),
     }));
 
-    // react-virtualized STYLES owerride
-    var list_style={
-        background:'white',
-        border:'1px solid white',
-        borderRadius:'10px',
-        marginTop:'10px',
-        marginBottom:'10px',
-    }
-
     const [data_list, set_data_list] = useState(new Array(1000).fill().map((value, index) => ({
-        id: index.toString(),
+        id: index,
         name: faker.name.firstName(5),
         body: faker.lorem.paragraph(1).substring(1,40),
     })));
@@ -49,22 +79,39 @@ function ReactVirtualized () {
 
     const getRowRender  = ( row_data_array ) => ({ index, style }) => {
 
-        const row_data = row_data_array[index];
+        const row_data_object = row_data_array[index];
+        // console.log("=== style111 ",style)
 
         return (
             <Draggable
-                draggableId={row_data.id}
+                draggableId={row_data_object.id.toString()}
                 index={index}
-                key={row_data.id}>
-                {(provided, snapshot) => (
-                    <ListRow
-                        provided={provided}
-                        row_data={row_data}
-                        isDragging={snapshot.isDragging}
-                        style={{ margin: 0, ...style }}
-                        index={index}
-                    />
-                )}
+                key={row_data_object.id}>
+
+                {(provided, snapshot) => {
+
+                    console.log(snapshot.isDragging + ' ' + Date.now())
+
+                    const style1 = {
+                        ...provided.draggableProps.style,
+                        ...list_style.row_container,
+                    };
+
+                    const style2 = {
+                        ...provided.draggableProps.style,
+                        ...list_style.row_container_when_drug,
+                    };
+
+                    return (
+                        <QuoteItem
+                            provided={provided}
+                            // snapshot={snapshot}
+                            row_data={data_list[index]}
+                            isDragging={snapshot.isDragging}
+                            style={snapshot.isDragging?style1:style2}
+                            index={index}
+                        />)
+                }}
             </Draggable>
 
         );
@@ -105,12 +152,12 @@ function ReactVirtualized () {
             return;
         }
 
-        const newQuotes = reorder(
+        const newRows = reorder(
             data_list,
             result.source.index,
             result.destination.index,
         );
-        set_data_list(newQuotes);
+        set_data_list(newRows);
     }
 
     const reorder = (list , startIndex, endIndex) => {
@@ -119,6 +166,8 @@ function ReactVirtualized () {
         result.splice(endIndex, 0, removed);
         return result;
     };
+
+
 
     return(
 
@@ -182,22 +231,22 @@ function ReactVirtualized () {
                         snapshot  ,
                         rubric  ,
                     ) => (
-                        <ListRow
+                        <QuoteItem
                             provided={provided}
                             isDragging={snapshot.isDragging}
-                            quote={data_list[rubric.source.index]}
+                            row_data={data_list[rubric.source.index]}
                             style={{ margin: 0 }}
                             index={rubric.source.index}
                         />
                     )}
                 >
-                {(droppableProvided) => (
-                            <WindowScroller>
-                                {({ height, isScrolling, onChildScroll, scrollTop }) => (
+                    {(droppableProvided) => (
+                        <WindowScroller>
+                            {({ height, isScrolling, onChildScroll, scrollTop }) => (
 
 
                                 <List
-                                    style={list_style}
+                                    style={list_style.list_container}
                                     ref={(ref) => {
                                         // react-virtualized has no way to get the list's ref that I can so
                                         // So we use the `ReactDOM.findDOMNode(ref)` escape hatch to get the ref
@@ -216,13 +265,12 @@ function ReactVirtualized () {
                                     rowCount={data_list.length}
                                     rowHeight={120}
                                     scrollToIndex={row_index_to_scroll}
-
                                 />
                             )}
-                                </WindowScroller>
-                        )}
+                        </WindowScroller>
+                    )}
                 </Droppable>
-                </DragDropContext>
+            </DragDropContext>
             {/*</section>*/}
 
         </div> // return
