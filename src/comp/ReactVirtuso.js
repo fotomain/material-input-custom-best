@@ -1,7 +1,7 @@
 ﻿
 import React, {useCallback, useEffect, useRef, useState} from 'react'
 
-import { Virtuoso } from 'react-virtuoso'
+import { Virtuoso as VList } from 'react-virtuoso'
 import faker from 'faker'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
@@ -92,9 +92,14 @@ function LRListRow({ provided, item, isDragging }) {
             padding: '4px'
         }}>
         <div style={{
-            border: '1px solid red',
+            backgroundColor: 'white',
+            boxShadow: '5px 5px 15px 0px rgb(135,115,115)',
+            // border: '1px solid magenta',
+            // border: '1.5px solid gray',
+            // border: '1.5px solid white',
             borderRadius: '15px',
-            height: (a===b)?'100px':'50px',
+            // height: (a===b)?'100px':'50px',
+            height: '100px',
             padding: '4px' }}>
             <div
                 {...provided.draggableProps}
@@ -221,7 +226,7 @@ export default function App() {
                 >
                     {(provided) => {
                         return (
-                            <Virtuoso
+                            <VList
                                 ref={main_list_ref}
                                 context={{ loadMore, loading }}
                                 components={{
@@ -230,7 +235,7 @@ export default function App() {
                                 }}
                                 scrollerRef={provided.innerRef}
                                 data={items}
-                                style={{ width: 300, height: 500 }}
+                                style={{ width: 300, height: 500, borderRadius:'15px'}}
                                 itemContent={(index, item) => {
                                     return (
                                         <Draggable draggableId={item.id} index={index} key={item.id}>
