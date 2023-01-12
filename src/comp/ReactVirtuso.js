@@ -1,6 +1,6 @@
 ﻿
 import React, {useCallback, useEffect, useRef, useState} from 'react'
-import ReactDOM from 'react-dom'
+
 import { Virtuoso } from 'react-virtuoso'
 import faker from 'faker'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
