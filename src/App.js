@@ -7,7 +7,7 @@ import ReactVirtualized from "./comp/ReactBeautifulDND";
 import ReactBeautifulDND from "./comp/ReactBeautifulDND";
 
 import bkg1 from "./comp/images_main/bkg1.jpg";
-import ReactVirtualizedBeautiful from "./comp/ReactVirtualizedBeautiful";
+import ReactVirtualizedBeautiful from "./comp/ReactVirtuso";
 import bkg_app from "./comp/images_main/bkg3.jpg";
 
 // npm start

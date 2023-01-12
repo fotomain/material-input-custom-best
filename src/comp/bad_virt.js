@@ -1,13 +1,19 @@
-﻿
+
+
 // === DOC https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/patterns/virtual-lists.md
 // === DOC image
 // https://upmostly.com/tutorials/react-background-image
+
+// https://github.com/bvaughn/react-virtualized/blob/master/source/List/List.example.js
 
 import React,  {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import faker from 'faker'
 import { WindowScroller, List as VList } from "react-virtualized";
+// how to sst heigth for WindowScroller react-virtualized
+//  react-virtualized behavior smooth scrollToIndex
+
 import 'react-virtualized/styles.css';
 
 // ============= TODO
@@ -87,17 +93,17 @@ function ReactVirtualized () {
 
     const get_data_list = (count1, count2) =>
         Array.from({ length: (count2-count1) }, (v, k) => k).map(k => ({
-        id: (count1+k).toString(),
-        name: faker.name.firstName(5),
-        body: faker.lorem.paragraph(1).substring(1,40),
-        style_normal: {
-            background_image_base64:'/images_public/bkg3.jpg"',
-            backgroundColor:'teal',
-        },
-        style_when_drug: {
+            id: (count1+k).toString(),
+            name: faker.name.firstName(5),
+            body: faker.lorem.paragraph(1).substring(1,40),
+            style_normal: {
+                background_image_base64:'/images_public/bkg3.jpg"',
+                backgroundColor:'teal',
+            },
+            style_when_drug: {
 
-            backgroundColor:'yellow',
-        },
+                backgroundColor:'yellow',
+            },
         }));
 
     const items_portion_to_add = 10
@@ -189,11 +195,27 @@ function ReactVirtualized () {
         return result;
     };
 
+    const _onScrollToRowChange = (e) => {
 
+        console.log(e.target.value)
+        set_row_index_to_scroll(parseInt(e.target.value, 10),)
+
+    }
 
     return(
 
         <div className={'main_grid'}>
+
+            {/* === DOC https://github.com/bvaughn/react-virtualized/blob/master/source/List/List.example.js*/}
+            <input
+                label="Scroll to"
+                name="onScrollToRow"
+                placeholder="Index..."
+                onChange={(e)=>_onScrollToRowChange(e)}
+                value={row_index_to_scroll || ''}
+            />
+
+
             <button onClick={(e)=>{
                 console.log(111)
 
@@ -251,10 +273,18 @@ function ReactVirtualized () {
                 set_data_list(data_list)
                 set_selected_id(t_id)
 
-                // set_row_index_to_scroll(nn-1)
-                console.log(main_ref)
-                main_ref.current.scrollToIndex(nn-1)
+                set_row_index_to_scroll(nn-1)
+
+                // const SCROLL_DEBOUNCE_DELAY=500;
+                // setTimeout(
+                //     () => main_ref.current.scrollToIndex(nn),
+                //     SCROLL_DEBOUNCE_DELAY
+                // );
+
+
                 console.log("=== nn ",nn)
+                console.log("=== data_list ",data_list)
+
 
             }}>Add__Down</button>
 
@@ -280,49 +310,60 @@ function ReactVirtualized () {
                     )}
                 >
                     {(droppableProvided) => (
-                        <WindowScroller
+                        <div className={"list1"}>
+                            <WindowScroller
+                                // width={300}
+                                // height={500}
 
-                        >
-                            {({ height, registerChild, isScrolling, onChildScroll, scrollTop }) => (
+                            >
+                                {({ height, width, registerChild, isScrolling, onChildScroll, scrollTop }) => (
 
-                                <div ref={registerChild}>
-                                <VList
-                                    // autoHeight
-                                    width={300}
-                                    // height={height}
-                                    height={500}
-                                    isScrolling={isScrolling}
-                                    onScroll={onChildScroll}
-                                    scrollTop={scrollTop}
+                                    <div ref={registerChild}>
+                                        <VList
+                                            // autoHeight
+                                            width={width}
+                                            height={height}
 
-                                    style={list_style.list_container}
-                                    ref={(ref) => {
-                                        // react-virtualized has no way to get the list's ref that I can so
-                                        // So we use the `ReactDOM.findDOMNode(ref)` escape hatch to get the ref
-                                        if (ref) {
-                                            set_main_ref(ref)
-                                            // eslint-disable-next-line react/no-find-dom-node
-                                            const whatHasMyLifeComeTo = ReactDOM.findDOMNode(ref);
-                                            if (whatHasMyLifeComeTo instanceof HTMLElement) {
-                                                droppableProvided.innerRef(whatHasMyLifeComeTo);
-                                            }
-                                        }
-                                    }}
+                                            // width={300}
+                                            // height={500}
+
+                                            isScrolling={isScrolling}
+                                            onScroll={onChildScroll}
+                                            scrollTop={scrollTop}
+
+                                            rowHeight={120}
+
+                                            style={list_style.list_container}
+                                            ref={(ref) => {
+                                                // react-virtualized has no way to get the list's ref that I can so
+                                                // So we use the `ReactDOM.findDOMNode(ref)` escape hatch to get the ref
+                                                if (ref) {
+
+                                                    // eslint-disable-next-line react/no-find-dom-node
+                                                    const whatHasMyLifeComeTo = ReactDOM.findDOMNode(ref);
+                                                    if (whatHasMyLifeComeTo instanceof HTMLElement) {
+                                                        set_main_ref(whatHasMyLifeComeTo)
+                                                        droppableProvided.innerRef(whatHasMyLifeComeTo);
+                                                    }
+                                                }
+                                            }}
 
 
-                                    // height={500}
-                                    rowRenderer={getRowRender(data_list)}
-                                    rowCount={data_list.length}
-                                    rowHeight={120}
-                                    scrollToIndex={row_index_to_scroll}
-                                    // scrollToIndex={{
-                                    //     index: row_index_to_scroll,
-                                    //     behavior: "smooth"
-                                    // }}
-                                />
-                                </div>
-                            )}
-                        </WindowScroller>
+                                            // height={500}
+                                            rowRenderer={getRowRender(data_list)}
+                                            rowCount={data_list.length}
+
+                                            scrollToIndex={row_index_to_scroll}
+
+                                            // scrollToIndex={{
+                                            //     index: row_index_to_scroll,
+                                            //     behavior: "smooth"
+                                            // }}
+                                        />
+                                    </div>
+                                )}
+                            </WindowScroller>
+                        </div>
                     )}
                 </Droppable>
             </DragDropContext>

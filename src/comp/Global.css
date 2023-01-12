@@ -8,11 +8,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top:2rem;
-
+    padding-top:20rem;
+    /*width:50%;*/
+    /*padding-bottom:20rem;*/
 
 }
 
+.list1 {
+    border: 1px solid deeppink;
+    text-align: center;
+    max-height: 300px;
+    overflow: hidden auto;
+}
 .col1_search_class{
     display: flex;
     flex-direction: column;
