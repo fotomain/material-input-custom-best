@@ -7,8 +7,8 @@ import React,  {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import faker from 'faker'
-import { WindowScroller, List } from "react-virtualized";
-
+import { WindowScroller, List as VList } from "react-virtualized";
+import 'react-virtualized/styles.css';
 
 // ============= TODO
 // last - to bottom mode scrollToIndex={row_index_to_scroll}
@@ -102,6 +102,7 @@ function ReactVirtualized () {
 
     const items_portion_to_add = 10
 
+    const [main_ref, set_main_ref] = useState(null);
     const [end_number, set_end_number] = useState(items_portion_to_add);
 
 
@@ -150,7 +151,7 @@ function ReactVirtualized () {
 
     const tableRef = useRef();
     const [selected_id, set_selected_id] = useState(-1);
-    const [row_index_to_scroll, set_row_index_to_scroll] = useState(-1);
+    const [row_index_to_scroll, set_row_index_to_scroll] = useState(0);
 
     useEffect(
         () => {
@@ -250,7 +251,9 @@ function ReactVirtualized () {
                 set_data_list(data_list)
                 set_selected_id(t_id)
 
-                set_row_index_to_scroll(nn-1)
+                // set_row_index_to_scroll(nn-1)
+                console.log(main_ref)
+                main_ref.current.scrollToIndex(nn-1)
                 console.log("=== nn ",nn)
 
             }}>Add__Down</button>
@@ -280,10 +283,10 @@ function ReactVirtualized () {
                         <WindowScroller
 
                         >
-                            {({ height, isScrolling, onChildScroll, scrollTop }) => (
+                            {({ height, registerChild, isScrolling, onChildScroll, scrollTop }) => (
 
-
-                                <List
+                                <div ref={registerChild}>
+                                <VList
                                     // autoHeight
                                     width={300}
                                     // height={height}
@@ -297,6 +300,7 @@ function ReactVirtualized () {
                                         // react-virtualized has no way to get the list's ref that I can so
                                         // So we use the `ReactDOM.findDOMNode(ref)` escape hatch to get the ref
                                         if (ref) {
+                                            set_main_ref(ref)
                                             // eslint-disable-next-line react/no-find-dom-node
                                             const whatHasMyLifeComeTo = ReactDOM.findDOMNode(ref);
                                             if (whatHasMyLifeComeTo instanceof HTMLElement) {
@@ -310,12 +314,13 @@ function ReactVirtualized () {
                                     rowRenderer={getRowRender(data_list)}
                                     rowCount={data_list.length}
                                     rowHeight={120}
-                                    // scrollToIndex={row_index_to_scroll}
-                                    scrollToIndex={{
-                                        index: row_index_to_scroll,
-                                        behavior: "smooth"
-                                    }}
+                                    scrollToIndex={row_index_to_scroll}
+                                    // scrollToIndex={{
+                                    //     index: row_index_to_scroll,
+                                    //     behavior: "smooth"
+                                    // }}
                                 />
+                                </div>
                             )}
                         </WindowScroller>
                     )}
