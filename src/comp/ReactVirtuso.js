@@ -86,13 +86,9 @@ function LRListRow({ provided, item, isDragging }) {
     console.log(item.id)
     console.log(a)
     console.log(b)
-    return (
-        <div style={{
-            // border: '1px solid blue' ,
-            padding: '4px'
-        }}>
-        <div style={{
-            backgroundColor: 'white',
+
+    const style_local={
+        backgroundColor: 'white',
             boxShadow: '5px 5px 15px 0px rgb(135,115,115)',
             // border: '1px solid magenta',
             // border: '1.5px solid gray',
@@ -100,12 +96,19 @@ function LRListRow({ provided, item, isDragging }) {
             borderRadius: '15px',
             // height: (a===b)?'100px':'50px',
             height: '100px',
-            padding: '4px' }}>
+            padding: '4px' }
+
+    return (
+        <div style={{
+            // border: '1px solid blue' ,
+            padding: '4px'
+        }}>
+        <div>
             <div
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}
-                style={provided.draggableProps.style}
+                style={{...style_local,...provided.draggableProps.style}}
                 className={`item1 ${isDragging ? 'is-dragging' : ''}`}
             >
                 {item.text}
