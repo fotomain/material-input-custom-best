@@ -10,13 +10,10 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 // load more
 // https://codesandbox.io/s/erdsog
 
-// Virtuoso's resize observer can this error,
-// which is caught by DnD and aborts dragging.
-window.addEventListener('error', (e) => {
-    if (e.message === 'ResizeObserver loop completed with undelivered notifications.' || e.message === 'ResizeObserver loop limit exceeded') {
-        e.stopImmediatePropagation()
-    }
-})
+//=== DOC
+// HeightPreservingItem
+// empty line space when drag
+// https://codesandbox.io/s/fj4sf0?file=/App.js:1537-1689
 
 
 
@@ -82,24 +79,45 @@ function reorder(list, startIndex, endIndex) {
     return result
 }
 
-function ListRow({ provided, item, isDragging }) {
+function LRListRow({ provided, item, isDragging }) {
+    console.log(item.id)
+    const a = parseFloat(item.id.substring(3,5))/2
+    const b = parseInt(parseInt(item.id.substring(3,5))/2)
+    console.log(item.id)
+    console.log(a)
+    console.log(b)
     return (
-        <div style={{ paddingBottom: '8px' }}>
+        <div style={{
+            // border: '1px solid blue' ,
+            padding: '4px'
+        }}>
+        <div style={{
+            border: '1px solid red',
+            borderRadius: '15px',
+            height: (a===b)?'100px':'50px',
+            padding: '4px' }}>
             <div
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}
                 style={provided.draggableProps.style}
-                className={`item ${isDragging ? 'is-dragging' : ''}`}
+                className={`item1 ${isDragging ? 'is-dragging' : ''}`}
             >
                 {item.text}
             </div>
+
+            {/*<input type="text" name="sss" id="fff" value={size} onChange={(e)=>{*/}
+            {/*    console.log(e.target.value)*/}
+            {/*    setSize(parseInt(e.target.value))*/}
+            {/*}}/>*/}
+
+        </div>
         </div>
     )
 }
 
 const HeightPreservingItem = ({ children, ...props }) => {
-    const [size, setSize] = useState(0)
+    const [size, setSize] = useState(64)
     const knownSize = props['data-known-size']
     useEffect(() => {
         setSize((prevSize) => {
@@ -149,7 +167,17 @@ export default function App() {
     )
 
 
-    const virtuoso = useRef(null);
+// Virtuoso's resize observer can this error,
+// which is caught by DnD and aborts dragging.
+    window.addEventListener('error', (e) => {
+        if (e.message === 'ResizeObserver loop completed with undelivered notifications.' || e.message === 'ResizeObserver loop limit exceeded') {
+            e.stopImmediatePropagation()
+        }
+    })
+
+
+
+    const main_list_ref = useRef(null);
 
     return (
     <div>
@@ -162,7 +190,7 @@ export default function App() {
                           // const align = 'end'
                           // const align = 'center'
 
-                          virtuoso.current.scrollToIndex({
+                          main_list_ref.current.scrollToIndex({
                               index: 10,
                               align,
                               behavior
@@ -188,13 +216,13 @@ export default function App() {
                     droppableId="droppable"
                     mode="virtual"
                     renderClone={(provided, snapshot, rubric) => (
-                        <ListRow provided={provided} isDragging={snapshot.isDragging} item={items[rubric.source.index]} />
+                        <LRListRow provided={provided} isDragging={snapshot.isDragging} item={items[rubric.source.index]} />
                     )}
                 >
                     {(provided) => {
                         return (
                             <Virtuoso
-                                ref={virtuoso}
+                                ref={main_list_ref}
                                 context={{ loadMore, loading }}
                                 components={{
                                     Item: HeightPreservingItem,
@@ -206,7 +234,7 @@ export default function App() {
                                 itemContent={(index, item) => {
                                     return (
                                         <Draggable draggableId={item.id} index={index} key={item.id}>
-                                            {(provided) => <ListRow provided={provided} item={item} isDragging={false} />}
+                                            {(provided) => <LRListRow provided={provided} item={item} isDragging={false} />}
                                         </Draggable>
                                     )
                                 }}
