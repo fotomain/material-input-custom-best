@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 // import bkg_app from "./images_main/bkg3.jpg";
 
 
+
 function LRListRow  ({ provided, item, isDragging }) {
 
     console.log(item.id)
@@ -20,7 +21,6 @@ function LRListRow  ({ provided, item, isDragging }) {
         // palette_card_background
         backgroundColor: 'transparent' ,
         // opacity: '0.4',
-
         // backgroundColor: `rgb(${'115, 138, 138, 0.1'})` ,
         // backgroundColor: `rgb(${box.color})` ,
         // backgroundColor: 'gray',
@@ -28,12 +28,13 @@ function LRListRow  ({ provided, item, isDragging }) {
 
         //=== DOC https://cssgenerator.org/box-shadow-css-generator.html
         boxShadow: '5px 5px 15px 0px rgb(135,115,115)',
+        border: 'none',
         // border: '1px solid magenta',
         // border: '1.5px solid gray',
         // border: '1.5px solid white',
         borderRadius: '15px',
         // height: (a===b)?'100px':'50px',
-        height: '100px',
+        height: '150px',
         padding: '4px' }
 
     const embedId="rokGy0huYEA"
