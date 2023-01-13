@@ -1,134 +1,92 @@
 
-import React  from 'react';
+import React, {useEffect} from 'react';
+import Cookies from 'universal-cookie';
 
 //=== DOC COOL https://stackblitz.com/edit/react-dpfmdi?file=src%2Fstyle.css
-import './ListRow.css';
-import bkg_app from "./images_main/bkg3.jpg";
-
-const getItemStyle = (isDragging, draggableStyle, style_normal, style_when_drug) => {
-    // console.log("=== style_when_drug",style_when_drug)
-    // console.log("=== style_normal",style_normal)
-    // background: isDragging ? style2.row_container_when_drug.backgroundColor : "grey",
-    return (
+// import bkg_app from "./images_main/bkg3.jpg";
 
 
+function LRListRow  ({ provided, item, isDragging }) {
 
-        {
-
-            // some basic styles to make the items look a bit nicer
-            userSelect: "none",
-            // padding: grid * 2,
-            // margin: `0 0 ${grid}px 0`,
-
-
-            // change background colour if dragging
-
-            background: isDragging ? style_when_drug.backgroundColor : style_normal.backgroundColor,
-            //=== DOC https://upmostly.com/tutorials/react-background-image
-            //
-            // backgroundImage: "'url(./images_main/bkg3.jpg)'",
-            // background: isDragging ? "lightgreen" : "grey",
-            border: isDragging ? "3px solid orange" : "none",
-            pointerEvents: "auto",
-            cursor: isDragging ? "all-scroll" : "pointer",
-            // styles we need to apply on draggables
-            ...draggableStyle,
-        });
-}
-function getStyle(provided, style ) {
-
-    // console.log('=== snapshot.isDragging 333 ',snapshot.isDragging)
+    console.log(item.id)
+    const a = parseFloat(item.id.substring(3,5))/2
+    const b = parseInt(parseInt(item.id.substring(3,5))/2)
+    console.log(item.id)
+    console.log(a)
+    console.log(b)
 
 
-    if (!style) {
-        return provided.draggableProps.style;
+    const style_local={
+        // palette_card_background
+        backgroundColor: 'transparent' ,
+        // opacity: '0.4',
+
+        // backgroundColor: `rgb(${'115, 138, 138, 0.1'})` ,
+        // backgroundColor: `rgb(${box.color})` ,
+        // backgroundColor: 'gray',
+        // backgroundColor: 'white',
+
+        //=== DOC https://cssgenerator.org/box-shadow-css-generator.html
+        boxShadow: '5px 5px 15px 0px rgb(135,115,115)',
+        // border: '1px solid magenta',
+        // border: '1.5px solid gray',
+        // border: '1.5px solid white',
+        borderRadius: '15px',
+        // height: (a===b)?'100px':'50px',
+        height: '100px',
+        padding: '4px' }
+
+    const embedId="rokGy0huYEA"
+    const style_post_binary={
+        left: '0',
+        top: '0',
+        height: '100%',
+        width: '100%',
+        position: 'absolute',
     }
 
-    // console.log('=== style 222',style)
-    // console.log('=== style 222',style?.when_drug?.background)
+    return (
+        <div name={'dv_post_card_container'}  style={{
+            // border: '1px solid blue' ,
+            padding: '4px'
+        }}>
+            <div>
 
-    return {
-        ...provided.draggableProps.style,
-        ...style,
-    };
-}
+                <div name={'dv_post_card'}
+                     {...provided.draggableProps}
+                     {...provided.dragHandleProps}
+                     ref={provided.innerRef}
+                     style={{...style_local,...provided.draggableProps.style}}
+                     className={`item1 ${isDragging ? 'is-dragging' : ''}`}
+                >
+                    {item.text}
+                    <div >
+                        <iframe
 
-
-function ListRow  (props) {
-
-    const {
-        row_array,
-        isDragging,
-        // isGroupedOver,
-        provided,
-        style,
-        // isClone,
-        index,
-    } = props;
-
-    const row_data = row_array[index]
-
-    // console.log("=== row_data",row_data)
-    //=== DOC !!! IF( isDragging ) style == UNDEF !!!
-    // console.log("=== style",style)
-    // console.log("=== isDragging",isDragging)
-
-    return(
-
-
-        <div className="comp"
-            // href={row_data.author.url}
-            //=== !!! not delete isDragging={isDragging}
-            // isGroupedOver={isGroupedOver}
-            // isClone={isClone}
-            // colors={row_data.author.colors}
-             ref={provided.innerRef}
-             {...provided.draggableProps}
-             {...provided.dragHandleProps}
-            // style={(isDragging)?getStyle( provided, style.when_drug ):getStyle( provided, style )}
-
-             style={
-                 getItemStyle(
-                     isDragging,
-                     provided.draggableProps.style,
-                     row_data.style_normal,
-                     row_data.style_when_drug,
-                 )
-             }
-
-            // style={getStyle( provided, style )}
-             data-is-dragging={isDragging}
-             data-color1={'yellow'}
-            // data-testid={row_data.id}
-             data-index={index}
-            // aria-label={`${row_data.author.name} row_data ${row_data.content}`}
-        >
-
-            {/*react-beautiful-dnd inline sy;e on drag*/}
-            {(!row_data?.name)?'':
-                <div>
-                    <div>
-                        <h5>{`${row_data.name}-${row_data.id}`}</h5>
-
-                    </div>
-                    <div
-
-                        // style={
-                        //     {   ...provided.draggableProps.style,
-                        //         ...{position:'fixed', backgroundColor:isDragging?'yellow':''}
-                        //     }}
-                    >
-                        <p>{row_data.body}</p>
+                            // style={style_post_binary}
+                            width="73px"
+                            height="40px"
+                            src={`https://www.youtube.com/embed/${embedId}`}
+                            frameBorder="0"
+                            // mute='1'
+                            // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            title="Embedded youtube"
+                        />
                     </div>
                 </div>
-            }
 
+                {/*<input type="text" name="sss" id="fff" value={size} onChange={(e)=>{*/}
+                {/*    console.log(e.target.value)*/}
+                {/*    setSize(parseInt(e.target.value))*/}
+                {/*}}/>*/}
+
+            </div>
         </div>
-
 
     )
 
 }
 
 
-export default ListRow
+export default LRListRow
