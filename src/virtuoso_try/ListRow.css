@@ -1,4 +1,40 @@
 
+.c_card_title {
+    background-color: lightblue;
+}
+.c_card_content {
+    background-color: deepskyblue;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.c_row_data {
+
+    background-color: pink;
+
+    /*var1 fixed*/
+    /*    height: 60px;*/
+
+    /*var2 max h*/
+    flex: 80;
+}
+
+.c_row_hor_buttons {
+
+    background-color: yellowgreen;
+    margin-top: auto;
+
+    /*var1 fixed*/
+        /*height: 20px;*/
+
+    /*var2 max h*/
+    flex: 20;
+}
+
+
+
+
 .h100 {
     height: 100px;
     background-color: lightblue;

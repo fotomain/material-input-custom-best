@@ -72,42 +72,43 @@ function LRListRow  ({ provided, item, isDragging }) {
     const flex_props_row = {position:'relative', display:'flex', flexDirection:'row'}
     const flex_props_col = {position:'relative', display:'flex', flexDirection:'column'}
 
-    const c_row_main    =  {backgroundColor: 'gray',    padding: dv_0_row_padding_vert+'px', overflow:'auto',  border: '2px solid yellow'}
-        const c_card    =  {backgroundColor: 'peachpuff',   padding: dv_0_card_padding_vert+'px',...flex_props_row,...{gap:'2px'}}
-            const c_col1    =  {backgroundColor: 'cyan',justifyContent:'start',alignItems:'start',    ...flex_props_col,...{flex:80},}
-                const c_row_data =  {backgroundColor: 'red', padding:'10px', ...flex_props_row,}
+    const dv_0_row_style    =  {backgroundColor: 'gray',    padding: dv_0_row_padding_vert+'px', overflow:'auto',  border: '2px solid yellow'}
+        const dv_0_card_style   =  {backgroundColor: 'peachpuff',   padding: dv_0_card_padding_vert+'px',...flex_props_row,...{gap:'2px'}}
+            const dv_1_col_style    =  {backgroundColor: 'cyan',justifyContent:'start',alignItems:'start',    ...flex_props_col,...{flex:80},}
+                const dv_1_1_col_data_style =  {backgroundColor: 'red', padding:'10px', ...flex_props_row,}
                 const dv_1_1_row_horiz_buttons_style =  {backgroundColor: 'orange', padding:'2px', ...flex_props_row,}
         const dv_2_col_style    =  {backgroundColor: 'green',   ...flex_props_col,...{flex:20},}
-
-
+    const tilte_style           =  {backgroundColor: 'lightblue'}
+    const content_style         =  {backgroundColor: 'orange'}
 
 
     return (
     <>
 
-        <div style={c_row_main}>
+        <div name={'row_div'}  style={dv_0_row_style}>
 
-            <div style={c_card}
+            <div name={'card_div'}
+                 style={dv_0_card_style}
                  className={ card_clasName(card_mode) }
             >
-                <div style={c_col1}
+
+                <div name={'data_col'}
+                     style={dv_1_col_style}
                 >
 
-                    <div className={'c_row_data'}
+                    <div name={'dv_1_1_col_data_style'}
+                         className={'row_data'}
+                         // style={{flex:80,backgroundColor:'red', justifySelf:'center'}}
+                         // style={dv_1_1_col_data_style}
                     >
-                            <div className={'c_card_title'}>
-                                   <p  >Tilte</p>
-                            </div>
-                            <div className={'c_card_content'}>
-                                   <p  >Content 1 - </p>
-                                   <p  >Content 2 - </p>
-
-                            </div>
+                            Data
                     </div>
 
                     {/*??? style={{...dv_1_1_row_horiz_buttons_style,...{aligtSelf:'end'}}}>*/}
                      <div name={'horiz_buttons_row'}
-                          className={'c_row_hor_buttons'}
+                          className={'row_horiz_buttons'}
+                          style={{backgroundColor:'blue', marginTop:'auto'}}
+                          // style={{flex:20,backgroundColor:'blue', justifySelf:'center'}}
                      >
                             Buttons
                     </div>
@@ -126,17 +127,17 @@ function LRListRow  ({ provided, item, isDragging }) {
         {/*    <div name={'dv_0_card'}*/}
         {/*       // white*/}
         {/*         className={ card_clasName(card_mode) }*/}
-        {/*         style={c_card}*/}
+        {/*         style={dv_0_card_style}*/}
         {/*         {...provided.draggableProps}*/}
         {/*         {...provided.dragHandleProps}*/}
         {/*         ref={provided.innerRef}*/}
         {/*    >*/}
-        {/*        <div name={'dv_1_col'}  style={c_col1}>*/}
+        {/*        <div name={'dv_1_col'}  style={dv_1_col_style}>*/}
 
         {/*style={{background:'red', heigth:'100px'}}*/}
         {/*style={{...style_local,...provided.draggableProps.style}}*/}
 
-        {/*                <div name={'dv_1_1_col_data'}  style={c_row_data}>*/}
+        {/*                <div name={'dv_1_1_col_data'}  style={dv_1_1_col_data_style}>*/}
 
         {/*                /!*    <p style={content_style} >Content {item.text}</p>*!/*/}
         {/*                       <p style={tilte_style} >Tilte</p>*/}

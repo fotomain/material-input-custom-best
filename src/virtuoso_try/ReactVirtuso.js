@@ -43,6 +43,8 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 // https://codesandbox.io/s/fj4sf0?file=/App.js:1537-1689
 
 
+const settings_list_posts_width     = 450;
+const settings_list_posts_height    = 500;
 
 // Generate our initial big data set
 const initial = Array.from({ length: 1000 }, (_, k) => ({
@@ -225,7 +227,7 @@ export default function App() {
                                 }}
                                 scrollerRef={provided.innerRef}
                                 data={items}
-                                style={{ width: 300, height: 500, borderRadius:'15px'}}
+                                style={{ width: settings_list_posts_width, height: settings_list_posts_height, borderRadius:'15px'}}
                                 itemContent={(index, item) => {
                                     return (
                                         <Draggable draggableId={item.id} index={index} key={item.id}>
