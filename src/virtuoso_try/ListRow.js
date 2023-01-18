@@ -7,6 +7,7 @@ import './ListRow.css';
 //=== DOC COOL https://stackblitz.com/edit/react-dpfmdi?file=src%2Fstyle.css
 // import bkg_app from "./images_main/bkg3.jpg";
 
+ import styled from 'styled-components';
 
 
 function LRListRow  ({ provided, item, isDragging }) {
@@ -77,9 +78,86 @@ function LRListRow  ({ provided, item, isDragging }) {
             const c_col1    =  {backgroundColor: 'cyan',justifyContent:'start',alignItems:'start',    ...flex_props_col,...{flex:80},}
                 const c_row_data =  {backgroundColor: 'red', padding:'10px', ...flex_props_row,}
                 const dv_1_1_row_horiz_buttons_style =  {backgroundColor: 'orange', padding:'2px', ...flex_props_row,}
-        const dv_2_col_style    =  {backgroundColor: 'green',   ...flex_props_col,...{flex:20},}
+        const dv_2_col_style    =  {color:'yellow',backgroundColor: 'green',   ...flex_props_col,...{flex:20},}
 
 
+
+    const C_card = styled.div`
+      
+      ${flex_props_row};
+      
+      background: peachpuff;
+      padding: 5px;
+
+      //height: 200px;
+      
+    `;
+
+    // {backgroundColor: 'cyan',justifyContent:'start',alignItems:'start',    ...flex_props_col,...{flex:80},}
+
+    const C_col1 = styled.div`
+
+      flex:80;
+
+      ${flex_props_col};
+            
+      background: cyan;
+      padding: 4px;
+      
+      justify-content: start;
+
+    `;
+
+    const C_row_data = styled.div`
+
+      ${flex_props_col};
+      flex:80;
+      
+      background: lightcoral;
+      padding: 4px;
+      
+      
+      justify-content: start;
+
+    `;
+
+    const C_title = styled.div`
+      background: lightblue;
+      color:red;
+      padding-left: 5px;
+      padding-right: 5px;
+    `;
+
+      const C_content = styled.div`
+          background: lightblue;
+          color:red;
+          margin-top: 4px;
+          padding-left: 5px;
+          padding-right: 5px;
+          
+          height: 80px;
+          width: 300px;
+        
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+        
+        `;
+
+
+        const C_row_hor_buttons = styled.div`
+    
+          ${flex_props_row};
+          flex:20;
+          
+          background: #A5ECD2;
+          padding: 4px;
+          
+          justify-content: start;
+
+          height: 20px;
+    
+        `;
 
 
     return (
@@ -87,40 +165,57 @@ function LRListRow  ({ provided, item, isDragging }) {
 
         <div style={c_row_main}>
 
-            <div style={c_card}
-                 className={ card_clasName(card_mode) }
-            >
-                <div style={c_col1}
-                >
+            {/*<div style={c_card}*/}
+            {/*     className={ card_clasName(card_mode) }*/}
+            {/*>*/}
+            <C_card>
+                <C_col1>
 
-                    <div className={'c_row_data'}
-                    >
-                            <div className={'c_card_title'}>
-                                   <p  >Tilte</p>
-                            </div>
-                            <div className={'c_card_content'}>
-                                   <p  >Content 1 - </p>
-                                   <p  >Content 2 - </p>
+                    <C_row_data>
 
-                            </div>
-                    </div>
+                        <C_title  >Tilte</C_title>
+                        <C_content  >
+                            <div> Content1 </div> <div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div>
+                        </C_content>
 
-                    {/*??? style={{...dv_1_1_row_horiz_buttons_style,...{aligtSelf:'end'}}}>*/}
-                     <div name={'horiz_buttons_row'}
-                          className={'c_row_hor_buttons'}
-                     >
-                            Buttons
-                    </div>
+                    </C_row_data>
 
-                </div>
+                    <C_row_hor_buttons>
+                        <p  >Button</p>
+                    </C_row_hor_buttons>
+
+                    {/*<div className={'c_row_data'}*/}
+                    {/*>*/}
+                    {/*    <div className={'c_card_title'}>*/}
+                    {/*               <p  >Tilte</p>*/}
+                    {/*        </div>*/}
+                    {/*        <div className={'c_card_content'}>*/}
+                    {/*               <p  >Content 1 - </p>*/}
+                    {/*               <p  >Content 2 - </p>*/}
+
+                    {/*        </div>*/}
+                    {/*</div>*/}
+
+                    {/*/!*??? style={{...dv_1_1_row_horiz_buttons_style,...{aligtSelf:'end'}}}>*!/*/}
+                    {/* <div name={'horiz_buttons_row'}*/}
+                    {/*      className={'c_row_hor_buttons'}*/}
+                    {/* >*/}
+                    {/*        Buttons*/}
+                    {/*</div>*/}
+
+                </C_col1>
+
 
 
                 <div name={'vert_buttons_col'}
                      style={dv_2_col_style}
                 >
+                    BUTTON 1
+                    BUTTON 2
                 </div>
 
-            </div>
+            </C_card>
+            {/*</div>*/}
         </div>
         {/*  gray  */}
         {/*    <div name={'dv_0_card'}*/}
