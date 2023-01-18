@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie';
 import './ListRow.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {FaUserTie, FaTrash, FaArrowUp} from 'react-icons/fa'
+import {FaUserTie, FaTrash, FaArrowUp, FaApper, FaPlus} from 'react-icons/fa'
 
 //=== DOC COOL https://stackblitz.com/edit/react-dpfmdi?file=src%2Fstyle.css
 // import bkg_app from "./images_main/bkg3.jpg";
@@ -253,15 +253,19 @@ function LRListRow  ({ provided, item, isDragging }) {
                                 <FaTrash />
                             </Icon1>
                         </Button1>
+
                         <Button1
                             onClick={(e)=>{
                                 console.log(Date.now())}}
                         >
+                            <Icon1 id={'icon111'} med><FaArrowUp /></Icon1>
+                        </Button1>
 
-                            <Icon1 id={'icon111'} med
-                            >
-                                <FaArrowUp />
-                            </Icon1>
+                        <Button1
+                            onClick={(e)=>{
+                                console.log(Date.now())}}
+                        >
+                            <Icon1 id={'icon111'} med><FaPlus /></Icon1>
                         </Button1>
 
                     </C_row_hor_buttons>
