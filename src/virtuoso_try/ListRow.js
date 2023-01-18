@@ -119,49 +119,15 @@ function LRListRow  ({ provided, item, isDragging }) {
 
         return <IconStyler {...{...props,...{
                 color:'teal',
-
+                small   :(props.small)?'1':null,
+                med     :(props.med)?'1':null,
+                large   :(props.large)?'1':null,
         }
         }}>{children}</IconStyler>;
         // return <IconStyler {...props}>{children}</IconStyler>;
 
     };
 
-    const C_icon_div = styled.div`
-      color: teal;
-      font-size: 20px;
-      padding-left: 1px;
-      padding-right: 1px;
-    `;
-
-    const C_icon = (props) =>{
-
-        return(
-            <C_icon_div>
-                <FontAwesomeIcon icon={props.icon} />
-            </C_icon_div>
-        )
-
-    }
-
-    const C_bti_trash = (props) =>{
-
-        return(
-            <C_bti_div>
-                <button>
-
-                </button>
-            </C_bti_div>
-        )
-
-    }
-
-
-    const C_bti_div = styled.button`
-
-        background: teal;
-        height: 20px;
-
-    `;
 
     const C_card = styled.div`
 
@@ -282,7 +248,7 @@ function LRListRow  ({ provided, item, isDragging }) {
                                 console.log(Date.now())}}
                         >
 
-                            <Icon1 id={'icon111'} small
+                            <Icon1 id={'icon111'} med
                             >
                                 <FaTrash />
                             </Icon1>
@@ -292,7 +258,7 @@ function LRListRow  ({ provided, item, isDragging }) {
                                 console.log(Date.now())}}
                         >
 
-                            <Icon1 id={'icon111'} small
+                            <Icon1 id={'icon111'} med
                             >
                                 <FaArrowUp />
                             </Icon1>
