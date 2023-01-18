@@ -4,10 +4,14 @@ import Cookies from 'universal-cookie';
 
 import './ListRow.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {FaUserTie, FaTrash, FaArrowUp} from 'react-icons/fa'
+
 //=== DOC COOL https://stackblitz.com/edit/react-dpfmdi?file=src%2Fstyle.css
 // import bkg_app from "./images_main/bkg3.jpg";
 
- import styled from 'styled-components';
+import { ReactSVG } from "react-svg";
+import styled, { css } from "styled-components";
 
 
 function LRListRow  ({ provided, item, isDragging }) {
@@ -77,21 +81,95 @@ function LRListRow  ({ provided, item, isDragging }) {
     const flex_props_col = {position:'relative', display:'flex', flexDirection:'column'}
 
     const c_row_main    =  {backgroundColor: 'gray',    padding: dv_0_row_padding_vert+'px', overflow:'auto',  border: '2px solid yellow'}
-        const c_card    =  {backgroundColor: 'peachpuff',   padding: dv_0_card_padding_vert+'px',...flex_props_row,...{gap:'2px'}}
-            const c_col1    =  {backgroundColor: 'cyan',justifyContent:'start',alignItems:'start',    ...flex_props_col,...{flex:80},}
-                const c_row_data =  {backgroundColor: 'red', padding:'10px', ...flex_props_row,}
-                const dv_1_1_row_horiz_buttons_style =  {backgroundColor: 'orange', padding:'2px', ...flex_props_row,}
-        const dv_2_col_style    =  {color:'yellow',backgroundColor: 'green',   ...flex_props_col,...{flex:20},}
+    const dv_2_col_style    =  {color:'yellow',backgroundColor: 'green',   ...flex_props_col,...{flex:20},}
 
 
+    const Button1 = styled.button`
+          text-align: center;
+          background-color: transparent;
+          //border: none; //settings_icon_button_border
+    `;
+
+    const IconStyler = styled.span`
+      color: ${(props) => props.color};
+      & svg {
+        ${(props) =>
+                props.small &&
+                css`
+                    width: 14px !important;
+                    height: 14px !important;
+      `}
+        ${(props) =>
+                props.med &&
+                css`
+                    width: 20px !important;
+                    height: 20px !important;
+      `}
+        ${(props) =>
+                props.large &&
+                css`
+                    width: 28px !important;
+                    height: 28px !important;
+      `}
+      }
+
+    `;
+
+    const Icon1 = ({ children, ...props }) => {
+
+        return <IconStyler {...{...props,...{
+                color:'teal',
+
+        }
+        }}>{children}</IconStyler>;
+        // return <IconStyler {...props}>{children}</IconStyler>;
+
+    };
+
+    const C_icon_div = styled.div`
+      color: teal;
+      font-size: 20px;
+      padding-left: 1px;
+      padding-right: 1px;
+    `;
+
+    const C_icon = (props) =>{
+
+        return(
+            <C_icon_div>
+                <FontAwesomeIcon icon={props.icon} />
+            </C_icon_div>
+        )
+
+    }
+
+    const C_bti_trash = (props) =>{
+
+        return(
+            <C_bti_div>
+                <button>
+
+                </button>
+            </C_bti_div>
+        )
+
+    }
+
+
+    const C_bti_div = styled.button`
+
+        background: teal;
+        height: 20px;
+
+    `;
 
     const C_card = styled.div`
-      
+
       ${flex_props_row};
-        
+
         background: peachpuff;
         padding: 5px;
-        
+
         //height: 200px;
 
     `;
@@ -101,12 +179,12 @@ function LRListRow  ({ provided, item, isDragging }) {
     const C_col1 = styled.div`
 
         flex:80;
-        
+
         ${flex_props_col};
-            
+
         background: cyan;
         padding: 4px;
-        
+
         justify-content: start;
 
     `;
@@ -115,10 +193,10 @@ function LRListRow  ({ provided, item, isDragging }) {
 
         ${flex_props_col};
         flex:80;
-        
+
         background: lightcoral;
         padding: 4px;
-                
+
         justify-content: start;
 
     `;
@@ -136,31 +214,32 @@ function LRListRow  ({ provided, item, isDragging }) {
         margin-top: 4px;
         padding-left: 5px;
         padding-right: 5px;
-        
+
         height: 90px;
         width: 300px;
-        
+
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         //overflow: hidden;
         overflow: scroll;
-        
+
     `;
 
 
         const C_row_hor_buttons = styled.div`
-    
-          ${flex_props_row};
-          flex:20;
-          
-          background: #A5ECD2;
-          padding: 4px;
-          
-          justify-content: start;
 
-          height: 20px;
-    
+          ${flex_props_row};
+          //flex:20;
+
+          background: #A5ECD2;
+          padding: 1px;
+
+          justify-content: start;
+          align-items: center;
+
+          height: 30px;
+
         `;
 
 
@@ -193,8 +272,32 @@ function LRListRow  ({ provided, item, isDragging }) {
 
                     </C_row_data>
 
-                    <C_row_hor_buttons>
-                        <i className="fa fa-trash" aria-hidden="true"></i>
+
+
+                    <C_row_hor_buttons id={'C_row_hor_buttons'} >
+
+
+                        <Button1
+                            onClick={(e)=>{
+                                console.log(Date.now())}}
+                        >
+
+                            <Icon1 id={'icon111'} small
+                            >
+                                <FaTrash />
+                            </Icon1>
+                        </Button1>
+                        <Button1
+                            onClick={(e)=>{
+                                console.log(Date.now())}}
+                        >
+
+                            <Icon1 id={'icon111'} small
+                            >
+                                <FaArrowUp />
+                            </Icon1>
+                        </Button1>
+
                     </C_row_hor_buttons>
 
                     {/*<div className={'c_row_data'}*/}

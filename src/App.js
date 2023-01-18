@@ -16,7 +16,19 @@ import bkg_app from "./comp/images_main/bkg3.jpg";
 // npm install --save @fortawesome/free-solid-svg-icons
 // npm install --save @fortawesome/react-fontawesome
 // npm install react-virtualized --save
-// npm install --save-dev faker@5.5.3
+//  --save-dev faker@5.5.3
+// npm i styled-components @types/styled-components
+
+// ============== ICONS
+// npm i --save @fortawesome/fontawesome-svg-core
+// npm install --save @fortawesome/free-solid-svg-icons
+// npm install --save @fortawesome/react-fontawesome
+// npm install --save @fortawesome/free-brands-svg-icons
+// npm install --save @fortawesome/free-regular-svg-icons
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faAtom } from '@fortawesome/free-solid-svg-icons'
+//  npm install react-svg
+
 
 function App() {
   return (
