@@ -1,0 +1,35 @@
+
+.h100 {
+    height: 100px;
+    background-color: lightblue;
+    padding: 5px;
+}
+
+.h150 {
+    height: 150px;
+    background-color: peachpuff;
+    padding: 5px;
+}
+
+.h200 {
+    height: 200px;
+    background-color: lightblue;
+    padding: 5px;
+}
+
+.h250 {
+    height: 250px;
+    background-color: lightblue;
+    padding: 5px;
+}
+
+.h300 {
+    height: 300px;
+    background-color: lightblue;
+    padding: 5px;
+}
+
+[data-is-dragging='true'] {
+    /*background-color: red;*/
+    background-color: red;
+}

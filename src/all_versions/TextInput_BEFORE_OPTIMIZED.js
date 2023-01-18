@@ -6,7 +6,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose, faSearch} from "@fortawesome/free-solid-svg-icons";
 
-import './TextInput.css'
+import '../text_input/TextInput.css'
 
 const setProperty = (a,b) => {
     document.documentElement.style.setProperty(a,b)

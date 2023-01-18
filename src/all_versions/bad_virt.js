@@ -49,7 +49,7 @@ import {
     // DropResult,
 } from 'react-beautiful-dnd';
 // react-virtualized-beautiful-dnd
-import ListRow from "./ListRow";
+import ListRow from "../virtuoso_try/ListRow";
 
 function ReactVirtualized () {
 

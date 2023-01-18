@@ -7,7 +7,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import composeRefs from "@seznam/compose-react-refs";
 import faker from 'faker'
 
-import bkg_app from "./images_main/bkg3.jpg";
+import bkg_app from "../comp/images_main/bkg3.jpg";
 
 // import './ReactBeautifulDND.css';
 

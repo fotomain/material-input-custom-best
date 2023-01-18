@@ -73,11 +73,13 @@ const getUser = (index) => {
 
 }
 
-const generateUsers = (length, startIndex = 0) => {
+const generateUsers = (length, end_data_array_index = 0) => {
 
-    const generateUsers_ = Array.from({ length }).map((_, i) => getUser(i + startIndex))
+    const generateUsers_ = Array.from({ length }).map((_, i) => getUser(i + end_data_array_index))
     console.log("=== generateUsers_",generateUsers_)
     return generateUsers_
+
+
 }
 
 
@@ -182,14 +184,14 @@ export default function App() {
                           // const align = 'center'
 
                           main_list_ref.current.scrollToIndex({
-                              index: 10,
+                              index: 0,
                               align,
                               behavior
                           });
                           return false;
                       }}
                   >
-                      Scroll To 1
+                      Scroll To 0
                   </button>
               </div>
 

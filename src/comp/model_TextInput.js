@@ -1,6 +1,6 @@
 ﻿import React, {useState} from 'react';
 
-import './TextInput.css'
+import '../text_input/TextInput.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose, faSearch} from "@fortawesome/free-solid-svg-icons";
 import {logDOM} from "@testing-library/react";

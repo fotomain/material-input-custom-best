@@ -2,12 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import Row1Search from "./comp/Row1Search";
 import Home1AnimeTextCircle from "./comp/Home1AnimeTextCircle";
-import InfiniteScrollModel from "./comp/InfiniteScrollModel";
-import ReactVirtualized from "./comp/ReactBeautifulDND";
-import ReactBeautifulDND from "./comp/ReactBeautifulDND";
+import InfiniteScrollModel from "./all_versions/InfiniteScrollModel";
+import ReactVirtualized from "./all_versions/ReactBeautifulDND";
+import ReactBeautifulDND from "./all_versions/ReactBeautifulDND";
 
 import bkg1 from "./comp/images_main/bkg1.jpg";
-import ReactVirtualizedBeautiful from "./comp/ReactVirtuso";
+import ReactVirtuso from "./virtuoso_try/ReactVirtuso";
 import bkg_app from "./comp/images_main/bkg3.jpg";
 
 // npm start
@@ -28,7 +28,8 @@ function App() {
          }}
     >
 
-        <ReactVirtualizedBeautiful />
+        <ReactVirtuso />
+        {/*<ReactVirtualizedBeautiful />*/}
         {/*<ReactBeautifulDND />*/}
         {/*<InfiniteScrollModel />*/}
         {/*<Row1Search />*/}

@@ -3,7 +3,7 @@
 import './Global.css'
 import './Home1AnimeTextCircle.css'
 import Row1SearchPosts from "./Row1SearchPosts";
-import TextInput from "./TextInput";
+import TextInput from "../text_input/TextInput";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose, faSearch} from "@fortawesome/free-solid-svg-icons";
 
