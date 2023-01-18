@@ -83,66 +83,66 @@ function LRListRow  ({ provided, item, isDragging }) {
 
 
     const C_card = styled.div`
-      
-      ${flex_props_row};
-      
-      background: peachpuff;
-      padding: 5px;
+         
+        ${flex_props_row};
+        
+        background: peachpuff;
+        padding: 5px;
+        
+        //height: 200px;
 
-      //height: 200px;
-      
     `;
 
     // {backgroundColor: 'cyan',justifyContent:'start',alignItems:'start',    ...flex_props_col,...{flex:80},}
 
     const C_col1 = styled.div`
 
-      flex:80;
-
-      ${flex_props_col};
+        flex:80;
+        
+        ${flex_props_col};
             
-      background: cyan;
-      padding: 4px;
-      
-      justify-content: start;
+        background: cyan;
+        padding: 4px;
+        
+        justify-content: start;
 
     `;
 
     const C_row_data = styled.div`
 
-      ${flex_props_col};
-      flex:80;
-      
-      background: lightcoral;
-      padding: 4px;
-      
-      
-      justify-content: start;
+        ${flex_props_col};
+        flex:80;
+        
+        background: lightcoral;
+        padding: 4px;
+        
+        
+        justify-content: start;
 
     `;
 
-    const C_title = styled.div`
-      background: lightblue;
-      color:red;
-      padding-left: 5px;
-      padding-right: 5px;
+    const C_card_title = styled.div`
+        background: lightblue;
+        color:red;
+        padding-left: 5px;
+        padding-right: 5px;
     `;
 
-      const C_content = styled.div`
-          background: lightblue;
-          color:red;
-          margin-top: 4px;
-          padding-left: 5px;
-          padding-right: 5px;
-          
-          height: 80px;
-          width: 300px;
+    const C_card_content = styled.div`
+        background: lightblue;
+        color:red;
+        margin-top: 4px;
+        padding-left: 5px;
+        padding-right: 5px;
         
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
+        height: 80px;
+        width: 300px;
         
-        `;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+    `;
 
 
         const C_row_hor_buttons = styled.div`
@@ -173,10 +173,10 @@ function LRListRow  ({ provided, item, isDragging }) {
 
                     <C_row_data>
 
-                        <C_title  >Tilte</C_title>
-                        <C_content  >
+                        <C_card_title  >Tilte</C_card_title>
+                        <C_card_content  >
                             <div> Content1 </div> <div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div>
-                        </C_content>
+                        </C_card_content>
 
                     </C_row_data>
 
