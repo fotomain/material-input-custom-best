@@ -20,8 +20,11 @@ function LRListRow  ({ provided, item, isDragging }) {
     console.log(b)
 
 
+    const settings_row_list_item_heigth = 180;
+
     const style_local={
         // palette_card_background
+        marginBottom: '20px' ,
         backgroundColor: 'transparent' ,
         // opacity: '0.4',
         // backgroundColor: `rgb(${'115, 138, 138, 0.1'})` ,
@@ -37,7 +40,7 @@ function LRListRow  ({ provided, item, isDragging }) {
         // border: '1.5px solid white',
         borderRadius: '15px',
         // height: (a===b)?'100px':'50px',
-        height: '150px',
+        height: settings_row_list_item_heigth+'px',
         padding: '4px' }
 
     const embedId="rokGy0huYEA"
@@ -83,8 +86,8 @@ function LRListRow  ({ provided, item, isDragging }) {
 
 
     const C_card = styled.div`
-         
-        ${flex_props_row};
+      
+      ${flex_props_row};
         
         background: peachpuff;
         padding: 5px;
@@ -115,8 +118,7 @@ function LRListRow  ({ provided, item, isDragging }) {
         
         background: lightcoral;
         padding: 4px;
-        
-        
+                
         justify-content: start;
 
     `;
@@ -135,12 +137,14 @@ function LRListRow  ({ provided, item, isDragging }) {
         padding-left: 5px;
         padding-right: 5px;
         
-        height: 80px;
+        height: 90px;
         width: 300px;
         
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        //overflow: hidden;
+        overflow: scroll;
         
     `;
 
@@ -163,25 +167,34 @@ function LRListRow  ({ provided, item, isDragging }) {
     return (
     <>
 
-        <div style={c_row_main}>
+        <div style={c_row_main}
+
+             {...provided.draggableProps}
+             {...provided.dragHandleProps}
+             ref={provided.innerRef}
+             style={{...style_local,...provided.draggableProps.style}}
+             className={`item1 ${isDragging ? 'is-dragging' : ''}`}
+
+        >
 
             {/*<div style={c_card}*/}
             {/*     className={ card_clasName(card_mode) }*/}
             {/*>*/}
+
             <C_card>
                 <C_col1>
 
                     <C_row_data>
 
-                        <C_card_title  >Tilte</C_card_title>
+                        <C_card_title  >Tilte {item.text}</C_card_title>
                         <C_card_content  >
-                            <div> Content1 </div> <div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div>
+                            <div> Content1 </div> <div> {item.text} </div><div> Content1 </div><div> Content1 </div> <div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div>
                         </C_card_content>
 
                     </C_row_data>
 
                     <C_row_hor_buttons>
-                        <p  >Button</p>
+                        <i className="fa fa-trash" aria-hidden="true"></i>
                     </C_row_hor_buttons>
 
                     {/*<div className={'c_row_data'}*/}
