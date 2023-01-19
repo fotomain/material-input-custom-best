@@ -19,7 +19,7 @@ import bkg_app from "./comp/images_main/bkg3.jpg";
 //  --save-dev faker@5.5.3
 // npm i styled-components @types/styled-components
 
-// ============== ICONS
+// ============== ICONS FA
 // npm i --save @fortawesome/fontawesome-svg-core
 // npm install --save @fortawesome/free-solid-svg-icons
 // npm install --save @fortawesome/react-fontawesome
@@ -27,16 +27,41 @@ import bkg_app from "./comp/images_main/bkg3.jpg";
 // npm install --save @fortawesome/free-regular-svg-icons
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faAtom } from '@fortawesome/free-solid-svg-icons'
-//  npm install react-svg
+// npm install react-svg
+
+// ============== ICONS REACT
+// npm install react-icons
 
 
 function App() {
+
+    // {/*<img src={require('./logo.jpeg')} />*/}
+    // const dd = require('../public/images_public/bkg3.jpg')
+    // const dd = `url(${"../public/images_public/bkg3.jpg"})`
+
+
+//     import { createGlobalStyle } from 'styled-components'
+//
+//     const GlobalStyle = createGlobalStyle`
+//   body {
+//     color: ${props => (props.whiteColor ? 'white' : 'black')};
+//   }
+// `
+//
+//         <React.Fragment>
+//         <GlobalStyle whiteColor />
+//     <Navigation /> {/* example of other top-level stuff */}
+// </React.Fragment>
+
+
   return (
     <div className="App"
+
          style={{
              backgroundRepeat: "no-repeat",
+             // backgroundImage: 'url(' + bkg_app + ')'
              backgroundSize:'100% 100%',
-             backgroundImage: 'url(' + bkg_app + ')'
+             backgroundImage: 'url(' + require('./comp/images_main/bkg3.jpg') + ')'
          }}
     >
 
