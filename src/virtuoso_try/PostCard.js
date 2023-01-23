@@ -5,6 +5,7 @@ import {FaArrowUp, FaPlus, FaTrash} from "react-icons/fa";
 import React from "react";
 import styled, {css} from "styled-components";
 
+//=== DOC https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
 const flex_props_row = {position:'relative', display:'flex', flexDirection:'row'}
 const flex_props_col = {position:'relative', display:'flex', flexDirection:'column'}
 
@@ -145,7 +146,7 @@ const Icon1 = ({ children, ...props }) => {
 const dv_2_col_style    =  {color:'yellow',backgroundColor: 'green',   ...flex_props_col,...{flex:20},}
 
 
-const Comp3 = (props) => {
+const PostCard = (props) => {
 
     const {
         item
@@ -235,4 +236,4 @@ const Comp3 = (props) => {
     );
 };
 
-export default Comp3;
+export default PostCard;

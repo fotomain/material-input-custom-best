@@ -57,10 +57,6 @@ function LRListRow  ({ provided, item, isDragging }) {
         position: 'absolute',
     }
 
-    // const dv_0_card_heigth = dv_0_row_heigth - 10 - dv_0_row_padding_vert*2;
-
-    // const dv_0_row_heigth = 100;
-
     // const card_mode             =  'mini'
     const card_mode             =  'normal'
     // const card_mode             =  'large'
@@ -75,18 +71,8 @@ function LRListRow  ({ provided, item, isDragging }) {
 
 
     const dv_0_row_padding_vert = 10;
-    const dv_0_card_padding_vert = 5;
-
-    //=== DOC https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
-    const flex_props_row = {position:'relative', display:'flex', flexDirection:'row'}
-    const flex_props_col = {position:'relative', display:'flex', flexDirection:'column'}
 
     const c_row_main    =  {backgroundColor: 'gray',    padding: dv_0_row_padding_vert+'px', overflow:'auto',  border: '2px solid yellow'}
-
-
-
-
-
 
     return (
     <>
@@ -102,14 +88,9 @@ function LRListRow  ({ provided, item, isDragging }) {
 
         >
 
-            {/*<div style={c_card}*/}
-            {/*     className={ card_clasName(card_mode) }*/}
-            {/*>*/}
-
             <PostCard item={item}/>
 
 
-            {/*</div>*/}
         </div>
         {/*  gray  */}
         {/*    <div name={'dv_0_card'}*/}
@@ -139,12 +120,6 @@ function LRListRow  ({ provided, item, isDragging }) {
         {/*            dv_2_col*/}
         {/*        </div>*/}
         {/*    </div>*/}
-
-
-
-
-
-
 
 
         {/*<div name={'dv_0_card'}>*/}
