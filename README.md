@@ -1,10 +1,20 @@
 # Material Input from scratch CSS only Best React App
- 
+
+
+
 Do it:
 ### `npm i`
 ### `npm start`
 
 #Backlog
+
+##  //=== odd even
+    console.log("=== LRListRow",item.id)
+    const a = parseFloat(item.id.substring(3,5))/2
+    const b = parseInt(parseInt(item.id.substring(3,5))/2)
+    console.log(item.id)
+    console.log(a)
+    console.log(b)
 
 ##placeholder_color
 as !important

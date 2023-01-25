@@ -47,47 +47,45 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 const settings_list_posts_width     = 450;
 const settings_list_posts_height    = 500;
 
-// Generate our initial big data set
-const initial = Array.from({ length: 1000 }, (_, k) => ({
-    id: `id:${k.toString()}`,
-    text: `item ${k}`,
-}))
 
-const user = (index = 0) => {
+const get_line = (index = 0) => {
     let firstName = faker.name.firstName(3)
     let lastName = faker.name.lastName(3)
 
     return {
         id: `id:${(index + 1).toString()}`,
-        text: `${firstName} ${lastName}`,
+        text: `${(index + 1)} - ${firstName} ${lastName}`,
     }
 }
 
 
+const beffer_array = []
 
-const generated = []
-
-const getUser = (index) => {
-    if (!generated[index]) {
-        generated[index] = user(index)
+const data_get_line = (index) => {
+    //=== lines beffer_array may be just FULL
+    if (!beffer_array[index]) {
+        beffer_array[index] = get_line(index)
+    }
+    else{
+        console.log("=== generated",index)
     }
 
-    return generated[index]
-
-}
-
-const generateUsers = (length, end_data_array_index = 0) => {
-
-    const generateUsers_ = Array.from({ length }).map((_, i) => getUser(i + end_data_array_index))
-    console.log("=== generateUsers_",generateUsers_)
-    return generateUsers_
-
+    return beffer_array[index]
 
 }
 
 
 
-const footer_load_more = ({ context: { loadMore, loading } }) => {
+const data_read_more_function = (new_lines_count, data_array_end_index= 0) => {
+
+    const data_new_lines = Array.from({ new_lines_count }).map((_, i) =>
+                            data_get_line(i + data_array_end_index))
+    console.log("=== generateUsers_",data_new_lines)
+    return data_new_lines
+
+}
+
+const footer_load_more_button = ({ context: { loadMore, loading } }) => {
     return (
         <div
             style={{
@@ -135,12 +133,15 @@ const HeightPreservingItem = ({ children, ...props }) => {
 const ListBasic = (props) => {
 
     const [data_array, set_data_array] = useState(props.data_array)
+    const main_list_ref = props.main_list_ref;
+    const data_read_portion = props.data_read_portion;
+
     const [loading, setLoading] = useState(false)
 
     const loadMore = useCallback(() => {
         setLoading(true)
         return setTimeout(() => {
-            set_data_array((prev) => [...prev, ...generateUsers(100, data_array.length)])
+            set_data_array((prev) => [...prev, ...data_read_more_function(data_read_portion, data_array.length)])
             setLoading(() => false)
         }, 500)
     }, [set_data_array, setLoading])
@@ -173,7 +174,7 @@ const ListBasic = (props) => {
 
 
 
-    const main_list_ref = props.main_list_ref;
+
 
     return (
     <div>
@@ -226,7 +227,7 @@ const ListBasic = (props) => {
                                 endReached={loadMore}
                                 components={{
                                     Item: HeightPreservingItem,
-                                    Footer:footer_load_more,
+                                    Footer:footer_load_more_button,
 
                                 }}
                                 scrollerRef={provided.innerRef}

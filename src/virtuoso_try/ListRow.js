@@ -17,14 +17,6 @@ import PostCard from "./PostCard";
 
 function LRListRow  ({ provided, item, isDragging }) {
 
-    console.log(item.id)
-    const a = parseFloat(item.id.substring(3,5))/2
-    const b = parseInt(parseInt(item.id.substring(3,5))/2)
-    console.log(item.id)
-    console.log(a)
-    console.log(b)
-
-
     const settings_row_list_item_heigth = 180;
 
     const style_local={
