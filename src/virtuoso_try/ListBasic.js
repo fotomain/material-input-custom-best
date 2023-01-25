@@ -48,23 +48,24 @@ const settings_list_posts_width     = 450;
 const settings_list_posts_height    = 500;
 
 
-const get_line = (index = 0) => {
+const get_line = (prefix,index = 0) => {
     let firstName = faker.name.firstName(3)
     let lastName = faker.name.lastName(3)
 
     return {
         id: `id:${(index + 1).toString()}`,
-        text: `${(index + 1)} - ${firstName} ${lastName}`,
+        text: `${(index + 1)} - ${prefix} - ${firstName} ${lastName}`,
     }
 }
 
 
 const beffer_array = []
 
-const data_get_line = (index) => {
+const data_get_line = (prefix,index) => {
+
     //=== lines beffer_array may be just FULL
     if (!beffer_array[index]) {
-        beffer_array[index] = get_line(index)
+        beffer_array[index] = get_line(prefix, index)
     }
     else{
         console.log("=== generated",index)
@@ -74,12 +75,17 @@ const data_get_line = (index) => {
 
 }
 
+
 const data_read_more_function = (length, end_data_array_index = 0) => {
 
-    const generateUsers_ = Array.from({ length }).map((_, i) =>
-                            data_get_line(i + end_data_array_index))
-    console.log("=== generateUsers_",generateUsers_)
-    return generateUsers_
+    console.log("=== data_read_more_function", length, end_data_array_index)
+
+    const time_stamp1 = Date.now()
+
+    const new_lines = Array.from({ length }).map((_, i) =>
+                            data_get_line(time_stamp1,i + end_data_array_index))
+    console.log("=== generateUsers_",new_lines)
+    return new_lines
 
 }
 
@@ -130,7 +136,8 @@ const HeightPreservingItem = ({ children, ...props }) => {
 
 const ListBasic = (props) => {
 
-    const [data_array, set_data_array] = useState(props.data_array)
+    const {data_array, set_data_array} = props
+
     const main_list_ref = props.main_list_ref;
     const data_read_portion = props.data_read_portion;
 
@@ -138,11 +145,30 @@ const ListBasic = (props) => {
 
     const loadMore = useCallback(() => {
         setLoading(true)
-        return setTimeout(() => {
-            set_data_array((prev) => [...prev, ...data_read_more_function(data_read_portion, data_array.length)])
-            setLoading(() => false)
-        }, 500)
-    }, [set_data_array, setLoading])
+        // return setTimeout(() => {
+
+        fetch('https://dummyjson.com/users?limit='
+            +data_read_portion
+            +'&skip='+data_array.length
+            +'&select=firstName,age')
+            .then(res => res.json())
+            .then(data1 => {
+                    console.log("================= data1", data1)
+
+                    console.log("=== data_array", data_array)
+                    const new_ = data_read_more_function(data_read_portion, data_array.length)
+                    console.log("=== new_", new_)
+                    const x_ = [...data_array, ...new_]
+                    console.log("=== x_", x_)
+                    set_data_array(x_)
+
+                    setLoading(() => false)
+
+                }
+            );
+
+        // }, 500)
+    }, [data_array, setLoading])
 
     //=== 111
 
@@ -248,3 +274,7 @@ const ListBasic = (props) => {
 }
 
 export default ListBasic
+
+
+
+
