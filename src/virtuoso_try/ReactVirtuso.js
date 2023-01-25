@@ -5,8 +5,9 @@ import {useRef, useState} from "react";
 import ListPosts from "./ListPosts";
 
 const content_posts_data = Array.from({ length: 20 }, (_, k) => ({
-    id: `id:${k.toString()}`,
-    text: `item ${k}`,
+    post_guid:    `id:${k.toString()}`,
+    post_title: `item ${k}`,
+    post_content:  `item ${k}`,
 }))
 
 const content_posts_data_read_more_function = (length, end_data_array_index = 0) => {
@@ -50,8 +51,8 @@ const ReactVirtuso = () => {
                             res_arr.push(
                                 {
                                     // id: `id:${guid_.toString()}`,
-                                    id: `id:${(guid_).toString()}`,
-                                    text: `${guid_} from fetch ${text_} `,
+                                    post_guid: `id:${(guid_).toString()}`,
+                                    post_content: `${guid_} from fetch ${text_} `,
                                 }
                             )
                         }

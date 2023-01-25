@@ -161,9 +161,9 @@ const PostCard = (props) => {
 
                     <C_row_data>
 
-                        <C_card_title  >Tilte {item.text}</C_card_title>
+                        <C_card_title  >Tilte {item.post_content}</C_card_title>
                         <C_card_content  >
-                            <div> Content1 </div> <div> {item.text} </div><div> Content1 </div><div> Content1 </div> <div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div>
+                            <div> Content1 </div> <div> {item.post_content} </div><div> Content1 </div><div> Content1 </div> <div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div>
                         </C_card_content>
 
                     </C_row_data>

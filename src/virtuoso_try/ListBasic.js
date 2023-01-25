@@ -53,8 +53,8 @@ const get_line = (prefix,index = 0) => {
     let lastName = faker.name.lastName(3)
 
     return {
-        id: `id:${(index + 1).toString()}`,
-        text: `${(index + 1)} - ${prefix} - ${firstName} ${lastName}`,
+        post_guid: `id:${(index + 1).toString()}`,
+        post_content: `${(index + 1)} - ${prefix} - ${firstName} ${lastName}`,
     }
 }
 
@@ -184,7 +184,9 @@ const ListBasic = (props) => {
                 fetch_skip:data_array.length
             }
         ).then(res => res.json()).then(data1 => {
+                console.log("=================")
                 console.log("================= data1", data1)
+                console.log("=================")
 
                 const params= {data_new:data1, index_from:data_array.length}
                 const new2_ = data_new_lines_from_fetch(params)
@@ -290,7 +292,7 @@ const ListBasic = (props) => {
                                 style={{ width: settings_list_posts_width, height: settings_list_posts_height, borderRadius:'15px'}}
                                 itemContent={(index, item) => {
                                     return (
-                                        <Draggable draggableId={item.id} index={index} key={item.id}>
+                                        <Draggable draggableId={item.post_guid} index={index} key={item.post_id}>
                                             {(provided) => <LRListRow provided={provided} item={item} isDragging={false} />}
                                         </Draggable>
                                     )
