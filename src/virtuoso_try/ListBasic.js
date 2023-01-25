@@ -75,7 +75,6 @@ const data_get_line = (index) => {
 }
 
 
-
 const data_read_more_function = (new_lines_count, data_array_end_index= 0) => {
 
     const data_new_lines = Array.from({ new_lines_count }).map((_, i) =>
