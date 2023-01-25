@@ -74,12 +74,12 @@ const data_get_line = (index) => {
 
 }
 
-const data_read_more_function = (new_lines_count, data_array_end_index= 0) => {
+const data_read_more_function = (length, end_data_array_index = 0) => {
 
-    const data_new_lines = Array.from({ new_lines_count }).map((_, i) =>
-                            data_get_line(i + data_array_end_index))
-    console.log("=== generateUsers_",data_new_lines)
-    return data_new_lines
+    const generateUsers_ = Array.from({ length }).map((_, i) =>
+                            data_get_line(i + end_data_array_index))
+    console.log("=== generateUsers_",generateUsers_)
+    return generateUsers_
 
 }
 
