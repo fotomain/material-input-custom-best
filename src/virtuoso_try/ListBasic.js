@@ -140,35 +140,13 @@ const ListBasic = (props) => {
 
     const main_list_ref = props.main_list_ref;
     const data_read_portion = props.data_read_portion;
+    const data_fetch = props.data_fetch
+    const data_new_lines_from_fetch = props.data_new_lines_from_fetch
+
+    // const [data_fetch, set_data_fetch] = useState(props.data_fetch)
 
     const [loading, setLoading] = useState(false)
 
-    const loadMore = useCallback(() => {
-        setLoading(true)
-        // return setTimeout(() => {
-
-        fetch('https://dummyjson.com/users?limit='
-            +data_read_portion
-            +'&skip='+data_array.length
-            +'&select=firstName,age')
-            .then(res => res.json())
-            .then(data1 => {
-                    console.log("================= data1", data1)
-
-                    console.log("=== data_array", data_array)
-                    const new_ = data_read_more_function(data_read_portion, data_array.length)
-                    console.log("=== new_", new_)
-                    const x_ = [...data_array, ...new_]
-                    console.log("=== x_", x_)
-                    set_data_array(x_)
-
-                    setLoading(() => false)
-
-                }
-            );
-
-        // }, 500)
-    }, [data_array, setLoading])
 
     //=== 111
 
@@ -196,6 +174,60 @@ const ListBasic = (props) => {
         }
     })
 
+
+    const loadMore = useCallback(() => {
+        setLoading(true)
+
+        data_fetch(
+            {
+                fetch_count:data_read_portion,
+                fetch_skip:data_array.length
+            }
+        ).then(res => res.json()).then(data1 => {
+                console.log("================= data1", data1)
+
+                const params= {data_new:data1, index_from:data_array.length}
+                const new2_ = data_new_lines_from_fetch(params)
+                console.log("================= new2_", new2_)
+
+                console.log("=== data_array", data_array)
+                const x2_ = [...data_array, ...new2_]
+                console.log("=== x2_", x2_)
+                set_data_array(x2_)
+
+                // console.log("=== data_array", data_array)
+                // const new_ = data_read_more_function(data_read_portion, data_array.length)
+                // console.log("=== new_", new_)
+                // const x_ = [...data_array, ...new_]
+                // console.log("=== x_", x_)
+                // set_data_array(x_)
+
+                setLoading(() => false)
+
+            }
+        );
+
+
+        // fetch('https://dummyjson.com/users?limit='
+        //     +data_read_portion
+        //     +'&skip='+data_array.length
+        //     +'&select=firstName,age')
+        //     .then(res => res.json())
+        //     .then(data1 => {
+        //             console.log("================= data1", data1)
+        //
+        //             console.log("=== data_array", data_array)
+        //             const new_ = data_read_more_function(data_read_portion, data_array.length)
+        //             console.log("=== new_", new_)
+        //             const x_ = [...data_array, ...new_]
+        //             console.log("=== x_", x_)
+        //             set_data_array(x_)
+        //
+        //             setLoading(() => false)
+        //
+        //         }
+        //     );
+    }, [data_array, setLoading])
 
 
 
