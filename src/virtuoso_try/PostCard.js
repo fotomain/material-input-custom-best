@@ -154,7 +154,7 @@ const PostCard = (props) => {
 
     return (
         <div>
-            <p>Comp3</p>
+            <p>PostCard</p>
             {/*{props.card_render(item)}*/}
 
             {(false)?'':<C_card>
