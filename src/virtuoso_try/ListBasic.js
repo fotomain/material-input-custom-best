@@ -136,10 +136,12 @@ const HeightPreservingItem = ({ children, ...props }) => {
 
 const ListBasic = (props) => {
 
-    const LRListRow1 = props.LRListRow
+    const Render_ListRow_local = props.render_ListRow
+    const render_RowCard_local = props.render_RowCard
 
-    console.log("=== props.children", props.children[0])
-    console.log("=== props.children", props.children[0]._source)
+    console.log("=== render_RowCard", render_RowCard_local)
+    // console.log("=== props.children", props.children[0])
+    // console.log("=== props.children", props.children[0]._source)
 
     const {render_row, data_array, set_data_array} = props
 
@@ -280,11 +282,13 @@ const ListBasic = (props) => {
                     mode="virtual"
                     renderClone={(provided, snapshot, rubric) =>
 
-                        <LRListRow1
+                        <Render_ListRow_local
                                    {...props}
                                    provided={provided}
                                    isDragging={snapshot.isDragging}
-                                   item={data_array[rubric.source.index]} />
+                                   item={data_array[rubric.source.index]}
+                                   render_RowCard = {render_RowCard_local}
+                        />
                     }
                 >
                     {(provided) => {
@@ -302,11 +306,15 @@ const ListBasic = (props) => {
                                 scrollerRef={provided.innerRef}
                                 style={{ width: settings_list_posts_width, height: settings_list_posts_height, borderRadius:'15px'}}
                                 itemContent={(index, item) => {
-                                    const isDragging=false
+
                                     return (
                                         <Draggable draggableId={item.post_guid} index={index} key={item.post_id}>
 
-                                                {(provided) => <LRListRow1 provided={provided} item={item} isDragging={false} />}
+                                                {(provided) => <Render_ListRow_local
+                                                        provided={provided} item={item} isDragging={false}
+                                                        render_RowCard = {render_RowCard_local}
+                                                    />
+                                                }
 
                                         </Draggable>
                                     )

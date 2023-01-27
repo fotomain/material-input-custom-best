@@ -17,6 +17,9 @@ import PostCard from "./PostCard";
 
 function LRListRow  (props) {
 
+    const Render_RowCard_local = props.render_RowCard
+    console.log("=== Render_RowCard_local ",Render_RowCard_local)
+
     const { provided, item, isDragging, row_heigth } = props
     // console.log("=== card_render",props.card_render)
 
@@ -82,7 +85,7 @@ function LRListRow  (props) {
         >
 
 
-            <PostCard {...props} item={item}/>
+            <Render_RowCard_local {...props} item={item}/>
 
 
         </div>
