@@ -1,11 +1,12 @@
 ﻿
 
 import ListBasic from "./ListBasic";
-import {useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import ListPosts from "./ListPosts";
+import styled from "styled-components";
 
 const content_posts_data = Array.from({ length: 20 }, (_, k) => ({
-    post_guid:      `id:${k.toString()}`,
+    post_guid:      `line_:${k.toString()}`,
     post_title:     `item ${k}`,
     post_content:   `item ${k}`,
 }))
@@ -13,7 +14,15 @@ const content_posts_data = Array.from({ length: 20 }, (_, k) => ({
 
 // posts_data_read_more_function
 
+
+
 const ReactVirtuso = () => {
+
+    const Div1 = styled.div`
+          text-align: center;
+          background-color: greenyellow;
+          //border: none; //settings_icon_button_border
+    `;
 
     const list_ref1 = useRef(null);
     const [data_array_posts, set_data_array_posts] = useState(content_posts_data)
@@ -34,6 +43,7 @@ const ReactVirtuso = () => {
                             + '&select=firstName,lastName,age')
                     }
                 }}
+
                 data_new_lines_from_fetch={(params)=>{
                     if(params) {
                         const res_arr=[]
@@ -46,17 +56,28 @@ const ReactVirtuso = () => {
                             res_arr.push(
                                 {
                                     // id: `id:${guid_.toString()}`,
-                                    post_guid: `id:${(guid_).toString()}`,
+                                    // post_guid: `id:${(guid_).toString()}`,
+                                    post_guid: `line_:${(guid_).toString()}`,
                                     post_content: `${guid_} from fetch ${text_} `,
                                 }
                             )
                         }
                         return res_arr
                     }
+
+                }} //data_new_lines_from_fetch
+
+                row_heigth = {180}
+                card_render={(element)=>{
+                    return (
+                        <Div1 key={element.post_guid}>
+                            {element.post_title}
+                        </Div1>
+                    )
                 }}
 
-            />
-        </div>
+                />
+            </div>
     );
 };
 

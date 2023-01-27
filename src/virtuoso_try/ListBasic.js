@@ -53,7 +53,7 @@ const get_line = (prefix,index = 0) => {
     let lastName = faker.name.lastName(3)
 
     return {
-        post_guid: `id:${(index + 1).toString()}`,
+        post_guid: `line_:${(index + 1).toString()}`,
         post_content: `${(index + 1)} - ${prefix} - ${firstName} ${lastName}`,
     }
 }
@@ -136,8 +136,14 @@ const HeightPreservingItem = ({ children, ...props }) => {
 
 const ListBasic = (props) => {
 
-    const {data_array, set_data_array} = props
+    console.log("=== props.children", props.children[0])
+    console.log("=== props.children", props.children[0]._source)
 
+    const {render_row, data_array, set_data_array} = props
+
+    // const render_row = (props) => props.render_row(props);
+
+    console.log("=== render_row",render_row)
     const main_list_ref = props.main_list_ref;
     const data_read_portion = props.data_read_portion;
     const data_fetch = props.data_fetch
@@ -270,11 +276,20 @@ const ListBasic = (props) => {
                 <Droppable
                     droppableId="droppable"
                     mode="virtual"
-                    renderClone={(provided, snapshot, rubric) => (
-                        <LRListRow provided={provided}
+                    renderClone={(provided, snapshot, rubric) =>
+                        // <div
+                        //     provided={provided}
+                        //     isDragging={snapshot.isDragging}
+                        //     item={data_array[rubric.source.index]}
+                        // >
+                        //     {render_row({...{...props}, ...{provided, snapshot, rubric}})}
+                        // </div>
+                        <LRListRow
+                                   {...props}
+                                   provided={provided}
                                    isDragging={snapshot.isDragging}
                                    item={data_array[rubric.source.index]} />
-                    )}
+                    }
                 >
                     {(provided) => {
                         return (
@@ -291,9 +306,22 @@ const ListBasic = (props) => {
                                 scrollerRef={provided.innerRef}
                                 style={{ width: settings_list_posts_width, height: settings_list_posts_height, borderRadius:'15px'}}
                                 itemContent={(index, item) => {
+                                    const isDragging=false
                                     return (
                                         <Draggable draggableId={item.post_guid} index={index} key={item.post_id}>
-                                            {(provided) => <LRListRow provided={provided} item={item} isDragging={false} />}
+
+                                                {(provided) => <LRListRow provided={provided} item={item} isDragging={false} />}
+                                                {/*// return (*/}
+                                                {/*//     <div*/}
+                                                {/*//         ref={provided.innerRef}*/}
+                                                {/*//         provided={provided}*/}
+                                                {/*//         item={item}*/}
+                                                {/*//         isDragging={false}*/}
+                                                {/*//     >*/}
+                                                {/*//         {render_row(...{...props,...{provided:provided, isDragging: false}})}*/}
+                                                {/*//     </div>)*/}
+
+
                                         </Draggable>
                                     )
                                 }}

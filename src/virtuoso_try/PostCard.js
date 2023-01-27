@@ -155,47 +155,67 @@ const PostCard = (props) => {
     return (
         <div>
             <p>Comp3</p>
+            {/*{props.card_render(item)}*/}
 
-            <C_card>
+            {(false)?'':<C_card>
                 <C_col1>
 
                     <C_row_data>
 
-                        <C_card_title  >Tilte {item.post_content}</C_card_title>
-                        <C_card_content  >
-                            <div> Content1 </div> <div> {item.post_content} </div><div> Content1 </div><div> Content1 </div> <div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div><div> Content1 </div>
+
+                        <C_card_title>Tilte {item.post_content}</C_card_title>
+
+                        <C_card_content>
+                            <div> Content1</div>
+                            <div> {item.post_content} </div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
+                            <div> Content1</div>
                         </C_card_content>
 
                     </C_row_data>
 
 
-
-                    <C_row_hor_buttons id={'C_row_hor_buttons'} >
+                    <C_row_hor_buttons id={'C_row_hor_buttons'}>
 
 
                         <Button1
-                            onClick={(e)=>{
-                                console.log(Date.now())}}
+                            onClick={(e) => {
+                                console.log(Date.now())
+                            }}
                         >
 
                             <Icon1 id={'icon111'} med
                             >
-                                <FaTrash />
+                                <FaTrash/>
                             </Icon1>
                         </Button1>
 
                         <Button1
-                            onClick={(e)=>{
-                                console.log(Date.now())}}
+                            onClick={(e) => {
+                                console.log(Date.now())
+                            }}
                         >
-                            <Icon1 id={'icon111'} med><FaArrowUp /></Icon1>
+                            <Icon1 id={'icon111'} med><FaArrowUp/></Icon1>
                         </Button1>
 
                         <Button1
-                            onClick={(e)=>{
-                                console.log(Date.now())}}
+                            onClick={(e) => {
+                                console.log(Date.now())
+                            }}
                         >
-                            <Icon1 id={'icon111'} med><FaPlus /></Icon1>
+                            <Icon1 id={'icon111'} med><FaPlus/></Icon1>
                         </Button1>
 
                     </C_row_hor_buttons>
@@ -222,7 +242,6 @@ const PostCard = (props) => {
                 </C_col1>
 
 
-
                 <div name={'vert_buttons_col'}
                      style={dv_2_col_style}
                 >
@@ -231,7 +250,7 @@ const PostCard = (props) => {
                 </div>
 
             </C_card>
-
+            }
         </div>
     );
 };

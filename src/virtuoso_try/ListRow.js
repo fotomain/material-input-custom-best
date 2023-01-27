@@ -15,9 +15,10 @@ import styled, { css } from "styled-components";
 import PostCard from "./PostCard";
 
 
-function LRListRow  ({ provided, item, isDragging }) {
+function LRListRow  (props) {
 
-    const settings_row_list_item_heigth = 180;
+    const { provided, item, isDragging, row_heigth } = props
+    // console.log("=== card_render",props.card_render)
 
     const style_local={
         // palette_card_background
@@ -37,7 +38,7 @@ function LRListRow  ({ provided, item, isDragging }) {
         // border: '1.5px solid white',
         borderRadius: '15px',
         // height: (a===b)?'100px':'50px',
-        height: settings_row_list_item_heigth+'px',
+        height: row_heigth+'px',
         padding: '4px' }
 
     const embedId="rokGy0huYEA"
@@ -68,7 +69,7 @@ function LRListRow  ({ provided, item, isDragging }) {
 
     return (
     <>
-
+        {/*{props.row_render({...props, ...{item : {item}}})}*/}
 
         <div style={c_row_main}
 
@@ -80,7 +81,8 @@ function LRListRow  ({ provided, item, isDragging }) {
 
         >
 
-            <PostCard item={item}/>
+
+            <PostCard {...props} item={item}/>
 
 
         </div>
