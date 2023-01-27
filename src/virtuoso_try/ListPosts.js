@@ -2,6 +2,7 @@
 
 import React from "react";
 import ListBasic from "./ListBasic";
+import PostsRow from "./PostsRow";
 
 // interface ContainerProps {
 //   id?: string;
@@ -79,6 +80,7 @@ const ListPosts = (props) => {
             {/*{style: {backgroundColor: 'orange'}*/}
             <ListBasic {...{...props,
                 // {...{...params}, ...{render_card:PostRowCard} }
+                LRListRow:PostsRow,
                  render_row: (params)=>{PostRow({...{...params}, ...{render_card:PostRowCard} })},
                 // render_row: {PostRow},
                 // render_card: (params)=>{PostRow(params)},

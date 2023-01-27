@@ -4,7 +4,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react'
 
 import { Virtuoso as VList } from 'react-virtuoso'
 import faker from 'faker'
-import LRListRow from './ListRow'
+
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 
@@ -135,6 +135,8 @@ const HeightPreservingItem = ({ children, ...props }) => {
 }
 
 const ListBasic = (props) => {
+
+    const LRListRow1 = props.LRListRow
 
     console.log("=== props.children", props.children[0])
     console.log("=== props.children", props.children[0]._source)
@@ -277,14 +279,8 @@ const ListBasic = (props) => {
                     droppableId="droppable"
                     mode="virtual"
                     renderClone={(provided, snapshot, rubric) =>
-                        // <div
-                        //     provided={provided}
-                        //     isDragging={snapshot.isDragging}
-                        //     item={data_array[rubric.source.index]}
-                        // >
-                        //     {render_row({...{...props}, ...{provided, snapshot, rubric}})}
-                        // </div>
-                        <LRListRow
+
+                        <LRListRow1
                                    {...props}
                                    provided={provided}
                                    isDragging={snapshot.isDragging}
@@ -310,17 +306,7 @@ const ListBasic = (props) => {
                                     return (
                                         <Draggable draggableId={item.post_guid} index={index} key={item.post_id}>
 
-                                                {(provided) => <LRListRow provided={provided} item={item} isDragging={false} />}
-                                                {/*// return (*/}
-                                                {/*//     <div*/}
-                                                {/*//         ref={provided.innerRef}*/}
-                                                {/*//         provided={provided}*/}
-                                                {/*//         item={item}*/}
-                                                {/*//         isDragging={false}*/}
-                                                {/*//     >*/}
-                                                {/*//         {render_row(...{...props,...{provided:provided, isDragging: false}})}*/}
-                                                {/*//     </div>)*/}
-
+                                                {(provided) => <LRListRow1 provided={provided} item={item} isDragging={false} />}
 
                                         </Draggable>
                                     )
