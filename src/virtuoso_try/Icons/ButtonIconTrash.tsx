@@ -23,7 +23,7 @@ const ButtonIconTrash : React.FC<Props> = (props) => {
             console.log("=== ButtonIconTrash 888  "+Date.now())
             // console.log("=== item  "+JSON.stringify(props.item))
 
-            console.log("=== ButtonIconTrash post_guid  "+props.item.post_guid + '   ' + JSON.stringify(props.item) )
+            console.log("=== ButtonIconTrash_post_guid  "+props.item.post_guid + '   ' + JSON.stringify(props.item) )
 
             // props.on_press.icon_trash(e)
         }}
