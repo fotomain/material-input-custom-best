@@ -44,50 +44,6 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 // https://codesandbox.io/s/fj4sf0?file=/App.js:1537-1689
 
 
-const settings_list_posts_width     = 450;
-const settings_list_posts_height    = 500;
-
-
-const get_line = (prefix,index = 0) => {
-    let firstName = faker.name.firstName(3)
-    let lastName = faker.name.lastName(3)
-
-    return {
-        post_guid: `line_:${(index + 1).toString()}`,
-        post_content: `${(index + 1)} - ${prefix} - ${firstName} ${lastName}`,
-    }
-}
-
-
-const beffer_array = []
-
-const data_get_line = (prefix,index) => {
-
-    //=== lines beffer_array may be just FULL
-    if (!beffer_array[index]) {
-        beffer_array[index] = get_line(prefix, index)
-    }
-    else{
-        console.log("=== generated",index)
-    }
-
-    return beffer_array[index]
-
-}
-
-
-const data_read_more_function = (length, end_data_array_index = 0) => {
-
-    console.log("=== data_read_more_function", length, end_data_array_index)
-
-    const time_stamp1 = Date.now()
-
-    const new_lines = Array.from({ length }).map((_, i) =>
-                            data_get_line(time_stamp1,i + end_data_array_index))
-    console.log("=== generateUsers_",new_lines)
-    return new_lines
-
-}
 
 const footer_load_more_button = ({ context: { loadMore, loading } }) => {
     return (
@@ -136,29 +92,29 @@ const HeightPreservingItem = ({ children, ...props }) => {
 
 const ListBasic = (props) => {
 
+    const local_list_width     = props.style.width;
+    const local_list_height    = props.style.height;
+
     const Render_ListRow_local = props.render_ListRow
     const render_RowCard_local = props.render_RowCard
 
-    console.log("=== render_RowCard", render_RowCard_local)
+    // console.log("=== render_RowCard", render_RowCard_local)
     // console.log("=== props.children", props.children[0])
     // console.log("=== props.children", props.children[0]._source)
 
-    const {render_row, data_array, set_data_array} = props
+    const {data_array, set_data_array, data_on_reorder} = props
 
     // const render_row = (props) => props.render_row(props);
 
-    console.log("=== render_row",render_row)
-    const main_list_ref = props.main_list_ref;
-    const data_read_portion = props.data_read_portion;
-    const data_fetch = props.data_fetch
-    const data_new_lines_from_fetch = props.data_new_lines_from_fetch
+    console.log("=== data_array",data_array)
+    const { data_fetch, data_new_lines_from_fetch, data_read_portion,
+            main_list_ref,
+            mode_load_more ,
+    } = props
 
     // const [data_fetch, set_data_fetch] = useState(props.data_fetch)
 
     const [loading, setLoading] = useState(false)
-
-
-    //=== 111
 
     const onDragEnd = React.useCallback(
         (result) => {
@@ -171,10 +127,15 @@ const ListBasic = (props) => {
 
             // void setItems
             set_data_array((items) => reorder(items, result.source.index, result.destination.index))
+
+            data_on_reorder({
+                source: {index:result.source.index, data_element:data_array[result.source.index]},
+                destination: {index:result.destination.index, data_element:data_array[result.destination.index]}
+            })
+
         },
         [set_data_array]
     )
-
 
 // Virtuoso's resize observer can this error,
 // which is caught by DnD and aborts dragging.
@@ -219,30 +180,7 @@ const ListBasic = (props) => {
             }
         );
 
-
-        // fetch('https://dummyjson.com/users?limit='
-        //     +data_read_portion
-        //     +'&skip='+data_array.length
-        //     +'&select=firstName,age')
-        //     .then(res => res.json())
-        //     .then(data1 => {
-        //             console.log("================= data1", data1)
-        //
-        //             console.log("=== data_array", data_array)
-        //             const new_ = data_read_more_function(data_read_portion, data_array.length)
-        //             console.log("=== new_", new_)
-        //             const x_ = [...data_array, ...new_]
-        //             console.log("=== x_", x_)
-        //             set_data_array(x_)
-        //
-        //             setLoading(() => false)
-        //
-        //         }
-        //     );
     }, [data_array, setLoading])
-
-
-
 
     return (
     <div>
@@ -297,14 +235,15 @@ const ListBasic = (props) => {
                                 data={data_array}
                                 ref={main_list_ref}
                                 context={{ loadMore, loading }}
-                                endReached={loadMore}
+                                // mode_load_more
+                                endReached={(mode_load_more=='atuo')?loadMore:()=>{}}
                                 components={{
                                     Item: HeightPreservingItem,
-                                    Footer:footer_load_more_button,
+                                    Footer:(mode_load_more=='press_button')?footer_load_more_button:()=>{},
 
                                 }}
                                 scrollerRef={provided.innerRef}
-                                style={{ width: settings_list_posts_width, height: settings_list_posts_height, borderRadius:'15px'}}
+                                style={{ width: local_list_width, height: local_list_height, borderRadius:'15px'}}
                                 itemContent={(index, item) => {
 
                                     return (

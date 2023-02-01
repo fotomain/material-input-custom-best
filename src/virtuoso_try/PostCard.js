@@ -97,7 +97,7 @@ const C_row_hor_buttons = styled.div`
 const Button1 = styled.button`
           text-align: center;
           background-color: transparent;
-          //border: none; //settings_icon_button_border
+          //border: none; //globals_.icon_button.border
     `;
 
 const IconStyler = styled.span`

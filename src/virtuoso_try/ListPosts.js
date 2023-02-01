@@ -80,19 +80,13 @@ const ListPosts = (props) => {
 
             {/*{style: {backgroundColor: 'orange'}*/}
             <ListBasic {...{...props,
-                // {...{...params}, ...{render_card:PostRowCard} }
                 render_ListRow:PostsRow,
                 render_RowCard:PostCard,
-                 render_row: (params)=>{PostRow({...{...params}, ...{render_card:PostRowCard} })},
-                // render_row: {PostRow},
-                // render_card: (params)=>{PostRow(params)},
-                on_Add:(item_data)=>{
-                    console.log("=== on_Add Posts ", item_data)},
                 style:{
                     backgroundColor: 'blue',
-                    width:'300px', //settings_width_list_posts
+                    width:'500px', //globals_.width_list_posts
                     // width:'100%',    // work as dynamic
-                    height:'150px',
+                    height:'700px',
                     // height:'100%',   // work as dynamic
 
                     display:'flex',
@@ -103,10 +97,7 @@ const ListPosts = (props) => {
                 },
 
             }}
-            >
-                <PostRow        system_name={'PostRow'}> !!!Row</PostRow>
-                <PostRowCard    system_name={'PostRowCard'}> !!!Card</PostRowCard>
-            </ListBasic>
+            />
 
         </div>
     );

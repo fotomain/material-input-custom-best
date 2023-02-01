@@ -15,13 +15,14 @@ import styled, { css } from "styled-components";
 import PostCard from "./PostCard";
 
 
-function LRListRow  (props) {
+
+function PostsRow  (props) {
 
     const Render_RowCard_local = props.render_RowCard
-    console.log("=== Render_RowCard_local ",Render_RowCard_local)
+    // console.log("=== Render_RowCard_local ",Render_RowCard_local)
 
     const { provided, item, isDragging, row_heigth } = props
-    // console.log("=== card_render",props.card_render)
+
 
     const style_local={
         // palette_card_background
@@ -151,4 +152,4 @@ function LRListRow  (props) {
 }
 
 
-export default LRListRow
+export default PostsRow

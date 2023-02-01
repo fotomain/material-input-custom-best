@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Row1Search from "./comp/Row1Search";
-import Home1AnimeTextCircle from "./comp/Home1AnimeTextCircle";
-import InfiniteScrollModel from "./all_versions/InfiniteScrollModel";
-import ReactVirtualized from "./all_versions/ReactBeautifulDND";
-import ReactBeautifulDND from "./all_versions/ReactBeautifulDND";
+// import Row1Search from "./comp/Row1Search";
+// import Home1AnimeTextCircle from "./comp/Home1AnimeTextCircle";
+// import InfiniteScrollModel from "./all_versions/InfiniteScrollModel";
+// import ReactVirtualized from "./all_versions/ReactBeautifulDND";
+// import ReactBeautifulDND from "./all_versions/ReactBeautifulDND";
 
 import bkg1 from "./comp/images_main/bkg1.jpg";
 import ReactVirtuso from "./virtuoso_try/ReactVirtuso";

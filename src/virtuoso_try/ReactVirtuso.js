@@ -21,7 +21,7 @@ const ReactVirtuso = () => {
     const Div1 = styled.div`
           text-align: center;
           background-color: greenyellow;
-          //border: none; //settings_icon_button_border
+          //border: none; //globals_.icon_button.border
     `;
 
     const list_ref1 = useRef(null);
@@ -30,6 +30,22 @@ const ReactVirtuso = () => {
     return (
         <div>
             <ListPosts
+
+                // mode_load_more //auto on_button endReached={loadMore}
+
+                //
+                // on_Add:(item_data)=>{
+                // on_Add1St
+                // on_AddLast
+                // on_AddSelected
+
+                // console.log("=== on_Add Posts ", item_data)},
+                // !!! see WBS react-custom-scrollbars custom Scroll Bar GO !!!!!! === https://docs.google.com/document/d/1bgQNJJjpFPwEapxrC8rXZK2E6YYUaoUOgfj-iX_rTVU/edit#heading=h.e06myjfe1xin
+
+                row_heigth = {180}
+                // mode_load_more={'auto'}
+                mode_load_more={'press_button'}
+
                 main_list_ref={list_ref1}
                 data_array={data_array_posts}
                 set_data_array={set_data_array_posts}
@@ -37,11 +53,15 @@ const ReactVirtuso = () => {
                 data_read_portion={10}
                 data_fetch={(params)=>{
                     if(params) {
-                        return fetch('https://dummyjson.com/users?limit='
-                            + params?.fetch_count
+                        return fetch('https://dummyjson.com/users?'
+                            + 'limit=' + params?.fetch_count
                             + '&skip=' + params?.fetch_skip
                             + '&select=firstName,lastName,age')
                     }
+                }}
+
+                data_on_reorder={(params)=>{
+                    console.log("=== data_on_reorder",params)
                 }}
 
                 data_new_lines_from_fetch={(params)=>{
@@ -67,14 +87,8 @@ const ReactVirtuso = () => {
 
                 }} //data_new_lines_from_fetch
 
-                row_heigth = {180}
-                card_render={(element)=>{
-                    return (
-                        <Div1 key={element.post_guid}>
-                            {element.post_title}
-                        </Div1>
-                    )
-                }}
+
+
 
                 />
             </div>
