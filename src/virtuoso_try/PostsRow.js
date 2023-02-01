@@ -18,6 +18,8 @@ import PostCard from "./PostCard";
 
 function PostsRow  (props) {
 
+    console.log("=== === PostsRow ",props)
+
     const Render_RowCard_local = props.render_RowCard
     // console.log("=== Render_RowCard_local ",Render_RowCard_local)
 
@@ -86,7 +88,11 @@ function PostsRow  (props) {
         >
 
 
-            <Render_RowCard_local {...props} item={item}/>
+            <Render_RowCard_local
+                {...{...props, item:item }}
+
+            />
+            {/*{...props} item={item}*/}
 
 
         </div>

@@ -14,9 +14,12 @@ const content_posts_data = Array.from({ length: 20 }, (_, k) => ({
 
 // posts_data_read_more_function
 
-
+const on_press_icon_trash = (params) => {
+    console.log("=== on_press_icon_trash ",params)
+}
 
 const ReactVirtuso = () => {
+
 
     const Div1 = styled.div`
           text-align: center;
@@ -47,6 +50,7 @@ const ReactVirtuso = () => {
                 mode_load_more={'press_button'}
                 mode_list_nav_panel={'auto'}
                 // on_press_go_top
+                on_press_icon_trash={on_press_icon_trash}
 
                 main_list_ref={list_ref1}
                 data_array={data_array_posts}

@@ -66,6 +66,7 @@ const PostRow = (props) => {
 
 const ListPosts = (props) => {
 
+    console.log("=== === ListPosts props ",props)
     console.log("=== ListPosts data_array ",props.data_array)
 
     const row_render = (element) => {

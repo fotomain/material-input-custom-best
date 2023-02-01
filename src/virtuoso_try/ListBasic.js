@@ -1,5 +1,6 @@
 ﻿
 
+
 import React, {useCallback, useEffect, useRef, useState} from 'react'
 
 import { Virtuoso as VList } from 'react-virtuoso'
@@ -92,6 +93,8 @@ const HeightPreservingItem = ({ children, ...props }) => {
 
 const ListBasic = (props) => {
 
+    console.log("=== === ListBasic props ",props)
+
     const local_list_width     = props.style.width;
     const local_list_height    = props.style.height;
 
@@ -103,13 +106,10 @@ const ListBasic = (props) => {
     // console.log("=== props.children", props.children[0]._source)
 
     const {data_array, set_data_array, data_on_reorder} = props
-
-    // const render_row = (props) => props.render_row(props);
-
     console.log("=== data_array",data_array)
     const { data_fetch, data_new_lines_from_fetch, data_read_portion,
             main_list_ref,
-            mode_load_more ,
+            mode_load_more,
     } = props
 
     // const [data_fetch, set_data_fetch] = useState(props.data_fetch)
@@ -223,17 +223,20 @@ const ListBasic = (props) => {
                     renderClone={(provided, snapshot, rubric) =>
 
                         <Render_ListRow_local
-                                   {...props}
-                                   provided={provided}
-                                   isDragging={snapshot.isDragging}
-                                   item={data_array[rubric.source.index]}
-                                   render_RowCard = {render_RowCard_local}
+                            {...{
+                                ...props,
+                                provided : provided,
+                                isDragging : snapshot.isDragging,
+                                item : data_array[rubric.source.index],
+                                render_RowCard : render_RowCard_local
+                            }}
                         />
                     }
                 >
                     {(provided) => {
                         return (
                             <VList
+
                                 data={data_array}
                                 ref={main_list_ref}
                                 context={{ loadMore, loading }}
@@ -252,8 +255,14 @@ const ListBasic = (props) => {
                                         <Draggable draggableId={item.post_guid} index={index} key={item.post_id}>
 
                                                 {(provided) => <Render_ListRow_local
-                                                        provided={provided} item={item} isDragging={false}
-                                                        render_RowCard = {render_RowCard_local}
+
+                                                    {...{
+                                                        ...props,
+                                                        provided: provided,
+                                                        item: item,
+                                                        isDragging: false,
+                                                        render_RowCard: render_RowCard_local
+                                                    }}
                                                     />
                                                 }
 

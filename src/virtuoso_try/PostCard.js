@@ -5,6 +5,7 @@ import {FaArrowUp, FaPlus, FaTrash} from "react-icons/fa";
 import React from "react";
 import styled, {css} from "styled-components";
 import {IconBasic} from "./IconBasic";
+import {IconTrash} from "./IconTrash";
 
 //=== DOC https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
 const flex_props_row = {position:'relative', display:'flex', flexDirection:'row'}
@@ -150,8 +151,10 @@ const dv_2_col_style    =  {color:'yellow',backgroundColor: 'green',   ...flex_p
 const PostCard = (props) => {
 
     const {
-        item
-    } = props
+        item,
+    }=props
+
+    console.log("=== PostCard props ",props)
 
     return (
         <div>
@@ -193,14 +196,15 @@ const PostCard = (props) => {
 
                         <Button1
                             onClick={(e) => {
-                                console.log(Date.now())
+                                console.log("=== call111 "+Date.now())
+                                props.on_press_icon_trash(e)
                             }}
                         >
 
-                            <IconBasic id={'icon111'} med
-                            >
-                                <FaTrash/>
-                            </IconBasic>
+                            <IconTrash id={'icon111'} med>
+
+                            </IconTrash>
+
                         </Button1>
 
                         <Button1
