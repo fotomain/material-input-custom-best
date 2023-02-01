@@ -12,6 +12,10 @@ import bkg_app from "./comp/images_main/bkg3.jpg";
 
 // npm start
 
+
+// npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+// npx tsc --init
+
 // npm i --save @fortawesome/fontawesome-svg-core
 // npm install --save @fortawesome/free-solid-svg-icons
 // npm install --save @fortawesome/react-fontawesome

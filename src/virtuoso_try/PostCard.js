@@ -4,6 +4,7 @@
 import {FaArrowUp, FaPlus, FaTrash} from "react-icons/fa";
 import React from "react";
 import styled, {css} from "styled-components";
+import {IconBasic} from "./IconBasic";
 
 //=== DOC https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
 const flex_props_row = {position:'relative', display:'flex', flexDirection:'row'}
@@ -196,10 +197,10 @@ const PostCard = (props) => {
                             }}
                         >
 
-                            <Icon1 id={'icon111'} med
+                            <IconBasic id={'icon111'} med
                             >
                                 <FaTrash/>
-                            </Icon1>
+                            </IconBasic>
                         </Button1>
 
                         <Button1

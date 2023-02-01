@@ -45,6 +45,8 @@ const ReactVirtuso = () => {
                 row_heigth = {180}
                 // mode_load_more={'auto'}
                 mode_load_more={'press_button'}
+                mode_list_nav_panel={'auto'}
+                // on_press_go_top
 
                 main_list_ref={list_ref1}
                 data_array={data_array_posts}

@@ -184,6 +184,7 @@ const ListBasic = (props) => {
 
     return (
     <div>
+        {(props.mode_list_nav_panel!='auto')?'':
               <div>
                   <button
                       onClick={() => {
@@ -204,6 +205,7 @@ const ListBasic = (props) => {
                       Scroll To 0
                   </button>
               </div>
+        }
 
         <div style={{ padding: '1rem' }}>
                         <style>
