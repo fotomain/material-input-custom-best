@@ -1,18 +1,30 @@
 import React from "react";
 import styled, {css} from "styled-components";
+import {FaTrash} from "react-icons/fa";
 //=== DOC https://catchts.com/react-props
 
 
-type IconBasicType = {
-    props?:any;
-    title?:string;
-    small?:boolean;
-    med?:boolean;
-    large?:boolean;
-    children:React.ReactNode;
+type StylerProps = {
+    color?:any;
+    small?:any;
+    med?:any;
+    large?:any;
 }
 
-const IconStyler1 = styled.span<IconBasicType>`
+type IconBasicType = {
+    icon?:any,
+    color?:any;
+    small?:any;
+    med?:any;
+    large?:any;
+
+
+    props?:any;
+    title?:string;
+    children?:React.ReactNode;
+}
+
+const IconStyler1 = styled.span<StylerProps>`
       color: ${(props) => props.color};
       & svg {
         ${(props) =>
@@ -39,16 +51,25 @@ const IconStyler1 = styled.span<IconBasicType>`
 
 const IconBasic : React.FC<IconBasicType> = (props) => {
 
+    console.log("=== === IconBasic props ",props)
+
 return(
     <div title={props.title}>
 
-        <IconStyler1 {...{...props,...{
-                color:'teal',
-                small   :(props.small),
-                med     :(props.med),
-                large   :(props.large),
-            }
-        }}>{props.children}</IconStyler1>;
+        {/*...{*/}
+        {/*color: 'teal',*/}
+        {/*// small   :(props.small?true:false),*/}
+        {/*med: true,*/}
+        {/*// large   :(props.large?true:false),}*/}
+       {/*    <FaTrash/>*/}
+        <IconStyler1 {...{
+            color: 'teal',
+            small   :(props.small?true:false),
+            med     :(props.med?true:false),
+            large   :(props.large?true:false),
+        }} >
+            {props.children}
+        </IconStyler1>
 
     </div>
 )}

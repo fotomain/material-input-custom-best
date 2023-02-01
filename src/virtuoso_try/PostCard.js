@@ -4,8 +4,12 @@
 import {FaArrowUp, FaPlus, FaTrash} from "react-icons/fa";
 import React from "react";
 import styled, {css} from "styled-components";
-import {IconBasic} from "./IconBasic";
-import {IconTrash} from "./IconTrash";
+
+import IconTrash from "./Icons/IconTrash";
+import IconArrowUp from "./Icons/IconArrowUp";
+import IconPlus from "./Icons/IconPlus";
+import ButtonIconTrash from "./Icons/ButtonIconTrash";
+import ButtonIconArrowUp from "./Icons/ButtonIconArrowUp";
 
 //=== DOC https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
 const flex_props_row = {position:'relative', display:'flex', flexDirection:'row'}
@@ -102,43 +106,6 @@ const Button1 = styled.button`
           //border: none; //globals_.icon_button.border
     `;
 
-const IconStyler = styled.span`
-      color: ${(props) => props.color};
-      & svg {
-        ${(props) =>
-    props.small &&
-    css`
-                    width: 14px !important;
-                    height: 14px !important;
-      `}
-        ${(props) =>
-    props.med &&
-    css`
-                    width: 20px !important;
-                    height: 20px !important;
-      `}
-        ${(props) =>
-    props.large &&
-    css`
-                    width: 28px !important;
-                    height: 28px !important;
-      `}
-      }
-
-    `;
-
-const Icon1 = ({ children, ...props }) => {
-
-    return <IconStyler {...{...props,...{
-            color:'teal',
-            small   :(props.small)?'1':null,
-            med     :(props.med)?'1':null,
-            large   :(props.large)?'1':null,
-        }
-    }}>{children}</IconStyler>;
-    // return <IconStyler {...props}>{children}</IconStyler>;
-
-};
 
 
 //================
@@ -193,34 +160,45 @@ const PostCard = (props) => {
 
                     <C_row_hor_buttons id={'C_row_hor_buttons'}>
 
+                        {/*{...{...props, ...{id: 'icon111', med: true}}}*/}
+                        {/*{...{...props, ...{xx: 1}}}*/}
+                        {/*{...props}*/}
+                        {/*id={'icon111'} med*/}
 
-                        <Button1
-                            onClick={(e) => {
-                                console.log("=== call111 "+Date.now())
-                                props.on_press_icon_trash(e)
-                            }}
-                        >
+                        <ButtonIconTrash
+                            {...{...props, ...{id: 'icon111', med: true}}}
+                        />
 
-                            <IconTrash id={'icon111'} med>
+                        <ButtonIconArrowUp
+                            {...{...props, ...{id: 'icon111', med: true}}}
+                        />
 
-                            </IconTrash>
+                        {/*<Button1*/}
+                        {/*    onClick={(e) => {*/}
+                        {/*        console.log("=== call111 "+Date.now())*/}
+                        {/*        props.on_press_icon_trash(e)*/}
+                        {/*    }}*/}
+                        {/*>*/}
 
-                        </Button1>
+                        {/*    <IconTrash id={'icon111'} med/>*/}
+
+                        {/*</Button1>*/}
+
+                        {/*<Button1*/}
+                        {/*    onClick={(e) => {*/}
+                        {/*        console.log(Date.now())*/}
+                        {/*    }}*/}
+                        {/*>*/}
+                        {/*    <IconArrowUp id={'icon111'} med/>*/}
+                        {/*</Button1>*/}
 
                         <Button1
                             onClick={(e) => {
                                 console.log(Date.now())
                             }}
                         >
-                            <Icon1 id={'icon111'} med><FaArrowUp/></Icon1>
-                        </Button1>
-
-                        <Button1
-                            onClick={(e) => {
-                                console.log(Date.now())
-                            }}
-                        >
-                            <Icon1 id={'icon111'} med><FaPlus/></Icon1>
+                            <IconPlus id={'icon111'} med/>
+                            {/*<Icon1 id={'icon111'} med><FaPlus/></Icon1>*/}
                         </Button1>
 
                     </C_row_hor_buttons>

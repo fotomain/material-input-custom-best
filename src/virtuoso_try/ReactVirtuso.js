@@ -50,7 +50,7 @@ const ReactVirtuso = () => {
                 mode_load_more={'press_button'}
                 mode_list_nav_panel={'auto'}
                 // on_press_go_top
-                on_press_icon_trash={on_press_icon_trash}
+                on_press={{icon_trash:on_press_icon_trash}}
 
                 main_list_ref={list_ref1}
                 data_array={data_array_posts}
