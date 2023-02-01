@@ -14,23 +14,18 @@ type Props = {
 
 const ButtonIconArrowUp : React.FC<Props> = (props) => {
 
-    console.log("=== ButtonIconTrash "+props)
+    // console.log("=== ButtonIconArrowUp "+props)
 
     return(
 
     <ButtonIconSlyler
         onClick={(e:any) => {
-            console.log("=== call ButtonIconArrowUp  "+Date.now())
-            props.on_press.icon_trash(e)
+            console.log("=== call ButtonIconArrowUp 999  "+Date.now())
+            props.on_press.icon_up(e)
         }}
     >
 
-        <IconArrowUp {...props}
-                   onClick={(e:any) => {
-                       console.log("=== call222 "+Date.now())
-                       // props.on_press_icon_trash(e)
-                   }}
-        />
+        <IconArrowUp {...props}/>
 
     </ButtonIconSlyler>
 

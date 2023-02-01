@@ -17,6 +17,9 @@ const content_posts_data = Array.from({ length: 20 }, (_, k) => ({
 const on_press_icon_trash = (params) => {
     console.log("=== on_press_icon_trash ",params)
 }
+const on_press_icon_up = (params) => {
+    console.log("=== on_press_icon_up ",params)
+}
 
 const ReactVirtuso = () => {
 
@@ -50,7 +53,10 @@ const ReactVirtuso = () => {
                 mode_load_more={'press_button'}
                 mode_list_nav_panel={'auto'}
                 // on_press_go_top
-                on_press={{icon_trash:on_press_icon_trash}}
+                on_press={{
+                    icon_trash:on_press_icon_trash,
+                    icon_up:on_press_icon_up
+                }}
 
                 main_list_ref={list_ref1}
                 data_array={data_array_posts}

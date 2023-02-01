@@ -5,6 +5,7 @@ import styled from "styled-components";
 import {ButtonIconSlyler} from "../ButtonIconSlyler";
 
 type Props = {
+    item:any;
     on_press:any;
     props?:any;
     children:React.ReactNode;
@@ -13,23 +14,22 @@ type Props = {
 
 const ButtonIconTrash : React.FC<Props> = (props) => {
 
-    console.log("=== ButtonIconTrash "+props)
+    // console.log("=== ButtonIconTrash props "+(JSON.stringify(props)))
 
     return(
 
     <ButtonIconSlyler
         onClick={(e:any) => {
-            console.log("=== call 888  "+Date.now())
-            props.on_press.icon_trash(e)
+            console.log("=== ButtonIconTrash 888  "+Date.now())
+            // console.log("=== item  "+JSON.stringify(props.item))
+
+            console.log("=== ButtonIconTrash post_guid  "+props.item.post_guid + '   ' + JSON.stringify(props.item) )
+
+            // props.on_press.icon_trash(e)
         }}
     >
 
-        <IconTrash {...props}
-                   onClick={(e:any) => {
-                       console.log("=== call222 "+Date.now())
-                       // props.on_press_icon_trash(e)
-                   }}
-        />
+        <IconTrash {...props}/>
 
     </ButtonIconSlyler>
 

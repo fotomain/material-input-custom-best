@@ -121,7 +121,7 @@ const PostCard = (props) => {
         item,
     }=props
 
-    console.log("=== PostCard props ",props)
+    // console.log("=== PostCard props ",props)
 
     return (
         <div>
@@ -166,11 +166,11 @@ const PostCard = (props) => {
                         {/*id={'icon111'} med*/}
 
                         <ButtonIconTrash
-                            {...{...props, ...{id: 'icon111', med: true}}}
+                            {...{...props, ...{id: 'icon111', med: true, item:item}}}
                         />
 
                         <ButtonIconArrowUp
-                            {...{...props, ...{id: 'icon111', med: true}}}
+                            {...{...props, ...{id: 'icon111', med: true, item:item}}}
                         />
 
                         {/*<Button1*/}

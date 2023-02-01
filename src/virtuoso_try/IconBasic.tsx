@@ -51,7 +51,7 @@ const IconStyler1 = styled.span<StylerProps>`
 
 const IconBasic : React.FC<IconBasicType> = (props) => {
 
-    console.log("=== === IconBasic props ",props)
+    // console.log("=== === IconBasic props ",props)
 
 return(
     <div title={props.title}>

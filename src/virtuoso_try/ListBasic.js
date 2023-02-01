@@ -93,7 +93,7 @@ const HeightPreservingItem = ({ children, ...props }) => {
 
 const ListBasic = (props) => {
 
-    console.log("=== === ListBasic props ",props)
+    // console.log("=== === ListBasic props ",props)
 
     const local_list_width     = props.style.width;
     const local_list_height    = props.style.height;

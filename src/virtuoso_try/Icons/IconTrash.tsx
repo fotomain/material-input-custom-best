@@ -6,7 +6,7 @@ import {IconBasic} from "../IconBasic";
 type Props = {
     props?:any;
     children:React.ReactNode;
-    onClick:(e:any)=>void;
+    // onClick:(e:any)=>void;
 }
 
 
