@@ -21,6 +21,7 @@ const useStyles3 = makeStyles({
     root: {
         position:"relative",
         height: '500px',
+        color:'teal',
     }})
 
 
@@ -62,6 +63,7 @@ MyButton1.propTypes = {
 };
 
 const MyButton = styled(Button)({
+    "&.MuiButton-text": { color: "white" },
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     border: 0,
     borderRadius: 3,
@@ -96,7 +98,7 @@ const Hook1  = ():JSX.Element => {
         <div className={classes3.root} style={{
             display:'flex',
             flexDirection:'column',
-            justifyContent:'center',
+            justifyContent:'space-between',
             alignItems:'center',
             // height:'1400px',
         }}>
@@ -113,7 +115,10 @@ const Hook1  = ():JSX.Element => {
                     }}
                 >
                     <Button className={classes.root}>Hook</Button>;
-                    <MyButton>Styled Components</MyButton>
+                    <MyButton  sx={{
+                        //=== !!! works "&.MuiButton-text": { color: "white" },
+                        border: "2px white solid"
+                    }}>Styled Components</MyButton>
                     <SearchIcon
                         // className={classes.root}
                         style={{textAlign:'center', width:'50px', height:'50px', color:"teal"}}

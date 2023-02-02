@@ -90,7 +90,7 @@ function App() {
 
              display:'flex',
              flexDirection:'column',
-             justifyContent:'center',
+             justifyContent:'space-between',
              alignItems:'top',
          }}
     >
