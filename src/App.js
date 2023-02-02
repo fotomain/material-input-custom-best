@@ -16,6 +16,7 @@ import bkg_app from "./comp/images_main/bkg3.jpg";
 // npm install --save typescript @types/node @types/react @types/react-dom @types/jest
 // npx tsc --init
 
+// npm install @capacitor/device
 // npm i --save @fortawesome/fontawesome-svg-core
 // npm install --save @fortawesome/free-solid-svg-icons
 // npm install --save @fortawesome/react-fontawesome
@@ -33,8 +34,10 @@ import bkg_app from "./comp/images_main/bkg3.jpg";
 // import { faAtom } from '@fortawesome/free-solid-svg-icons'
 // npm install react-svg
 
-// ============== ICONS REACT
+// ============== ICONS
 // npm install react-icons
+// npm install --save react-icon-tint
+
 
 
 function App() {

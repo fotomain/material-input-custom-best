@@ -165,6 +165,7 @@ const PostCard = (props) => {
                         {/*{...props}*/}
                         {/*id={'icon111'} med*/}
 
+
                         <ButtonIconTrash
                             {...{...props, ...{id: 'icon111', med: true, item:item}}}
                         />

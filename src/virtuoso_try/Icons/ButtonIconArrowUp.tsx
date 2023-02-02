@@ -7,6 +7,7 @@ import IconArrowUp from "./IconArrowUp";
 
 type Props = {
     on_press:any;
+    globals_:any;
     props?:any;
     children:React.ReactNode;
 }

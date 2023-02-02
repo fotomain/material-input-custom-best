@@ -7,6 +7,7 @@ import {ButtonIconSlyler} from "../ButtonIconSlyler";
 type Props = {
     item:any;
     on_press:any;
+    globals_:any;
     props?:any;
     children:React.ReactNode;
 }

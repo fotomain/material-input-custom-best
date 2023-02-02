@@ -1,9 +1,14 @@
 ﻿
 
 import ListBasic from "./ListBasic";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import ListPosts from "./ListPosts";
 import styled from "styled-components";
+import { Device } from '@capacitor/device';
+import {globals_} from "./globals";
+
+
+
 
 const content_posts_data = Array.from({ length: 20 }, (_, k) => ({
     post_guid:      `line_:${k.toString()}`,
@@ -21,19 +26,53 @@ const on_press_icon_up = (params) => {
     console.log("=== on_press_icon_up ",params)
 }
 
-const ReactVirtuso = () => {
 
+
+const ReactVirtuso = () => {
 
     const Div1 = styled.div`
           text-align: center;
           background-color: greenyellow;
-          //border: none; //globals_.icon_button.border
+          //border: none; //globals_.icon_button.border       
     `;
 
+    //=== SSSSSSS
     const list_ref1 = useRef(null);
     const [data_array_posts, set_data_array_posts] = useState(content_posts_data)
+    const [thisDeviceInfo,set_thisDeviceInfo] = useState(0);
+
+    useEffect(() => {
+
+
+
+        const timer1 = setTimeout(()=>{
+            console.log("=== set_input_value_timeouter")
+            Device.getInfo().then((info) => {
+                console.log("=== thisDeviceInfo");
+                console.log(info);
+                // console.log(info.operatingSystem);
+                // globals_.system.os='and'
+                // globals_.system.os='ios'
+                globals_.system.mode_icons='ios'
+                set_thisDeviceInfo(info)
+                if ("windows" == info.operatingSystem && "web" == info.platform){
+
+                }
+
+
+            });
+        },500)
+
+
+        return () => {
+            clearTimeout(timer1)
+        };
+    }, []);
+
 
     return (
+
+        (!thisDeviceInfo)?'Loading System':
         <div>
             <ListPosts
 
@@ -53,6 +92,7 @@ const ReactVirtuso = () => {
                 mode_load_more={'press_button'}
                 mode_list_nav_panel={'auto'}
                 // on_press_go_top
+                globals_={globals_}
                 on_press={{
                     icon_trash:on_press_icon_trash,
                     icon_up:on_press_icon_up
@@ -103,7 +143,8 @@ const ReactVirtuso = () => {
 
 
                 />
-            </div>
+        </div>
+
     );
 };
 
