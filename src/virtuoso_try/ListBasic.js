@@ -4,7 +4,6 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react'
 
 import { Virtuoso as VList } from 'react-virtuoso'
-import faker from 'faker'
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 

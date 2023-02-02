@@ -1,7 +1,7 @@
 import React from "react";
 
 import IconTrash from "./IconTrash";
-import styled from "styled-components";
+
 import {ButtonIconSlyler} from "../ButtonIconSlyler";
 
 type Props = {

@@ -6,25 +6,35 @@ import { makeStyles } from '@mui/styles';
 import Button from '@mui/material/Button';
 import styled from "styled-components";
 // import * as mui from '@material-ui/icons';
-import {Delete, Search} from '@mui/icons-material';
+import SearchIcon from '@mui/icons-material/Search';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 //=== https://v4.mui.com/components/icons/
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import PropTypes from 'prop-types';
 
 
-const styledBy = (property:any, mapping:any) => (props:any) => mapping[props[property]];
+const styledBy1 = (property:any, mapping:any) => (props:any) => mapping[props[property]];
+
+
+const useStyles3 = makeStyles({
+    root: {
+        position:"relative",
+        height: '500px',
+    }})
+
 
 
 const useStyles1 = makeStyles({
     root: {
-        background: styledBy('color', {
+        position:"relative",
+        background: styledBy1('color', {
             red: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
             blue: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
         }),
         border: 0,
         borderRadius: 3,
-        boxShadow: styledBy('color', {
+        boxShadow: styledBy1('color', {
             red: '0 3px 5px 2px rgba(255, 105, 135, .3)',
             blue: '0 3px 5px 2px rgba(33, 203, 243, .3)',
         }),
@@ -73,52 +83,53 @@ const useStyles = makeStyles({
     },
 });
 
-type Props1 = {
-    props?:any;
-    title?:string;
-    children?:React.ReactElement;
-}
-
-type Props2 = {
-    props?:any;
-    title?:string;
-    children?:React.ReactElement;
-}
-
 
 
 const Hook1  = ():JSX.Element => {
     const classes = useStyles();
     console.log("=== classes",classes)
     console.log("=== classes.root",classes.root)
+
+    const classes3 = useStyles3()
+
     return (
-        <>
-        <div
-            style={{
+        <div className={classes3.root} style={{
+            display:'flex',
+            flexDirection:'column',
+            justifyContent:'center',
+            alignItems:'center',
+            // height:'1400px',
+        }}>
+                <div
 
-                display:'flex',
-                flexDirection:'row',
-                justifyContent:'center',
-                alignItems:'center',
-            }}
-        >
-            <Button className={classes.root}>Hook</Button>;
-            <MyButton>Styled Components</MyButton>
-            <Search
-                // className={classes.root}
-                style={{textAlign:'center', width:'50px', height:'50px', color:"teal"}}
-            />
-            <Delete />
-            <DeleteForeverOutlinedIcon />
-        </div>
+                    style={{
 
-    <div>
-        <MyButton1 color="red">Red</MyButton1>
-        <br />
-        <br />
-        <MyButton1 color="blue">Blue</MyButton1>
+                        flex:1,
+
+                        display:'flex',
+                        flexDirection:'row',
+                        justifyContent:'center',
+                        alignItems:'center',
+                    }}
+                >
+                    <Button className={classes.root}>Hook</Button>;
+                    <MyButton>Styled Components</MyButton>
+                    <SearchIcon
+                        // className={classes.root}
+                        style={{textAlign:'center', width:'50px', height:'50px', color:"teal"}}
+                    />
+                    <DeleteIcon />
+                    <DeleteForeverOutlinedIcon />
+                </div>
+
+                <br></br>
+                <div style={{flex:1}}>
+                    <MyButton1 color="red">Red</MyButton1>
+                    <br />
+                    <br />
+                    <MyButton1 color="blue">Blue</MyButton1>
+                </div>
     </div>
-    </>
 
     );
 }
