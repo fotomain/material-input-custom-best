@@ -3,7 +3,7 @@ import React from "react";
 import {FaTrash} from "react-icons/fa";
 import {IconBasic} from "../IconBasic";
 import {globals_} from "../globals";
-import IconTint from 'react-icon-tint'
+import IconTint from 'react-icon-tint';
 
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import {Search} from "@material-ui/icons";

@@ -18,8 +18,11 @@ import {Mui3Test1} from "./mui3/Mui3Test1";
 // npm config set registry https://registry.npmjs.org/
 // npm config set proxy http://172.30.1.224:8080
 // npm config set https-proxy http://172.30.1.224:8080
-// npm config set timeout 6000000
-// !!! yarn install
+// npm ON ERROR config set timeout 6000000
+// !!! get from fresh ionic LIST project 2 files
+//      package.json
+//      package-lock.json
+
 
 // npm install
 // npm install --save typescript @types/node @types/react @types/react-dom @types/jest
@@ -47,19 +50,19 @@ import {Mui3Test1} from "./mui3/Mui3Test1";
 
 // ============== ICONS
 
-// npm install --save @mui/icons-material
 // npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
 
 // npm install @material-ui/CORE
 // npm install @material-ui/styles
-// npm install --save @material-ui/icons
-
+// npm install @material-ui/icons
+//
 // npm install --save react-icon-tint
-
+// npm i react-icons
 
 
 
 function App() {
+
 
     // {/*<img src={require('./logo.jpeg')} />*/}
     // const dd = require('../public/images_public/bkg3.jpg')
