@@ -2,13 +2,14 @@
 
 //=== DOC https://v3.mui.com/css-in-js/basics/
 import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import Button from '@material-ui/core/Button';
+import { makeStyles } from '@mui/styles';
+import Button from '@mui/material/Button';
 import styled from "styled-components";
 // import * as mui from '@material-ui/icons';
-import {Delete, Search} from '@material-ui/icons';
+import {Delete, Search} from '@mui/icons-material';
+
 //=== https://v4.mui.com/components/icons/
-import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import PropTypes from 'prop-types';
 
 

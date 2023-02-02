@@ -1,19 +1,10 @@
 
 import React, {useEffect} from 'react';
-import Cookies from 'universal-cookie';
 
 import './ListRow.css';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {FaUserTie, FaTrash, FaArrowUp, FaApper, FaPlus} from 'react-icons/fa'
 
 //=== DOC COOL https://stackblitz.com/edit/react-dpfmdi?file=src%2Fstyle.css
-// import bkg_app from "./images_main/bkg3.jpg";
-
-import { ReactSVG } from "react-svg";
-import styled, { css } from "styled-components";
-import PostCard from "./PostCard";
-
 
 
 function PostsRow  (props) {

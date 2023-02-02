@@ -5,8 +5,10 @@ import {IconBasic} from "../IconBasic";
 import {globals_} from "../globals";
 import IconTint from 'react-icon-tint';
 
+//=== DOC https://mui.com/system/styles/basics/
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import {Search} from "@material-ui/icons";
+
+// import {Search} from "@material-ui/icons";
 import SearchIcon from '@mui/icons-material/Search';
 
 type Props = {
@@ -42,10 +44,10 @@ const IconTrash : React.FC<Props> = (props) => {
                 <SearchIcon sx={{ fontSize: 45 }} />
 
                 <p>MUI Material You form Google</p>
-                <Search
-                    // className={classes.root}
-                    style={{textAlign:'center', width:'50px', height:'50px', color:"teal"}}
-                />
+                {/*<Search*/}
+                {/*    // className={classes.root}*/}
+                {/*    style={{textAlign:'center', width:'50px', height:'50px', color:"teal"}}*/}
+                {/*/>*/}
 
             </div>
 

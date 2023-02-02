@@ -9,8 +9,16 @@ call npm install --save react-icon-tint
 call npm i react-icons
 
 call npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+call npm install @mui/styles
 
-call npm install @material-ui/CORE
-call npm install @material-ui/styles
-call npm install @material-ui/icons
+
+call npm install styled-components@latest
+call npm install --save-dev @types/styled-components@latest
+
+
+call npm i @capacitor/device
+call npm i react-virtuoso
+call npm i react-beautiful-dnd
+call npm i faker
+
 
