@@ -9,6 +9,7 @@ import './App.css';
 import bkg1 from "./comp/images_main/bkg1.jpg";
 import ReactVirtuso from "./virtuoso_try/ReactVirtuso";
 import bkg_app from "./comp/images_main/bkg3.jpg";
+import {Mui3Test1} from "./mui3/Mui3Test1";
 
 // npm start
 
@@ -37,6 +38,8 @@ import bkg_app from "./comp/images_main/bkg3.jpg";
 // ============== ICONS
 // npm install react-icons
 // npm install --save react-icon-tint
+// npm install @material-ui/CORE
+// npm install @material-ui/styles
 
 
 
@@ -68,9 +71,14 @@ function App() {
              backgroundRepeat: "no-repeat",
              // backgroundImage: 'url(' + bkg_app + ')'
              backgroundSize:'100% 100%',
-             backgroundImage: 'url(' + require('./comp/images_main/bkg3.jpg') + ')'
+             backgroundImage: 'url(' + require('./comp/images_main/bkg3.jpg') + ')',
+
+             display:'flex',
+             flexDirection:'column',
          }}
     >
+
+        <Mui3Test1/>
 
         <ReactVirtuso />
         {/*<ReactVirtualizedBeautiful />*/}
