@@ -13,9 +13,18 @@ import {Mui3Test1} from "./mui3/Mui3Test1";
 
 // npm start
 
+// ==== NEW PLACE !!!!!!
+// --- npm config set registry http://registry.npmjs.org/
+// npm config set registry https://registry.npmjs.org/
+// npm config set proxy http://172.30.1.224:8080
+// npm config set https-proxy http://172.30.1.224:8080
+// npm config set timeout 6000000
+// !!! yarn install
 
+// npm install
 // npm install --save typescript @types/node @types/react @types/react-dom @types/jest
 // npx tsc --init
+
 
 // npm install @capacitor/device
 // npm i --save @fortawesome/fontawesome-svg-core
@@ -26,6 +35,7 @@ import {Mui3Test1} from "./mui3/Mui3Test1";
 // npm i styled-components @types/styled-components
 
 // ============== ICONS FA
+// npm cache clean --force
 // npm i --save @fortawesome/fontawesome-svg-core
 // npm install --save @fortawesome/free-solid-svg-icons
 // npm install --save @fortawesome/react-fontawesome
@@ -36,8 +46,9 @@ import {Mui3Test1} from "./mui3/Mui3Test1";
 // npm install react-svg
 
 // ============== ICONS
-// npm install react-icons
-// npm install --save react-icon-tint
+
+// npm install --save @mui/icons-material
+// npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
 
 // npm install @material-ui/CORE
 // npm install @material-ui/styles
