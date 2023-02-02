@@ -5,6 +5,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import styled from "styled-components";
+// import * as mui from '@material-ui/icons';
+import {Delete, Search} from '@material-ui/icons';
+//=== https://v4.mui.com/components/icons/
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
 
 
 const MyButton = styled(Button)({
@@ -41,12 +45,30 @@ type Props2 = {
     children?:React.ReactElement;
 }
 
+
+
 const Hook1  = ():JSX.Element => {
     const classes = useStyles();
+    console.log("=== classes",classes)
+    console.log("=== classes.root",classes.root)
     return (
-        <div>
+        <div
+            style={{
+
+                display:'flex',
+                flexDirection:'row',
+                justifyContent:'center',
+                alignItems:'center',
+            }}
+        >
             <Button className={classes.root}>Hook</Button>;
             <MyButton>Styled Components</MyButton>
+            <Search
+                // className={classes.root}
+                style={{textAlign:'center', width:'50px', height:'50px', color:"teal"}}
+            />
+            <Delete />
+            <DeleteForeverOutlinedIcon />
         </div>
     );
 }

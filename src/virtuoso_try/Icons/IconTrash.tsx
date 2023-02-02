@@ -3,6 +3,7 @@ import React from "react";
 import {FaTrash} from "react-icons/fa";
 import {IconBasic} from "../IconBasic";
 import {globals_} from "../globals";
+import IconTint from 'react-icon-tint'
 
 
 type Props = {
@@ -33,7 +34,9 @@ const IconTrash : React.FC<Props> = (props) => {
         //=== !!! ios ionic
         ret1 = ('ios'==globals_.system.mode_icons)?
             // <IconTint src="/bellIcon.png" color="#cecece" />
-            <img style={{color:'teal'}}  alt='im1' src={require("./up.png")} width="50" height="50" />
+
+            // <img style={{color:'teal'}}  alt='im1' src={require("./up.png")} width="50" height="50" />
+            <IconTint src={require("./up.png")} color="blue" {...{maxWidth: 50, maxHeight: 50}} />
             :ret1
             //=== DOC
             //  https://www.npmjs.com/package/react-icon-tint

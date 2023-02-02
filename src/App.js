@@ -38,8 +38,13 @@ import {Mui3Test1} from "./mui3/Mui3Test1";
 // ============== ICONS
 // npm install react-icons
 // npm install --save react-icon-tint
+
 // npm install @material-ui/CORE
 // npm install @material-ui/styles
+// npm install --save @material-ui/icons
+
+// npm install --save react-icon-tint
+
 
 
 
