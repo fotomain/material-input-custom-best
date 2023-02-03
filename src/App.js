@@ -9,7 +9,9 @@ import './App.css';
 import bkg1 from "./comp/images_main/bkg1.jpg";
 import ReactVirtuso from "./virtuoso_try/ReactVirtuso";
 import bkg_app from "./comp/images_main/bkg3.jpg";
-import {Mui3Test1} from "./mui3/Mui3Test1";
+import {Mui3Test1} from "./comp_mui/Mui3Test1";
+import IconSystem from "./virtuoso_try/Icons/IconSystem";
+import React from "react";
 
 // npm start
 
@@ -94,6 +96,40 @@ function App() {
              alignItems:'top',
          }}
     >
+
+        <div style={{ flex:1}}>
+            <IconSystem name={'search'} mode_icon_system={'fa'} />
+            <p>Font Awesome</p>
+        </div>
+
+        <div style={{ flex:1}}>
+            <IconSystem name={'search'} mode_icon_system={'ios'} />
+            <p>IOS from PNG</p>
+        </div>
+
+        <div style={{ flex:1}}>
+            <IconSystem name={'search'} mode_icon_system={'mui'} />
+            <p>Google Classic</p>
+        </div>
+
+        <div style={{ flex:1}}>
+            <IconSystem id={'mui555'} name={'search'} mode_icon_system={'stl'} />
+        </div>
+         <div style={{ flex:1}}>
+            <p>Google Material Styled</p>
+        </div>
+
+
+        {/*<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" >*/}
+        {/*    <defs>*/}
+        {/*        <linearGradient id="lgrad" x1="0%" y1="12%" x2="100%" y2="88%" >*/}
+        {/*            <stop offset="0%" style={{stopColor:'rgb(244,0,255)', stopOpacity:'1' }} />*/}
+        {/*            <stop offset="100%" style={{stopColor:'rgb(255,0,0)', stopOpacity:'1' }} />*/}
+        {/*        </linearGradient>*/}
+        {/*    </defs>*/}
+        {/*    <rect x="0" y="0" width="100%" height="100%" fill="url(#lgrad)"/>*/}
+        {/*</svg>*/}
+
 
         <Mui3Test1/>
 

@@ -78,7 +78,8 @@ const ReactVirtuso = () => {
 
                 // mode_load_more //auto on_button endReached={loadMore}
 
-                //
+                //TODO LIST
+                // on_last_touched
                 // on_Add:(item_data)=>{
                 // on_Add1St
                 // on_AddLast

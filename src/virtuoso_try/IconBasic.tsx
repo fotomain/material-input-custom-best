@@ -54,7 +54,7 @@ const IconBasic : React.FC<IconBasicType> = (props) => {
     // console.log("=== === IconBasic props ",props)
 
 return(
-    <div title={props.title}>
+    <>
 
         {/*...{*/}
         {/*color: 'teal',*/}
@@ -62,16 +62,16 @@ return(
         {/*med: true,*/}
         {/*// large   :(props.large?true:false),}*/}
        {/*    <FaTrash/>*/}
-        <IconStyler1 {...{
-            color: 'teal',
-            small   :(props.small?true:false),
-            med     :(props.med?true:false),
-            large   :(props.large?true:false),
-        }} >
+       {/* <IconStyler1 {...{*/}
+       {/*     color: 'teal',*/}
+       {/*     small   :(props.small?true:false),*/}
+       {/*     med     :(props.med?true:false),*/}
+       {/*     large   :(props.large?true:false),*/}
+       {/* }} >*/}
             {props.children}
-        </IconStyler1>
+        {/*</IconStyler1>*/}
 
-    </div>
+    </>
 )}
 
 export {IconBasic}
