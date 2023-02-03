@@ -15,7 +15,6 @@ import styled from "styled-components";
 
 type Props = {
     props?:any;
-    name?:any;
     mode_icon_system?:any;
     globals_?:any;
     children:React.ReactNode;
@@ -24,30 +23,11 @@ type Props = {
 
 
 
-const useStyles1 = makeStyles({
-    root: {
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-        border: 0,
-        borderRadius: 3,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'white',
-        height: 48,
-        padding: '0 30px',
-    },
-});
-
-const DivSize5050 = styled.div`
-  height: 50px;
-  width: 50px;
-`
-
-
 
 const IconSystem : React.FC<Props> = (props) => {
 
     console.log("=== globals_",globals_.system.mode_icons)
 
-    const classes = useStyles1();
 
     const Ret2 = (props:any) =>
 
@@ -59,7 +39,7 @@ const IconSystem : React.FC<Props> = (props) => {
         //mode_icon_system name
 
         var2['fa_search'] =
-            <div id={id_local}
+            <div {...props} id={id_local}
                  style={{
                      display:'flex',
                      flexDirection:'column',
@@ -146,49 +126,11 @@ const IconSystem : React.FC<Props> = (props) => {
         )
     }
 
-
-
-
-    const Ret1 = (props:any) => {
-
-
-        return(
-            // <div
-
-                // style={{
-                //     display:'flex',
-                //     flexDirection:'column',
-                //     justifyContent:'space-between',
-                //     alignItems:'top',
-                // }}
-
-
-                Ret2(props)
-
-                // </div>
-
-
-
-            //=== DOC
-            //  https://www.npmjs.com/package/react-icon-tint
-            //  https://www.youtube.com/watch?v=Ni49a8gZQxY
-
-
-    // https://codesandbox.io/examples/package/ionicons
-    )} //ret1
-
-
     return(
 
         //=== !!! (!ret1)?<div></div>:ret1
 
-        // <IonIcon></IonIcon>
-
-         <IconBasic title={'icon ' + props.name} {...{...props, ...{icon: FaTrash}}}>
-            {<Ret1 {...props} />}
-         </IconBasic>
-
-
+            <Ret2 {...props} />
 
 
 )}
