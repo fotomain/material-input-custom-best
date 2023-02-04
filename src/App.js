@@ -120,6 +120,7 @@ function App() {
         </div>
 
         <div style={{ flex:1}}>
+            {/*=== new icon STEP1 - name*/}
             <IconSystem SEARCH stl size={50} />
         </div>
          <div style={{ flex:1}}>

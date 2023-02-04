@@ -39,6 +39,7 @@ const IconSystem : React.FC<Props> = (props) => {
         var var2: any = []
         //mode_icon_system name
 
+        {/*=== new icon STEP3 - in div*/}
         var2['fa_search'] =
             <div
                 {...props}
@@ -63,15 +64,14 @@ const IconSystem : React.FC<Props> = (props) => {
                      flexDirection:'column',
                      justifyContent:'center',
                      alignItems:'center',
+                     border:'1px solid teal',
                  }}
             >
+                    {/*======== https://icons8.com/icons/ios*/}
 
-            {/*======== https://icons8.com/icons/ios*/}
-                <div style={{ border:'1px solid teal', width: 50, height: 50, }}>
                     <IconTint src={require("./i_search.png")} color="teal"
                               {...{maxWidth: 50, maxHeight: 50, }}
                     />
-                </div>
 
             </div>
 
@@ -83,24 +83,22 @@ const IconSystem : React.FC<Props> = (props) => {
                      flexDirection:'column',
                      justifyContent:'center',
                      alignItems:'center',
+                     color:'teal',  border:'1px solid teal',
                  }}
             >
-
-                <SearchIcon
-                    // id={id_local}
-                    sx={{ color:'teal', fontSize: 50, border:'1px solid teal' }} />
+                <SearchIcon style={{width:'50px', height:'50px'}}  />
             </div>
 
 
         var2['stl_search'] =
             <div
-                 // id={'div_styled'}
                 {...props}
                  style={{
                     display:'flex',
                     flexDirection:'column',
                     justifyContent:'center',
                     alignItems:'center',
+                    border:'1px solid teal',
                 }}
             >
 
@@ -110,19 +108,14 @@ const IconSystem : React.FC<Props> = (props) => {
                 {/*<div style={{flex:1}}>*/}
                 <svg width={0} height={0}>
                     <linearGradient id="linearColors" x1={1} y1={0} x2={1} y2={1}>
-                        {/*<stop offset={0} stopColor="rgba(241,184,74,1)" />*/}
-                        {/*<stop offset={1} stopColor="rgba(207,113,8,1)" />*/}
                         <stop offset="0%" style={{stopColor:'rgb(244,0,255)', stopOpacity:'1' }} />
                         <stop offset="100%" style={{stopColor:'rgb(255,0,0)', stopOpacity:'1' }} />
                     </linearGradient>
                 </svg>
-                {/*</div>*/}
-
 
                 <SearchIcon
-                    // className={classes.root}
-                    style={{textAlign:'center', width:'50px', height:'50px',
-                        border:'1px solid teal',
+                    style={{ width:'50px', height:'50px',
+
                         // color:"teal",
                         fill: "url(#linearColors)"
                     }}
@@ -130,9 +123,11 @@ const IconSystem : React.FC<Props> = (props) => {
 
             </div>
 
+        //TODO empty_icon !!!
         var icon_name_local = 'empty_icon'
         var mode_icon_system_local = 'ios'
         const icon_systems_name = ['fa','mui','ios','stl']
+        {/*=== new icon STEP2 - in array*/}
         const icon_names = [
             'search',
             'trash',
@@ -157,9 +152,6 @@ const IconSystem : React.FC<Props> = (props) => {
         }
         else
         {
-            // if (props.search) {
-            //     icon_name_local = "search"
-            // }
                 var exist_system=''
 
                 for ( const [kk,vv] of Object.entries(props) ) {
@@ -179,7 +171,6 @@ const IconSystem : React.FC<Props> = (props) => {
         }
 
         return(
-
             var2[mode_icon_system_local+'_'+icon_name_local]
         )
     }
