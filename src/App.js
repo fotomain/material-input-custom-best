@@ -112,7 +112,7 @@ function App() {
         </div>
 
         <div style={{ flex:1}}>
-            <IconSystem icon_name={'search'} mode_icon_system={'ios'} />
+            <IconSystem icon_name={'search'} mode_icon_system={'ios'}  />
         </div>
         <div style={{ flex:1}}>
             <p>IOS from PNG</p>
