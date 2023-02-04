@@ -49,8 +49,8 @@ const IconSystem : React.FC<Props> = (props) => {
                      justifyContent:'center',
                      alignItems:'center',
                      border:'1px solid teal',
+
                      color:'teal',
-                     fontSize:'50',
                  }}
             >
                     <FaSearch {...props}  fontSize='50'  />
@@ -83,7 +83,9 @@ const IconSystem : React.FC<Props> = (props) => {
                      flexDirection:'column',
                      justifyContent:'center',
                      alignItems:'center',
-                     color:'teal',  border:'1px solid teal',
+                     border:'1px solid teal',
+
+                     color:'teal',
                  }}
             >
                 <SearchIcon style={{width:'50px', height:'50px'}}  />
@@ -115,9 +117,7 @@ const IconSystem : React.FC<Props> = (props) => {
 
                 <SearchIcon
                     style={{ width:'50px', height:'50px',
-
-                        // color:"teal",
-                        fill: "url(#linearColors)"
+                             fill: "url(#linearColors)"
                     }}
                 />
 
