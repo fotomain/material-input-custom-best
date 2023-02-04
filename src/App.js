@@ -12,6 +12,7 @@ import bkg_app from "./comp/images_main/bkg3.jpg";
 import {Mui3Test1} from "./comp_mui/Mui3Test1";
 import IconSystem from "./virtuoso_try/Icons/IconSystem";
 import React from "react";
+import IconSVG1 from "./virtuoso_try/Icons/IconSVG1";
 
 // npm start
 
@@ -96,6 +97,9 @@ function App() {
              alignItems:'top',
          }}
     >
+
+
+        <IconSVG1/>
 
         <div title={'55555555555'} style={{ flex:1}}>
             <IconSystem icon_name={'search'} mode_icon_system={'fa'} />

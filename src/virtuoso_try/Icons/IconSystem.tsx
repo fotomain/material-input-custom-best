@@ -4,6 +4,7 @@ import {FaSearch, FaTrash} from "react-icons/fa";
 import {IconBasic} from "../IconBasic";
 import {globals_} from "../globals";
 import IconTint from 'react-icon-tint';
+import { png2svg } from 'svg-png-converter'
 
 //=== DOC https://mui.com/system/styles/basics/
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -12,6 +13,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import SearchIcon from '@mui/icons-material/Search';
 import {makeStyles} from "@mui/styles";
 import styled from "styled-components";
+import {readFileSync} from "fs";
 
 type Props = {
     props?:any;
@@ -22,12 +24,27 @@ type Props = {
 }
 
 
+// const con = async () =>{
+//     const result = await png2svg({
+//         tracer: 'imagetracer',
+//         optimize: true,
+//         // input: readFileSync('./i_search.png') ,
+//         input: './i_search.png' ,
+//         numberofcolors: 24,
+//         pathomit: 1,
+//     })
+//
+//     return result
+//
+// }
 
 
 const IconSystem : React.FC<Props> = (props) => {
 
     console.log("=== globals_",globals_.system.mode_icons)
 
+    // const res1 = con()
+    // console.log("============= res1",res1)
 
     const Ret2 = (props:any) =>
 
@@ -68,7 +85,7 @@ const IconSystem : React.FC<Props> = (props) => {
                  }}
             >
                     {/*======== https://icons8.com/icons/ios*/}
-
+                    {/*=== go styled = Fweb( png->svg ) !!! */}
                     <IconTint src={require("./i_search.png")} color="teal"
                               {...{maxWidth: 50, maxHeight: 50, }}
                     />
