@@ -132,7 +132,7 @@ const IconSystem : React.FC<Props> = (props) => {
             'search',
             'trash',
             'up',
-            'down'
+            'down',
         ]
 
         if(props.mode_icon_system) {
