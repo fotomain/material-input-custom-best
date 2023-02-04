@@ -32,14 +32,16 @@ const IconSystem : React.FC<Props> = (props) => {
     const Ret2 = (props:any) =>
 
     {
-        const {id} = props
-        const id_local = id
+        // const {id} = props
+        // const id_local = id
+        console.log('=== props ', props)
 
         var var2: any = []
         //mode_icon_system name
 
         var2['fa_search'] =
-            <div {...props} id={id_local}
+            <div
+                {...props}
                  style={{
                      display:'flex',
                      flexDirection:'column',
@@ -47,13 +49,15 @@ const IconSystem : React.FC<Props> = (props) => {
                      alignItems:'center',
                      border:'1px solid teal',
                      color:'teal',
+                     fontSize:'50',
                  }}
             >
-                    <FaSearch color='teal' fontSize='50' />
+                    <FaSearch {...props}  fontSize='50'  />
             </div>
 
         var2['ios_search'] =
-            <div id={id_local}
+            <div
+                {...props}
                  style={{
                      display:'flex',
                      flexDirection:'column',
@@ -72,7 +76,8 @@ const IconSystem : React.FC<Props> = (props) => {
             </div>
 
         var2['mui_search'] =
-            <div id={id_local}
+            <div
+                {...props}
                  style={{
                      display:'flex',
                      flexDirection:'column',
@@ -81,12 +86,16 @@ const IconSystem : React.FC<Props> = (props) => {
                  }}
             >
 
-                <SearchIcon id={id_local}  sx={{ color:'teal', fontSize: 50, border:'1px solid teal' }} />
+                <SearchIcon
+                    // id={id_local}
+                    sx={{ color:'teal', fontSize: 50, border:'1px solid teal' }} />
             </div>
 
 
         var2['stl_search'] =
-            <div id={id_local}
+            <div
+                 // id={'div_styled'}
+                {...props}
                  style={{
                     display:'flex',
                     flexDirection:'column',
@@ -121,8 +130,57 @@ const IconSystem : React.FC<Props> = (props) => {
 
             </div>
 
+        var icon_name_local = 'empty_icon'
+        var mode_icon_system_local = 'ios'
+        const icon_systems_name = ['fa','mui','ios','stl']
+        const icon_names = [
+            'search',
+            'trash',
+            'up',
+            'down'
+        ]
+
+        if(props.mode_icon_system) {
+            mode_icon_system_local = props.mode_icon_system
+        }
+        else{
+            for (let i = 0; i <icon_systems_name.length ; i++) {
+                if(props[icon_systems_name[i]]){
+                    mode_icon_system_local = icon_systems_name[i]
+                }
+            }
+        }
+
+
+        if(props.icon_name) {
+            icon_name_local = props.icon_name
+        }
+        else
+        {
+            // if (props.search) {
+            //     icon_name_local = "search"
+            // }
+                var exist_system=''
+
+                for ( const [kk,vv] of Object.entries(props) ) {
+                    console.log('=== kk',kk)
+
+                    for (let i = 0; i <icon_names.length ; i++) {
+
+                        if (icon_names[i] == kk.toLowerCase()) {
+                            exist_system = icon_names[i]
+                            break
+                        }
+                    }
+                }
+
+                icon_name_local = exist_system
+
+        }
+
         return(
-            var2[props.mode_icon_system+'_'+props.name]
+
+            var2[mode_icon_system_local+'_'+icon_name_local]
         )
     }
 

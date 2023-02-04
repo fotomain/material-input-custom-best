@@ -98,28 +98,29 @@ function App() {
     >
 
         <div title={'55555555555'} style={{ flex:1}}>
-            <IconSystem name={'search'} mode_icon_system={'fa'} />
+            <IconSystem icon_name={'search'} mode_icon_system={'fa'} />
+            <IconSystem id={'mui777'} mode={'mui777'} name={'search'} mode_icon_system={'fa'} />
         </div>
         <div title={'55555555555'} style={{ flex:1}}>
             <p>Font Awesome</p>
         </div>
 
         <div style={{ flex:1}}>
-            <IconSystem name={'search'} mode_icon_system={'ios'} />
+            <IconSystem icon_name={'search'} mode_icon_system={'ios'} />
         </div>
         <div style={{ flex:1}}>
             <p>IOS from PNG</p>
         </div>
 
         <div style={{ flex:1}}>
-            <IconSystem name={'search'} mode_icon_system={'mui'} />
+            <IconSystem icon_name={'search'} mode_icon_system={'mui'} />
         </div>
         <div style={{ flex:1}}>
             <p>Google Classic</p>
         </div>
 
         <div style={{ flex:1}}>
-            <IconSystem id={'mui555'} name={'search'} mode_icon_system={'stl'} />
+            <IconSystem SEARCH stl size={50} />
         </div>
          <div style={{ flex:1}}>
             <p>Google Material Styled</p>
