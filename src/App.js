@@ -99,7 +99,9 @@ function App() {
     >
 
 
-        <IconSVG1/>
+
+
+
 
         <div title={'55555555555'} style={{ flex:1}}>
             <IconSystem icon_name={'search'} mode_icon_system={'fa'} />
@@ -114,6 +116,13 @@ function App() {
         </div>
         <div style={{ flex:1}}>
             <p>IOS from PNG</p>
+        </div>
+
+        <div style={{ flex:1}}>
+            <IconSVG1/>
+        </div>
+        <div style={{ flex:1}}>
+            <p>IOS from PNG styled</p>
         </div>
 
         <div style={{ flex:1}}>
