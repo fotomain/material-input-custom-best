@@ -13,6 +13,11 @@ import {Mui3Test1} from "./comp_mui/Mui3Test1";
 import IconSystem from "./virtuoso_try/Icons/IconSystem";
 import React from "react";
 import IconSVG1 from "./virtuoso_try/Icons/IconSVG1";
+import IconTrash_IOS_svg from "./virtuoso_try/Icons/IconTrashIOS_svg_repo";
+import IconTrash_IOS_svg_i8 from "./virtuoso_try/Icons/IconTrashIOS_svg_i8";
+import IconTrashIOS_svg_ion from "./virtuoso_try/Icons/IconTrashIOS_svg_ion";
+import IconsAllTest from "./IconsAllTest";
+import Home1 from "./comp_home_page/Home1";
 
 // npm start
 
@@ -82,6 +87,7 @@ function App() {
 // </React.Fragment>
 
 
+
   return (
     <div className="App"
 
@@ -89,7 +95,7 @@ function App() {
              backgroundRepeat: "no-repeat",
              // backgroundImage: 'url(' + bkg_app + ')'
              backgroundSize:'100% 100%',
-             backgroundImage: 'url(' + require('./comp/images_main/bkg3.jpg') + ')',
+             backgroundImage: 'url(' + require('./comp/images_main/bkg3.jpg') + ') ',
 
              display:'flex',
              flexDirection:'column',
@@ -98,58 +104,9 @@ function App() {
          }}
     >
 
+        <Home1/>
 
-
-
-
-
-        <div title={'55555555555'} style={{ flex:1}}>
-            <IconSystem icon_name={'search'} mode_icon_system={'fa'} />
-            <IconSystem id={'mui777'} mode={'mui777'} name={'search'} mode_icon_system={'fa'} />
-        </div>
-        <div title={'55555555555'} style={{ flex:1}}>
-            <p>Font Awesome</p>
-        </div>
-
-        <div style={{ flex:1}}>
-            <IconSystem icon_name={'search'} mode_icon_system={'ios'}  />
-        </div>
-        <div style={{ flex:1}}>
-            <p>IOS from PNG</p>
-        </div>
-
-        <div style={{ flex:1}}>
-            <IconSVG1/>
-        </div>
-        <div style={{ flex:1}}>
-            <p>IOS from PNG styled</p>
-        </div>
-
-        <div style={{ flex:1}}>
-            <IconSystem icon_name={'search'} mode_icon_system={'mui'} />
-        </div>
-        <div style={{ flex:1}}>
-            <p>Google Classic</p>
-        </div>
-
-        <div style={{ flex:1}}>
-            {/*=== new icon STEP1 - name*/}
-            <IconSystem SEARCH stl size={50} />
-        </div>
-         <div style={{ flex:1}}>
-            <p>Google Material Styled</p>
-        </div>
-
-
-        {/*<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" >*/}
-        {/*    <defs>*/}
-        {/*        <linearGradient id="lgrad" x1="0%" y1="12%" x2="100%" y2="88%" >*/}
-        {/*            <stop offset="0%" style={{stopColor:'rgb(244,0,255)', stopOpacity:'1' }} />*/}
-        {/*            <stop offset="100%" style={{stopColor:'rgb(255,0,0)', stopOpacity:'1' }} />*/}
-        {/*        </linearGradient>*/}
-        {/*    </defs>*/}
-        {/*    <rect x="0" y="0" width="100%" height="100%" fill="url(#lgrad)"/>*/}
-        {/*</svg>*/}
+        <IconsAllTest />
 
 
         <Mui3Test1/>

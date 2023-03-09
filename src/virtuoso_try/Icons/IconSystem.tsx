@@ -1,10 +1,10 @@
 import React from "react";
 
-import {FaSearch, FaTrash} from "react-icons/fa";
+import {FaExclamationTriangle, FaSearch, FaTrash} from "react-icons/fa";
 import {IconBasic} from "../IconBasic";
 import {globals_} from "../globals";
 import IconTint from 'react-icon-tint';
-import { png2svg } from 'svg-png-converter'
+
 
 //=== DOC https://mui.com/system/styles/basics/
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -54,6 +54,22 @@ const IconSystem : React.FC<Props> = (props) => {
         console.log('=== props ', props)
 
         var var2: any = []
+        var2['empty_icon'] =
+            <div
+                {...props}
+                style={{
+                    display:'flex',
+                    flexDirection:'column',
+                    justifyContent:'center',
+                    alignItems:'center',
+                    border:'1px solid teal',
+
+                    color:'red',
+                }}
+            >
+                <FaExclamationTriangle {...props}  fontSize='25'  />
+            </div>
+
         //mode_icon_system name
 
         {/*=== new icon STEP3 - in div*/}
@@ -140,8 +156,8 @@ const IconSystem : React.FC<Props> = (props) => {
 
             </div>
 
-        //TODO empty_icon !!!
-        var icon_name_local = 'empty_icon'
+
+        var icon_name_local = ''
         var mode_icon_system_local = 'ios'
         const icon_systems_name = ['fa','mui','ios','stl']
         {/*=== new icon STEP2 - in array*/}
@@ -187,8 +203,12 @@ const IconSystem : React.FC<Props> = (props) => {
 
         }
 
+        var result =  var2[mode_icon_system_local+'_'+icon_name_local]
+        if( !result )  result = var2['empty_icon']
+
+
         return(
-            var2[mode_icon_system_local+'_'+icon_name_local]
+            result
         )
     }
 

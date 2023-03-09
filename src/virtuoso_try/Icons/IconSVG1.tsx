@@ -12,14 +12,15 @@ type Props = {
 
 const IconSVG1 : React.FC<Props> = (props) => {
 
-const size='big'
+const size=(50).toString()
 const color = "#A41FAF", gradientColor = "#A41FAF"
 
 return (
     <div>
 
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-             width="50.000000px" height="50.000000px" viewBox="0 0 100.000000 100.000000"
+             width={size + ".000000px"} height={size + ".000000px"}
+             viewBox="0 0 100.000000 100.000000"
              preserveAspectRatio="xMidYMid meet">
 
             <defs>
@@ -41,7 +42,8 @@ return (
                     129 -129 27 28 28 27 -128 128 -129 129 30 47 c106 167 39 393 -145 482 -72
                     36 -176 42 -249 16z m240 -56 c105 -51 161 -144 161 -266 0 -85 -21 -142 -74
                     -203 -82 -92 -237 -121 -353 -64 -160 79 -215 278 -118 430 80 126 246 170
-                    384 103z"/>
+                    384 103z"
+                />
                         </g>
                 </svg>
 
