@@ -69,11 +69,11 @@ const ListPosts = (props) => {
     // console.log("=== === ListPosts props ",props)
     // console.log("=== ListPosts data_array ",props.data_array)
 
-    // const row_render = (element) => {
-    //     return (
-    //         <div>{element.item}</div>
-    //     )
-    // }
+    const row_render = (element) => {
+        return (
+            <div>{element.item}</div>
+        )
+    }
 
 
     return (
@@ -85,17 +85,13 @@ const ListPosts = (props) => {
                 render_RowCard:PostCard,
                 style:{
                     backgroundColor: 'blue',
-                    // s111
-                    width:'1500px', //globals_.width_list_posts
+                    width:'500px', //globals_.width_list_posts
                     // width:'100%',    // work as dynamic
                     height:'700px',
                     // height:'100%',   // work as dynamic
 
                     display:'flex',
-                    // s333
-                    flexDirection:'row',
-                    // s444
-                    flexWrap:'wrap',
+                    flexDirection:'column',
                     alignItems:'center',
                     justifyContent:'center',
 

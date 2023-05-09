@@ -69,7 +69,7 @@ const C_card_content = styled.div`
         padding-right: 5px;
 
         height: 90px;
-        width: 30px;
+        width: 300px;
 
         display: flex;
         flex-direction: row;

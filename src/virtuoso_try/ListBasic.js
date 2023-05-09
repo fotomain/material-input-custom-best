@@ -3,12 +3,10 @@
 
 import React, {useCallback, useEffect, useRef, useState} from 'react'
 
-// import { Virtuoso as VList } from 'react-virtuoso'
-import { VirtuosoGrid as VList } from 'react-virtuoso'
+import { Virtuoso as VList } from 'react-virtuoso'
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-import styled from "styled-components";
 
 //=============== TODO
 // endless_scrolling - endReached
@@ -91,14 +89,6 @@ const HeightPreservingItem = ({ children, ...props }) => {
         </div>
     )
 }
-
-const ListContainer = styled.div`
-  
-  display: flex;
-  flex-wrap: wrap;
-  background-color: lightgreen;
-`
-
 
 const ListBasic = (props) => {
 
@@ -216,7 +206,7 @@ const ListBasic = (props) => {
               </div>
         }
 
-        <div  {...props}>
+        <div style={{ padding: '1rem' }}>
                         <style>
                             {`
                                   .height-preserving-container:empty {
@@ -245,13 +235,6 @@ const ListBasic = (props) => {
                     {(provided) => {
                         return (
                             <VList
-                                // virtuoso-grid-list
-                                id={'list111'}
-                                // style={{
-                                //     display: 'flex',
-                                //     flexDirection: 'row',
-                                //     flexWrap: 'wrap'
-                                // }}
 
                                 data={data_array}
                                 ref={main_list_ref}
@@ -259,7 +242,6 @@ const ListBasic = (props) => {
                                 // mode_load_more
                                 endReached={(mode_load_more=='atuo')?loadMore:()=>{}}
                                 components={{
-                                    List: ListContainer,
                                     Item: HeightPreservingItem,
                                     Footer:(mode_load_more=='press_button')?footer_load_more_button:()=>{},
 
