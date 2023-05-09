@@ -18,6 +18,7 @@ import IconTrash_IOS_svg_i8 from "./virtuoso_try/Icons/IconTrashIOS_svg_i8";
 import IconTrashIOS_svg_ion from "./virtuoso_try/Icons/IconTrashIOS_svg_ion";
 import IconsAllTest from "./IconsAllTest";
 import Home1 from "./comp_home_page/Home1";
+import ReactVirtusoGRID from "./virtuoso_try/ReactVirtusoGRID";
 
 // npm start
 
@@ -111,7 +112,8 @@ function App() {
 
         <Mui3Test1/>
 
-        <ReactVirtuso />
+        <ReactVirtusoGRID />
+        {/*<ReactVirtuso />*/}
         {/*<ReactVirtualizedBeautiful />*/}
         {/*<ReactBeautifulDND />*/}
         {/*<InfiniteScrollModel />*/}
