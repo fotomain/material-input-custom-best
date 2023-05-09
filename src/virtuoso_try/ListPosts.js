@@ -85,13 +85,17 @@ const ListPosts = (props) => {
                 render_RowCard:PostCard,
                 style:{
                     backgroundColor: 'blue',
-                    width:'500px', //globals_.width_list_posts
+                    // s111
+                    width:'1500px', //globals_.width_list_posts
                     // width:'100%',    // work as dynamic
                     height:'700px',
                     // height:'100%',   // work as dynamic
 
                     display:'flex',
-                    flexDirection:'column',
+                    // s333
+                    flexDirection:'row',
+                    // s444
+                    flexWrap:'wrap',
                     alignItems:'center',
                     justifyContent:'center',
 

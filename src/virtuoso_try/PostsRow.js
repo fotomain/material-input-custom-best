@@ -36,6 +36,7 @@ function PostsRow  (props) {
         borderRadius: '15px',
         // height: (a===b)?'100px':'50px',
         height: row_heigth+'px',
+        width: '150px', //s222
         padding: '4px' }
 
     const embedId="rokGy0huYEA"
